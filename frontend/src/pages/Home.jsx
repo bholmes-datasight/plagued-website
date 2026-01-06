@@ -114,7 +114,7 @@ function Home() {
             >
               <div className="absolute -inset-4 bg-plague-green/20 blur-xl group-hover:bg-plague-green/30 transition-all duration-500" />
               <img
-                src="/album-artwork-without-logo.jpg"
+                src="/album-artwork.jpg"
                 alt="Rotting Dominions"
                 className="relative w-full shadow-2xl shadow-plague-green/20"
               />
