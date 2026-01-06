@@ -12,13 +12,17 @@ import stripe
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = FastAPI(title="Plagued API", version="1.0.0")
 
 # CORS - update origins for production
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000", "https://plagued.uk"],
+    allow_origins=["http://localhost:5173", "http://localhost:5174", "http://localhost:3000", "https://plagued.uk"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
