@@ -128,41 +128,30 @@ function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <p className="font-display text-plague-green uppercase tracking-wider mb-2">
-                Debut EP • 2025
+                Debut EP • Coming February 2026
               </p>
               <h3 className="font-blackletter text-4xl md:text-5xl text-plague-bone mb-6">
                 Rotting Dominions
               </h3>
 
-              <div className="space-y-3 mb-8">
-                {[
-                  'Boneshaper',
-                  'Sporeborn',
-                  'Malediction',
-                  'Fentylation',
-                  'Divine Infection',
-                ].map((track, index) => (
-                  <motion.div
-                    key={track}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                    className="flex items-center gap-4 p-3 bg-plague-grey/30 border-l-2 border-plague-green/50 hover:border-plague-green hover:bg-plague-grey/50 transition-all duration-300"
-                  >
-                    <span className="font-display text-plague-green/60 text-sm">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <span className="font-body text-plague-bone">{track}</span>
-                  </motion.div>
-                ))}
+              {/* Coming Soon Message */}
+              <div className="mb-8 p-8 bg-plague-green/5 border border-plague-green/20">
+                <h4 className="font-blackletter text-xl text-plague-green mb-4">
+                  Coming February 2026
+                </h4>
+                <p className="text-plague-mist/70 mb-4">
+                  Rotting Dominions will be available on all major streaming platforms.
+                </p>
+                <p className="text-plague-mist/60 text-sm">
+                  Follow us on social media for updates and the exact release date.
+                </p>
               </div>
 
               <Link
                 to="/music"
                 className="btn-primary inline-flex items-center gap-2"
               >
-                Stream Now
+                More Info
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </motion.div>
