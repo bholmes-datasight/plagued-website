@@ -95,7 +95,7 @@ function About() {
                   </h3>
 
                   {/* Role */}
-                  <p className="font-cinzel text-lg text-plague-green/80 font-medium">
+                  <p className="font-blackletter text-xl text-plague-green/80 font-bold">
                     {member.role}
                   </p>
                 </div>

@@ -28,8 +28,8 @@ export default {
         display: ['Oswald', 'Impact', 'sans-serif'],
         // Body font - clean and readable
         body: ['Barlow', 'Helvetica Neue', 'sans-serif'],
-        // Old English font for instruments
-        cinzel: ['Cinzel', 'serif'],
+        // Old English blackletter font for instruments
+        blackletter: ['UnifrakturCook', 'serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
