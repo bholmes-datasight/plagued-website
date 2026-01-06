@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Outlet, Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ShoppingCart, Instagram, Facebook, Youtube, Music, Mail } from 'lucide-react'
+import { Menu, X, ShoppingCart, Instagram, Facebook, Youtube, Music } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 import CartSidebar from './CartSidebar'
 import MailingListPopup from './MailingListPopup'
@@ -28,6 +28,12 @@ const BandcampIcon = ({ className }) => (
 const TikTokIcon = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} fill="currentColor">
     <path d="M19.321 5.562a5.124 5.124 0 01-.443-.258 6.228 6.228 0 01-1.137-.966c-.849-.954-1.289-2.066-1.289-3.338v-.8H12.56v14.8c0 2.327-1.892 4.219-4.218 4.219S4.124 17.327 4.124 15c0-2.327 1.892-4.219 4.218-4.219.462 0 .905.075 1.321.213v-3.996c-.436-.061-.88-.092-1.321-.092C3.708 6.906 0 10.614 0 15.25s3.708 8.344 8.342 8.344 8.342-3.708 8.342-8.344v-6.9c1.132.748 2.45 1.15 3.816 1.15v-3.938z"/>
+  </svg>
+)
+
+const DeezerIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M18.81 4.16v3.03h5.17V4.16h-5.17zm0 4.55v3.03h5.17V8.71h-5.17zm0 4.54v3.03h5.17v-3.03h-5.17zm-6.55-9.09v3.03h5.17V4.16h-5.17zm0 4.55v3.03h5.17V8.71h-5.17zm0 4.54v3.03h5.17v-3.03h-5.17zm0 4.55v3.04h5.17V17.8h-5.17zM5.7 8.71v3.03h5.17V8.71H5.7zm0 4.54v3.03h5.17v-3.03H5.7zm0 4.55v3.04h5.17V17.8H5.7zM0 13.25v3.03h5.17v-3.03H0zm0 4.55v3.04h5.17V17.8H0z"/>
   </svg>
 )
 
@@ -259,11 +265,13 @@ function Layout() {
                   <BandcampIcon className="w-5 h-5" />
                 </a>
                 <a
-                  href="mailto:plagueduk@gmail.com"
+                  href="https://www.deezer.com/artist/placeholder"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="p-2 bg-plague-lighter/30 hover:bg-plague-green hover:text-plague-black transition-all duration-300 rounded flex items-center justify-center"
-                  title="Email"
+                  title="Deezer"
                 >
-                  <Mail className="w-5 h-5" />
+                  <DeezerIcon className="w-5 h-5" />
                 </a>
               </div>
               <p className="text-plague-mist/60 text-sm">

@@ -27,6 +27,12 @@ const TikTokIcon = ({ className }) => (
   </svg>
 )
 
+const DeezerIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M18.81 4.16v3.03h5.17V4.16h-5.17zm0 4.55v3.03h5.17V8.71h-5.17zm0 4.54v3.03h5.17v-3.03h-5.17zm-6.55-9.09v3.03h5.17V4.16h-5.17zm0 4.55v3.03h5.17V8.71h-5.17zm0 4.54v3.03h5.17v-3.03h-5.17zm0 4.55v3.04h5.17V17.8h-5.17zM5.7 8.71v3.03h5.17V8.71H5.7zm0 4.54v3.03h5.17v-3.03H5.7zm0 4.55v3.04h5.17V17.8H5.7zM0 13.25v3.03h5.17v-3.03H0zm0 4.55v3.04h5.17V17.8H0z"/>
+  </svg>
+)
+
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -340,10 +346,19 @@ function Contact() {
                       href="https://plagueduk.bandcamp.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-3 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded col-span-2"
+                      className="flex items-center gap-3 p-3 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
                     >
                       <BandcampIcon className="w-5 h-5 text-plague-green" />
                       <span className="text-sm text-plague-mist/70">Bandcamp</span>
+                    </a>
+                    <a
+                      href="https://www.deezer.com/artist/placeholder"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-3 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
+                    >
+                      <DeezerIcon className="w-5 h-5 text-plague-green" />
+                      <span className="text-sm text-plague-mist/70">Deezer</span>
                     </a>
                   </div>
                 </div>
