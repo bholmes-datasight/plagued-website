@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ShoppingCart, Instagram, Facebook, Youtube, Music, Mail } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 import CartSidebar from './CartSidebar'
+import MailingListPopup from './MailingListPopup'
 
 // Custom SVG icons for streaming platforms
 const SpotifyIcon = ({ className }) => (
@@ -281,6 +282,9 @@ function Layout() {
 
       {/* Cart Sidebar */}
       <CartSidebar />
+      
+      {/* Mailing List Popup */}
+      <MailingListPopup />
     </div>
   )
 }
