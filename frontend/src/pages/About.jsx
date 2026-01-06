@@ -30,7 +30,7 @@ function About() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="section-heading mb-6">About Plagued</h1>
+            <h1 className="section-heading mb-6">About</h1>
             <div className="w-24 h-1 bg-plague-green mx-auto" />
           </motion.div>
         </div>
