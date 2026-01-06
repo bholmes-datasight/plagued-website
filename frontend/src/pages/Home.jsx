@@ -21,7 +21,7 @@ function Home() {
         <motion.div style={{ y }} className="absolute inset-0">
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: 'url(/album-artwork-without-logo.jpg)' }}
+            style={{ backgroundImage: 'url(/album-artwork-without-logo.webp)' }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-plague-black/60 via-plague-black/40 to-plague-black" />
           <div className="absolute inset-0 bg-gradient-to-r from-plague-black/80 via-transparent to-plague-black/80" />
