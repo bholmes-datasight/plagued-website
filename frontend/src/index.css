@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom font */
+@font-face {
+  font-family: 'EnglishTowne';
+  src: url('/fonts/EnglishTowne.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Custom base styles */
 @layer base {
   html {
