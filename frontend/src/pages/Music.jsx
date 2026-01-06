@@ -72,7 +72,7 @@ function Music() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative group sticky top-24"
+              className="relative group"
             >
               <div className="absolute -inset-4 bg-plague-green/20 blur-2xl group-hover:bg-plague-green/30 transition-all duration-500" />
               <img
