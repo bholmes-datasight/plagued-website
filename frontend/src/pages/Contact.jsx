@@ -101,7 +101,7 @@ function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="font-display text-2xl uppercase tracking-wider text-plague-bone mb-8">
+              <h2 className="font-blackletter text-2xl text-plague-bone mb-8">
                 Send a Message
               </h2>
 
@@ -242,7 +242,7 @@ function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h2 className="font-display text-2xl uppercase tracking-wider text-plague-bone mb-8">
+              <h2 className="font-blackletter text-2xl text-plague-bone mb-8">
                 Get in Touch
               </h2>
 

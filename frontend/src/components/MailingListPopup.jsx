@@ -104,7 +104,7 @@ function MailingListPopup() {
                     <div className="w-16 h-16 mx-auto mb-4 bg-plague-green/10 border border-plague-green/30 rounded-full flex items-center justify-center">
                       <Gift className="w-8 h-8 text-plague-green" />
                     </div>
-                    <h3 className="font-display text-2xl uppercase tracking-wider text-plague-bone mb-2">
+                    <h3 className="font-blackletter text-2xl text-plague-bone mb-2">
                       Join the Plague
                     </h3>
                     <p className="text-plague-mist/70 text-sm leading-relaxed">
@@ -169,7 +169,7 @@ function MailingListPopup() {
                   <div className="w-16 h-16 mx-auto mb-4 bg-plague-green/10 border border-plague-green/30 rounded-full flex items-center justify-center">
                     <CheckCircle className="w-8 h-8 text-plague-green" />
                   </div>
-                  <h3 className="font-display text-xl uppercase tracking-wider text-plague-green mb-2">
+                  <h3 className="font-blackletter text-xl text-plague-green mb-2">
                     Welcome to the Plague!
                   </h3>
                   <p className="text-plague-mist/70 text-sm mb-4">

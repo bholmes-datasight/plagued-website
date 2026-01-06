@@ -97,7 +97,7 @@ function Music() {
                 </span>
               </div>
               
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl uppercase tracking-wide text-plague-bone mb-8">
+              <h2 className="font-blackletter text-4xl md:text-5xl lg:text-6xl text-plague-bone mb-8">
                 Rotting Dominions
               </h2>
 
@@ -121,7 +121,7 @@ function Music() {
 
               {/* Coming Soon Message */}
               <div className="text-center p-8 bg-plague-green/5 border border-plague-green/20">
-                <h3 className="font-display text-xl uppercase tracking-wider text-plague-green mb-4">
+                <h3 className="font-blackletter text-xl text-plague-green mb-4">
                   Coming February 2026
                 </h3>
                 <p className="text-plague-mist/70 mb-4">

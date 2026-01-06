@@ -159,7 +159,7 @@ function Shows() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-display text-2xl uppercase tracking-wider text-plague-bone mb-6">
+            <h2 className="font-blackletter text-2xl text-plague-bone mb-6">
               Book Plagued
             </h2>
             <p className="text-plague-mist/60 mb-8 max-w-lg mx-auto">

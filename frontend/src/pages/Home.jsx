@@ -130,7 +130,7 @@ function Home() {
               <p className="font-display text-plague-green uppercase tracking-wider mb-2">
                 Debut EP • 2025
               </p>
-              <h3 className="font-display text-4xl md:text-5xl uppercase tracking-wide text-plague-bone mb-6">
+              <h3 className="font-blackletter text-4xl md:text-5xl text-plague-bone mb-6">
                 Rotting Dominions
               </h3>
 
