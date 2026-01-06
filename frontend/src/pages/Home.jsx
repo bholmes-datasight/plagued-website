@@ -21,7 +21,7 @@ function Home() {
         <motion.div style={{ y }} className="absolute inset-0">
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: 'url(/album-artwork.jpg)' }}
+            style={{ backgroundImage: 'url(/album-artwork-without-logo.jpg)' }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-plague-black/60 via-plague-black/40 to-plague-black" />
           <div className="absolute inset-0 bg-gradient-to-r from-plague-black/80 via-transparent to-plague-black/80" />
@@ -114,7 +114,7 @@ function Home() {
             >
               <div className="absolute -inset-4 bg-plague-green/20 blur-xl group-hover:bg-plague-green/30 transition-all duration-500" />
               <img
-                src="/album-artwork.jpg"
+                src="/album-artwork-without-logo.jpg"
                 alt="Rotting Dominions"
                 className="relative w-full shadow-2xl shadow-plague-green/20"
               />
