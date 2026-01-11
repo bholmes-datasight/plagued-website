@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
@@ -10,8 +10,30 @@ import Contact from './pages/Contact'
 import Checkout from './pages/Checkout'
 import CheckoutSuccess from './pages/CheckoutSuccess'
 import EPK from './pages/EPK'
+import ComingSoon from './pages/ComingSoon'
+import { usePageConfig } from './hooks/usePageConfig'
 
 function App() {
+  const { developmentMode } = usePageConfig()
+
+  // In development mode, only show Coming Soon and EPK
+  if (developmentMode) {
+    return (
+      <>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<ComingSoon />} />
+            <Route path="epk" element={<EPK />} />
+            {/* Redirect all other routes to coming soon */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Route>
+        </Routes>
+      </>
+    )
+  }
+
+  // Normal site mode
   return (
     <>
       <ScrollToTop />

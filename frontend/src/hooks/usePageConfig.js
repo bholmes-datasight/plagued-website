@@ -28,6 +28,7 @@ export function usePageConfig() {
   }, [])
 
   return {
+    developmentMode: config.developmentMode || false,
     visiblePages,
     allPages,
     isPageAccessible,

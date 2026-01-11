@@ -43,7 +43,7 @@ function Layout() {
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
   const { itemCount, toggleCart } = useCart()
-  const { visiblePages } = usePageConfig()
+  const { developmentMode, visiblePages } = usePageConfig()
 
   // Create navLinks from visible pages
   const navLinks = visiblePages.map(page => ({
@@ -51,8 +51,8 @@ function Layout() {
     label: page.label
   }))
 
-  // Hide nav and footer on EPK page
-  const showNavAndFooter = location.pathname !== '/epk'
+  // Hide nav and footer on EPK page, or on root if in development mode
+  const showNavAndFooter = location.pathname !== '/epk' && !(developmentMode && location.pathname === '/')
 
   useEffect(() => {
     const handleScroll = () => {

@@ -1,4 +1,5 @@
 {
+  "developmentMode": true,
   "pages": [
     {
       "path": "/",
@@ -9,31 +10,31 @@
     {
       "path": "/about",
       "label": "About",
-      "visible": false,
+      "visible": true,
       "description": "Band Biography"
     },
     {
       "path": "/music",
       "label": "Music",
-      "visible": false,
+      "visible": true,
       "description": "Discography & Streaming"
     },
     {
       "path": "/merch",
       "label": "Merch",
-      "visible": false,
+      "visible": true,
       "description": "Merchandise Store"
     },
     {
       "path": "/shows",
       "label": "Shows",
-      "visible": false,
+      "visible": true,
       "description": "Tour Dates"
     },
     {
       "path": "/contact",
       "label": "Contact",
-      "visible": false,
+      "visible": true,
       "description": "Contact & Booking"
     }
   ]
