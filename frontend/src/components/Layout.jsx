@@ -3,6 +3,7 @@ import { Outlet, Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ShoppingCart, Instagram, Facebook, Youtube, Music } from 'lucide-react'
 import { useCart } from '../context/CartContext'
+import { usePageConfig } from '../hooks/usePageConfig'
 import CartSidebar from './CartSidebar'
 import MailingListPopup from './MailingListPopup'
 
@@ -37,20 +38,18 @@ const DeezerIcon = ({ className }) => (
   </svg>
 )
 
-const navLinks = [
-  { path: '/', label: 'Home' },
-  { path: '/about', label: 'About' },
-  { path: '/music', label: 'Music' },
-  { path: '/merch', label: 'Merch' },
-  { path: '/shows', label: 'Shows' },
-  { path: '/contact', label: 'Contact' },
-]
-
 function Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
   const { itemCount, toggleCart } = useCart()
+  const { visiblePages } = usePageConfig()
+
+  // Create navLinks from visible pages
+  const navLinks = visiblePages.map(page => ({
+    path: page.path,
+    label: page.label
+  }))
 
   useEffect(() => {
     const handleScroll = () => {

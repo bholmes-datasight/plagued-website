@@ -1,0 +1,40 @@
+{
+  "pages": [
+    {
+      "path": "/",
+      "label": "Home",
+      "visible": true,
+      "description": "EPK Landing Page"
+    },
+    {
+      "path": "/about",
+      "label": "About",
+      "visible": false,
+      "description": "Band Biography"
+    },
+    {
+      "path": "/music",
+      "label": "Music",
+      "visible": false,
+      "description": "Discography & Streaming"
+    },
+    {
+      "path": "/merch",
+      "label": "Merch",
+      "visible": false,
+      "description": "Merchandise Store"
+    },
+    {
+      "path": "/shows",
+      "label": "Shows",
+      "visible": false,
+      "description": "Tour Dates"
+    },
+    {
+      "path": "/contact",
+      "label": "Contact",
+      "visible": false,
+      "description": "Contact & Booking"
+    }
+  ]
+}
