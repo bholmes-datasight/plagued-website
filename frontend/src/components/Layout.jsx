@@ -51,8 +51,8 @@ function Layout() {
     label: page.label
   }))
 
-  // Hide nav and footer on EPK page, or on root if in development mode
-  const showNavAndFooter = location.pathname !== '/epk' && !(developmentMode && location.pathname === '/')
+  // Hide nav and footer on EPK and Links pages, or on root if in development mode
+  const showNavAndFooter = location.pathname !== '/epk' && location.pathname !== '/links' && !(developmentMode && location.pathname === '/')
 
   useEffect(() => {
     const handleScroll = () => {
