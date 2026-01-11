@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Play, ArrowRight, Skull, Users, Disc3, Music2, Instagram, Facebook, Youtube } from 'lucide-react'
+import { Play, ArrowRight, Skull, Users, Disc3, Music2, Mail, Instagram, Facebook, Youtube } from 'lucide-react'
+import { usePageConfig } from '../hooks/usePageConfig'
 
 // Custom SVG icons for streaming platforms
 const SpotifyIcon = ({ className }) => (
@@ -49,7 +50,237 @@ const bandMembers = [
   },
 ]
 
+// One-pager EPK Layout
+function EPKOnePager() {
+  return (
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Background */}
+      <div className="fixed inset-0 z-0">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(/album-artwork-without-logo.webp)' }}
+        />
+        <div className="absolute inset-0 bg-plague-black/85" />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
+        {/* Logo */}
+        <motion.img
+          src="/logo-green.png"
+          alt="Plagued"
+          className="w-48 md:w-64 mb-8 drop-shadow-[0_0_40px_rgba(0,255,0,0.3)]"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+        />
+
+        <p className="font-display text-sm md:text-base uppercase tracking-[0.3em] text-plague-mist/80 mb-12">
+          Death Metal • United Kingdom
+        </p>
+
+        {/* Content Grid */}
+        <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Bio */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-2 card p-6 md:p-8"
+          >
+            <h2 className="font-display text-xl uppercase tracking-wider text-plague-green mb-4">About</h2>
+            <div className="text-plague-mist/80 leading-relaxed space-y-3 text-sm md:text-base">
+              <p>
+                Plagued is a five-piece death metal band from East Anglia, UK, formed in 2024. The band's debut EP, Rotting Dominions, presents old-school death metal with a modern sound, bringing together influences from each of the members, including old-school death metal, Swedish death metal, hardcore, metalcore, and thrash metal.
+              </p>
+              <p>
+                The material is built around riff-driven songwriting, a modern Swedish guitar sound, and powerful, aggressive vocals, combining hardcore grooves with crushing fast death metal riffs.
+              </p>
+              <p>
+                Rotting Dominions serves as Plagued's first recorded statement, establishing the band's foundations and direction.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Contact & Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="space-y-4"
+          >
+            {/* Email */}
+            <div className="card p-4">
+              <h3 className="font-display text-xs uppercase tracking-wider text-plague-green mb-3 flex items-center gap-2">
+                <Mail className="w-3 h-3" />
+                Email
+              </h3>
+              <a
+                href="mailto:plagueduk@gmail.com"
+                className="text-plague-mist/70 hover:text-plague-green transition-colors text-sm block"
+              >
+                plagueduk@gmail.com
+              </a>
+            </div>
+
+            {/* Social Media */}
+            <div className="card p-4">
+              <h3 className="font-display text-xs uppercase tracking-wider text-plague-green mb-3">
+                Social Media
+              </h3>
+              <div className="grid grid-cols-2 gap-2">
+                <a
+                  href="https://instagram.com/plagueduk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                >
+                  <Instagram className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist/70">Instagram</span>
+                </a>
+                <a
+                  href="https://facebook.com/plagueduk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                >
+                  <Facebook className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist/70">Facebook</span>
+                </a>
+                <a
+                  href="https://tiktok.com/@plagueduk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                >
+                  <TikTokIcon className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist/70">TikTok</span>
+                </a>
+                <a
+                  href="https://youtube.com/@plagueduk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                >
+                  <Youtube className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist/70">YouTube</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Streaming */}
+            <div className="card p-4">
+              <h3 className="font-display text-xs uppercase tracking-wider text-plague-green mb-3">
+                Listen On
+              </h3>
+              <div className="grid grid-cols-2 gap-2">
+                <a
+                  href="https://open.spotify.com/artist/placeholder"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                >
+                  <SpotifyIcon className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist/70">Spotify</span>
+                </a>
+                <a
+                  href="https://music.apple.com/artist/placeholder"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                >
+                  <AppleMusicIcon className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist/70">Apple</span>
+                </a>
+                <a
+                  href="https://plagueduk.bandcamp.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                >
+                  <BandcampIcon className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist/70">Bandcamp</span>
+                </a>
+                <a
+                  href="https://www.deezer.com/artist/placeholder"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                >
+                  <DeezerIcon className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist/70">Deezer</span>
+                </a>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Lineup */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="card p-6"
+          >
+            <h2 className="font-display text-xl uppercase tracking-wider text-plague-green mb-4">Lineup</h2>
+            <div className="space-y-3">
+              {bandMembers.map((member) => (
+                <div key={member.name} className="border-b border-plague-lighter/10 pb-2 last:border-0">
+                  <p className="text-plague-bone text-sm md:text-base font-display tracking-wide">{member.name}</p>
+                  <p className="text-plague-green/80 text-xs">{member.role}</p>
+                </div>
+              ))}
+              <p className="text-plague-mist/40 text-xs italic pt-2">More members joining soon...</p>
+            </div>
+          </motion.div>
+
+          {/* Latest Release */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="lg:col-span-2 card p-6"
+          >
+            <h2 className="font-display text-xl uppercase tracking-wider text-plague-green mb-4">Latest Release</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <img
+                  src="/album-artwork.jpg"
+                  alt="Rotting Dominions"
+                  className="w-full shadow-2xl shadow-plague-green/20 mb-4"
+                />
+              </div>
+              <div className="flex flex-col justify-center">
+                <div className="flex items-center gap-2 mb-2">
+                  <Disc3 className="w-4 h-4 text-plague-green" />
+                  <span className="font-display text-plague-green uppercase tracking-wider text-xs">
+                    Debut EP • February 2026
+                  </span>
+                </div>
+                <h3 className="font-blackletter text-3xl text-plague-bone mb-4">Rotting Dominions</h3>
+                <div className="space-y-2 text-sm text-plague-mist/70 mb-4">
+                  <div className="flex justify-between border-b border-plague-lighter/10 pb-1">
+                    <span className="text-plague-mist/50 text-xs">Produced, Recorded & Mixed</span>
+                    <span className="font-display text-plague-bone text-xs">Benjamin Holmes</span>
+                  </div>
+                  <div className="flex justify-between border-b border-plague-lighter/10 pb-1">
+                    <span className="text-plague-mist/50 text-xs">Mastered</span>
+                    <span className="font-display text-plague-bone text-xs">Dan Swanö</span>
+                  </div>
+                </div>
+                <p className="text-plague-mist/60 text-xs">
+                  Coming February 2026 on all major streaming platforms.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function Home() {
+  const { epkMode } = usePageConfig()
   const heroRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -58,6 +289,11 @@ function Home() {
 
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+
+  // Render one-pager EPK if mode is enabled
+  if (epkMode) {
+    return <EPKOnePager />
+  }
 
   return (
     <div className="noise-overlay">
@@ -181,7 +417,8 @@ function Home() {
             >
               {/* Email */}
               <div className="card p-6">
-                <h3 className="font-display text-sm uppercase tracking-wider text-plague-bone mb-4">
+                <h3 className="font-display text-sm uppercase tracking-wider text-plague-bone mb-4 flex items-center gap-2">
+                  <Mail className="w-4 h-4 text-plague-green" />
                   Email
                 </h3>
                 <a

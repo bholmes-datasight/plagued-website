@@ -43,13 +43,16 @@ function Layout() {
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
   const { itemCount, toggleCart } = useCart()
-  const { visiblePages } = usePageConfig()
+  const { epkMode, visiblePages } = usePageConfig()
 
   // Create navLinks from visible pages
   const navLinks = visiblePages.map(page => ({
     path: page.path,
     label: page.label
   }))
+
+  // Hide nav and footer in EPK mode on home page
+  const showNavAndFooter = !(epkMode && location.pathname === '/')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,7 +69,7 @@ function Layout() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header
+      {showNavAndFooter && <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
             ? 'bg-plague-black/95 backdrop-blur-md shadow-lg shadow-plague-green/5'
@@ -156,15 +159,15 @@ function Layout() {
             </motion.div>
           )}
         </AnimatePresence>
-      </header>
+      </header>}
 
       {/* Main Content */}
-      <main className="flex-grow pt-20">
+      <main className={`flex-grow ${showNavAndFooter ? 'pt-20' : ''}`}>
         <Outlet />
       </main>
 
       {/* Footer */}
-      <footer className="bg-plague-dark border-t border-plague-lighter/20">
+      {showNavAndFooter && <footer className="bg-plague-dark border-t border-plague-lighter/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Logo & Tagline */}
@@ -285,10 +288,10 @@ function Layout() {
             </p>
           </div>
         </div>
-      </footer>
+      </footer>}
 
       {/* Cart Sidebar */}
-      <CartSidebar />
+      {showNavAndFooter && <CartSidebar />}
       
       {/* Mailing List Popup */}
       <MailingListPopup />
