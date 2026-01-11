@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Play, ArrowRight, Skull, Users, Disc3, Music2, Mail, Instagram, Facebook, Youtube } from 'lucide-react'
+import { Play, ArrowRight, Skull, Users, Disc3, Music2, Instagram, Facebook, Youtube } from 'lucide-react'
 
 // Custom SVG icons for streaming platforms
 const SpotifyIcon = ({ className }) => (
@@ -160,13 +160,13 @@ function Home() {
             >
               <div className="bg-plague-grey/30 border border-plague-lighter/20 p-8 md:p-12 h-full">
                 <p className="text-plague-mist/80 text-lg leading-relaxed mb-6">
-                  <span className="text-plague-green font-display">Plagued</span> is a five-piece death metal band from East Anglia, UK, formed in 2024. The band's debut EP, <span className="text-plague-green font-display">Rotting Dominions</span>, presents old-school death metal with a modern sound, bringing together influences from each of the members, including old-school death metal, Swedish death metal, hardcore, metalcore, and thrash metal.
+                  Plagued is a five-piece death metal band from East Anglia, UK, formed in 2024. The band's debut EP, Rotting Dominions, presents old-school death metal with a modern sound, bringing together influences from each of the members, including old-school death metal, Swedish death metal, hardcore, metalcore, and thrash metal.
                 </p>
                 <p className="text-plague-mist/80 text-lg leading-relaxed mb-6">
                   The material is built around riff-driven songwriting, a modern Swedish guitar sound, and powerful, aggressive vocals, combining hardcore grooves with crushing fast death metal riffs.
                 </p>
                 <p className="text-plague-mist/80 text-lg leading-relaxed">
-                  <span className="text-plague-green font-display">Rotting Dominions</span> serves as Plagued's first recorded statement, establishing the band's foundations and direction.
+                  Rotting Dominions serves as Plagued's first recorded statement, establishing the band's foundations and direction.
                 </p>
               </div>
             </motion.div>
@@ -179,6 +179,19 @@ function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="space-y-6"
             >
+              {/* Email */}
+              <div className="card p-6">
+                <h3 className="font-display text-sm uppercase tracking-wider text-plague-bone mb-4">
+                  Email
+                </h3>
+                <a
+                  href="mailto:plagueduk@gmail.com"
+                  className="text-plague-mist/70 hover:text-plague-green transition-colors block"
+                >
+                  plagueduk@gmail.com
+                </a>
+              </div>
+
               {/* Social Media */}
               <div className="card p-6">
                 <h3 className="font-display text-sm uppercase tracking-wider text-plague-bone mb-4">
@@ -414,47 +427,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-24 px-4 bg-plague-dark/50">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="section-heading mb-4">Get in Touch</h2>
-            <div className="w-24 h-1 bg-plague-green mx-auto" />
-          </motion.div>
-
-          {/* Email Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="card p-8 max-w-md mx-auto"
-          >
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-plague-green/10 border border-plague-green/30 rounded-full flex items-center justify-center flex-shrink-0">
-                <Mail className="w-6 h-6 text-plague-green" />
-              </div>
-              <div>
-                <h3 className="font-display text-sm uppercase tracking-wider text-plague-bone mb-2">
-                  Email
-                </h3>
-                <a
-                  href="mailto:plagueduk@gmail.com"
-                  className="text-plague-mist/70 hover:text-plague-green transition-colors"
-                >
-                  plagueduk@gmail.com
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
     </div>
   )
 }
