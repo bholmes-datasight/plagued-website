@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import Layout from './components/Layout'
 import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
@@ -31,6 +32,7 @@ function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>
+        <Analytics />
       </>
     )
   }
@@ -53,6 +55,7 @@ function App() {
           <Route path="epk" element={<EPK />} />
         </Route>
       </Routes>
+      <Analytics />
     </>
   )
 }
