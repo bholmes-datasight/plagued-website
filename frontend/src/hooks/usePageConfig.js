@@ -29,6 +29,7 @@ export function usePageConfig() {
 
   return {
     developmentMode: config.developmentMode || false,
+    epkConfig: config.epkConfig || {},
     visiblePages,
     allPages,
     isPageAccessible,

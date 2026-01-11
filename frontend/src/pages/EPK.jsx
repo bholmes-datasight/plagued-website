@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { Disc3, Music2, Mail, Instagram, Facebook, Youtube } from 'lucide-react'
+import { Disc3, Music2, Mail, Instagram, Facebook, Youtube, Download } from 'lucide-react'
+import { usePageConfig } from '../hooks/usePageConfig'
 
 // Custom SVG icons for streaming platforms
 const SpotifyIcon = ({ className }) => (
@@ -56,6 +57,8 @@ const bandMembers = [
 ]
 
 function EPK() {
+  const { epkConfig } = usePageConfig()
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background */}
@@ -134,7 +137,7 @@ function EPK() {
               </h3>
               <div className="grid grid-cols-2 gap-2">
                 <a
-                  href="https://instagram.com/plagueduk"
+                  href="https://www.instagram.com/plagued.uk"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
@@ -143,7 +146,7 @@ function EPK() {
                   <span className="text-plague-mist/70">Instagram</span>
                 </a>
                 <a
-                  href="https://facebook.com/plagueduk"
+                  href="https://www.facebook.com/Plagued.UK"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
@@ -151,70 +154,93 @@ function EPK() {
                   <Facebook className="w-3 h-3 text-plague-green" />
                   <span className="text-plague-mist/70">Facebook</span>
                 </a>
-                <a
-                  href="https://tiktok.com/@plagueduk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
-                >
-                  <TikTokIcon className="w-3 h-3 text-plague-green" />
-                  <span className="text-plague-mist/70">TikTok</span>
-                </a>
-                <a
-                  href="https://youtube.com/@plagueduk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
-                >
-                  <Youtube className="w-3 h-3 text-plague-green" />
-                  <span className="text-plague-mist/70">YouTube</span>
-                </a>
+                {epkConfig.showTikTok && (
+                  <a
+                    href="https://tiktok.com/@plagueduk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                  >
+                    <TikTokIcon className="w-3 h-3 text-plague-green" />
+                    <span className="text-plague-mist/70">TikTok</span>
+                  </a>
+                )}
+                {epkConfig.showYouTube && (
+                  <a
+                    href="https://youtube.com/@plagueduk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                  >
+                    <Youtube className="w-3 h-3 text-plague-green" />
+                    <span className="text-plague-mist/70">YouTube</span>
+                  </a>
+                )}
               </div>
             </div>
 
             {/* Streaming */}
-            <div className="card p-4">
-              <h3 className="font-display text-xs uppercase tracking-wider text-plague-green mb-3">
-                Listen On
-              </h3>
-              <div className="grid grid-cols-2 gap-2">
-                <a
-                  href="https://open.spotify.com/artist/placeholder"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
-                >
-                  <SpotifyIcon className="w-3 h-3 text-plague-green" />
-                  <span className="text-plague-mist/70">Spotify</span>
-                </a>
-                <a
-                  href="https://music.apple.com/artist/placeholder"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
-                >
-                  <AppleMusicIcon className="w-3 h-3 text-plague-green" />
-                  <span className="text-plague-mist/70">Apple</span>
-                </a>
-                <a
-                  href="https://plagueduk.bandcamp.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
-                >
-                  <BandcampIcon className="w-3 h-3 text-plague-green" />
-                  <span className="text-plague-mist/70">Bandcamp</span>
-                </a>
-                <a
-                  href="https://www.deezer.com/artist/placeholder"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
-                >
-                  <DeezerIcon className="w-3 h-3 text-plague-green" />
-                  <span className="text-plague-mist/70">Deezer</span>
-                </a>
+            {epkConfig.showStreamingPlatforms && (
+              <div className="card p-4">
+                <h3 className="font-display text-xs uppercase tracking-wider text-plague-green mb-3">
+                  Listen On
+                </h3>
+                <div className="grid grid-cols-2 gap-2">
+                  <a
+                    href="https://open.spotify.com/artist/placeholder"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                  >
+                    <SpotifyIcon className="w-3 h-3 text-plague-green" />
+                    <span className="text-plague-mist/70">Spotify</span>
+                  </a>
+                  <a
+                    href="https://music.apple.com/artist/placeholder"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                  >
+                    <AppleMusicIcon className="w-3 h-3 text-plague-green" />
+                    <span className="text-plague-mist/70">Apple</span>
+                  </a>
+                  <a
+                    href="https://plagueduk.bandcamp.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                  >
+                    <BandcampIcon className="w-3 h-3 text-plague-green" />
+                    <span className="text-plague-mist/70">Bandcamp</span>
+                  </a>
+                  <a
+                    href="https://www.deezer.com/artist/placeholder"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                  >
+                    <DeezerIcon className="w-3 h-3 text-plague-green" />
+                    <span className="text-plague-mist/70">Deezer</span>
+                  </a>
+                </div>
               </div>
+            )}
+
+            {/* Press Materials / Downloads */}
+            <div className="card p-4">
+              <h3 className="font-display text-xs uppercase tracking-wider text-plague-green mb-3 flex items-center gap-2">
+                <Download className="w-3 h-3" />
+                Press Materials
+              </h3>
+              <a
+                href="https://drive.google.com/file/d/1wSbv1ih62e-huIFuSvA_f6tMwpaU-a1q/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+              >
+                <Download className="w-3 h-3 text-plague-green" />
+                <span className="text-plague-mist/70">Download Artwork</span>
+              </a>
             </div>
           </motion.div>
 
@@ -284,7 +310,7 @@ function EPK() {
                 scrolling="no"
                 frameBorder="no"
                 allow="autoplay"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2170826408%3Fsecret_token%3Ds-Vt9z2o4tJot&color=%2300ff00&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2170826408%3Fsecret_token%3Ds-Vt9z2o4tJot&color=%2300ff00&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=false"
                 className="rounded border border-plague-lighter/20"
               />
             </div>
