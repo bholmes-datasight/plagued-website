@@ -3,16 +3,24 @@ import { Users } from 'lucide-react'
 
 const bandMembers = [
   {
+    name: 'Chris Binks',
+    role: 'Vocals',
+  },
+  {
     name: 'Benjamin Holmes',
     role: 'Lead Guitar',
   },
   {
-    name: 'Joe McCloughlin',
-    role: 'Drums',
+    name: 'Chris Poll',
+    role: 'Rhythm Guitar',
   },
   {
-    name: 'Chris Binks',
-    role: 'Vocals',
+    name: 'Jay Rutterford',
+    role: 'Bass Guitar',
+  },
+  {
+    name: 'Joey Mac',
+    role: 'Drums',
   },
 ]
 
