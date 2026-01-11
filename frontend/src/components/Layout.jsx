@@ -43,7 +43,7 @@ function Layout() {
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
   const { itemCount, toggleCart } = useCart()
-  const { developmentMode, visiblePages } = usePageConfig()
+  const { developmentMode, showMailingListPopup, visiblePages } = usePageConfig()
 
   // Create navLinks from visible pages
   const navLinks = visiblePages.map(page => ({
@@ -292,9 +292,9 @@ function Layout() {
 
       {/* Cart Sidebar */}
       {showNavAndFooter && <CartSidebar />}
-      
+
       {/* Mailing List Popup */}
-      <MailingListPopup />
+      {showMailingListPopup && <MailingListPopup />}
     </div>
   )
 }
