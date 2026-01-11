@@ -10,13 +10,14 @@ import Contact from './pages/Contact'
 import Checkout from './pages/Checkout'
 import CheckoutSuccess from './pages/CheckoutSuccess'
 import EPK from './pages/EPK'
+import Links from './pages/Links'
 import ComingSoon from './pages/ComingSoon'
 import { usePageConfig } from './hooks/usePageConfig'
 
 function App() {
   const { developmentMode } = usePageConfig()
 
-  // In development mode, only show Coming Soon and EPK
+  // In development mode, only show Coming Soon, Links, and EPK
   if (developmentMode) {
     return (
       <>
@@ -24,6 +25,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<ComingSoon />} />
+            <Route path="links" element={<Links />} />
             <Route path="epk" element={<EPK />} />
             {/* Redirect all other routes to coming soon */}
             <Route path="*" element={<Navigate to="/" replace />} />
@@ -47,6 +49,7 @@ function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="checkout/success" element={<CheckoutSuccess />} />
+          <Route path="links" element={<Links />} />
           <Route path="epk" element={<EPK />} />
         </Route>
       </Routes>
