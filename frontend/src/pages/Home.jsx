@@ -137,7 +137,7 @@ function Home() {
 
       {/* Bio Section */}
       <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -149,24 +149,127 @@ function Home() {
             <div className="w-24 h-1 bg-plague-green mx-auto" />
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="bg-plague-grey/30 border border-plague-lighter/20 p-8 md:p-12">
-              <p className="text-plague-mist/80 text-lg leading-relaxed mb-6">
-                <span className="text-plague-green font-display">Plagued</span> is a five-piece death metal band from East Anglia, UK, formed in 2024. The band's debut EP, <span className="text-plague-green font-display">Rotting Dominions</span>, presents old-school death metal with a modern sound, bringing together influences from each of the members, including old-school death metal, Swedish death metal, hardcore, metalcore, and thrash metal.
-              </p>
-              <p className="text-plague-mist/80 text-lg leading-relaxed mb-6">
-                The material is built around riff-driven songwriting, a modern Swedish guitar sound, and powerful, aggressive vocals, combining hardcore grooves with crushing fast death metal riffs.
-              </p>
-              <p className="text-plague-mist/80 text-lg leading-relaxed">
-                <span className="text-plague-green font-display">Rotting Dominions</span> serves as Plagued's first recorded statement, establishing the band's foundations and direction.
-              </p>
-            </div>
-          </motion.div>
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Bio Text */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-2"
+            >
+              <div className="bg-plague-grey/30 border border-plague-lighter/20 p-8 md:p-12 h-full">
+                <p className="text-plague-mist/80 text-lg leading-relaxed mb-6">
+                  <span className="text-plague-green font-display">Plagued</span> is a five-piece death metal band from East Anglia, UK, formed in 2024. The band's debut EP, <span className="text-plague-green font-display">Rotting Dominions</span>, presents old-school death metal with a modern sound, bringing together influences from each of the members, including old-school death metal, Swedish death metal, hardcore, metalcore, and thrash metal.
+                </p>
+                <p className="text-plague-mist/80 text-lg leading-relaxed mb-6">
+                  The material is built around riff-driven songwriting, a modern Swedish guitar sound, and powerful, aggressive vocals, combining hardcore grooves with crushing fast death metal riffs.
+                </p>
+                <p className="text-plague-mist/80 text-lg leading-relaxed">
+                  <span className="text-plague-green font-display">Rotting Dominions</span> serves as Plagued's first recorded statement, establishing the band's foundations and direction.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Social Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="space-y-6"
+            >
+              {/* Social Media */}
+              <div className="card p-6">
+                <h3 className="font-display text-sm uppercase tracking-wider text-plague-bone mb-4">
+                  Social Media
+                </h3>
+                <div className="grid grid-cols-2 gap-3">
+                  <a
+                    href="https://instagram.com/plagueduk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
+                  >
+                    <Instagram className="w-4 h-4 text-plague-green" />
+                    <span className="text-xs text-plague-mist/70">Instagram</span>
+                  </a>
+                  <a
+                    href="https://facebook.com/plagueduk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
+                  >
+                    <Facebook className="w-4 h-4 text-plague-green" />
+                    <span className="text-xs text-plague-mist/70">Facebook</span>
+                  </a>
+                  <a
+                    href="https://tiktok.com/@plagueduk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
+                  >
+                    <TikTokIcon className="w-4 h-4 text-plague-green" />
+                    <span className="text-xs text-plague-mist/70">TikTok</span>
+                  </a>
+                  <a
+                    href="https://youtube.com/@plagueduk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
+                  >
+                    <Youtube className="w-4 h-4 text-plague-green" />
+                    <span className="text-xs text-plague-mist/70">YouTube</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Streaming Platforms */}
+              <div className="card p-6">
+                <h3 className="font-display text-sm uppercase tracking-wider text-plague-bone mb-4">
+                  Listen On
+                </h3>
+                <div className="grid grid-cols-2 gap-3">
+                  <a
+                    href="https://open.spotify.com/artist/placeholder"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
+                  >
+                    <SpotifyIcon className="w-4 h-4 text-plague-green" />
+                    <span className="text-xs text-plague-mist/70">Spotify</span>
+                  </a>
+                  <a
+                    href="https://music.apple.com/artist/placeholder"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
+                  >
+                    <AppleMusicIcon className="w-4 h-4 text-plague-green" />
+                    <span className="text-xs text-plague-mist/70">Apple Music</span>
+                  </a>
+                  <a
+                    href="https://plagueduk.bandcamp.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
+                  >
+                    <BandcampIcon className="w-4 h-4 text-plague-green" />
+                    <span className="text-xs text-plague-mist/70">Bandcamp</span>
+                  </a>
+                  <a
+                    href="https://www.deezer.com/artist/placeholder"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
+                  >
+                    <DeezerIcon className="w-4 h-4 text-plague-green" />
+                    <span className="text-xs text-plague-mist/70">Deezer</span>
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -313,7 +416,7 @@ function Home() {
 
       {/* Contact Section */}
       <section className="py-24 px-4 bg-plague-dark/50">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -325,183 +428,29 @@ function Home() {
             <div className="w-24 h-1 bg-plague-green mx-auto" />
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            {/* Email Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="card p-6"
-            >
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-plague-green/10 border border-plague-green/30 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-6 h-6 text-plague-green" />
-                </div>
-                <div>
-                  <h3 className="font-display text-sm uppercase tracking-wider text-plague-bone mb-2">
-                    Email
-                  </h3>
-                  <a
-                    href="mailto:plagueduk@gmail.com"
-                    className="text-plague-mist/70 hover:text-plague-green transition-colors"
-                  >
-                    plagueduk@gmail.com
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Social Media Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="card p-6"
-            >
-              <h3 className="font-display text-sm uppercase tracking-wider text-plague-bone mb-4">
-                Social Media
-              </h3>
-              <div className="grid grid-cols-2 gap-3">
-                <a
-                  href="https://instagram.com/plagueduk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
-                >
-                  <Instagram className="w-4 h-4 text-plague-green" />
-                  <span className="text-xs text-plague-mist/70">Instagram</span>
-                </a>
-                <a
-                  href="https://facebook.com/plagueduk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
-                >
-                  <Facebook className="w-4 h-4 text-plague-green" />
-                  <span className="text-xs text-plague-mist/70">Facebook</span>
-                </a>
-                <a
-                  href="https://tiktok.com/@plagueduk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
-                >
-                  <TikTokIcon className="w-4 h-4 text-plague-green" />
-                  <span className="text-xs text-plague-mist/70">TikTok</span>
-                </a>
-                <a
-                  href="https://youtube.com/@plagueduk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
-                >
-                  <Youtube className="w-4 h-4 text-plague-green" />
-                  <span className="text-xs text-plague-mist/70">YouTube</span>
-                </a>
-              </div>
-            </motion.div>
-
-            {/* Streaming Platforms */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="card p-6"
-            >
-              <h3 className="font-display text-sm uppercase tracking-wider text-plague-bone mb-4">
-                Listen On
-              </h3>
-              <div className="grid grid-cols-2 gap-3">
-                <a
-                  href="https://open.spotify.com/artist/placeholder"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
-                >
-                  <SpotifyIcon className="w-4 h-4 text-plague-green" />
-                  <span className="text-xs text-plague-mist/70">Spotify</span>
-                </a>
-                <a
-                  href="https://music.apple.com/artist/placeholder"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
-                >
-                  <AppleMusicIcon className="w-4 h-4 text-plague-green" />
-                  <span className="text-xs text-plague-mist/70">Apple Music</span>
-                </a>
-                <a
-                  href="https://plagueduk.bandcamp.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
-                >
-                  <BandcampIcon className="w-4 h-4 text-plague-green" />
-                  <span className="text-xs text-plague-mist/70">Bandcamp</span>
-                </a>
-                <a
-                  href="https://www.deezer.com/artist/placeholder"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
-                >
-                  <DeezerIcon className="w-4 h-4 text-plague-green" />
-                  <span className="text-xs text-plague-mist/70">Deezer</span>
-                </a>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Quick Links */}
+          {/* Email Card */}
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-12 text-center"
+            transition={{ duration: 0.6 }}
+            className="card p-8 max-w-md mx-auto"
           >
-            <h3 className="font-display text-sm uppercase tracking-widest text-plague-mist/60 mb-4">
-              Quick Links
-            </h3>
-            <div className="flex flex-wrap justify-center gap-3">
-              <a
-                href="mailto:plagueduk@gmail.com?subject=Booking Inquiry"
-                className="px-4 py-2 bg-plague-grey/50 border border-plague-lighter/30 text-plague-mist/80 text-sm hover:border-plague-green/50 hover:text-plague-green transition-all"
-              >
-                Booking
-              </a>
-              <a
-                href="mailto:plagueduk@gmail.com?subject=Press/Media Inquiry"
-                className="px-4 py-2 bg-plague-grey/50 border border-plague-lighter/30 text-plague-mist/80 text-sm hover:border-plague-green/50 hover:text-plague-green transition-all"
-              >
-                Press Kit
-              </a>
-              <a
-                href="mailto:plagueduk@gmail.com?subject=Merch Question"
-                className="px-4 py-2 bg-plague-grey/50 border border-plague-lighter/30 text-plague-mist/80 text-sm hover:border-plague-green/50 hover:text-plague-green transition-all"
-              >
-                Merch Support
-              </a>
-            </div>
-          </motion.div>
-
-          {/* Response Time */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-8 max-w-2xl mx-auto"
-          >
-            <div className="p-6 bg-plague-grey/20 border border-plague-lighter/10 text-center">
-              <p className="text-plague-mist/60 text-sm">
-                <strong className="text-plague-bone">Response Time:</strong> We typically
-                respond within 48 hours. For urgent booking inquiries, please include
-                "URGENT" in your subject line.
-              </p>
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 bg-plague-green/10 border border-plague-green/30 rounded-full flex items-center justify-center flex-shrink-0">
+                <Mail className="w-6 h-6 text-plague-green" />
+              </div>
+              <div>
+                <h3 className="font-display text-sm uppercase tracking-wider text-plague-bone mb-2">
+                  Email
+                </h3>
+                <a
+                  href="mailto:plagueduk@gmail.com"
+                  className="text-plague-mist/70 hover:text-plague-green transition-colors"
+                >
+                  plagueduk@gmail.com
+                </a>
+              </div>
             </div>
           </motion.div>
         </div>
