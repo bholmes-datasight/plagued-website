@@ -270,10 +270,23 @@ function EPK() {
                     <span className="font-display text-plague-bone text-xs">Dan Swanö</span>
                   </div>
                 </div>
-                <p className="text-plague-mist/60 text-xs">
-                  Coming February 2026 on all major streaming platforms.
+                <p className="text-plague-mist/60 text-xs mb-4">
+                  Listen to the full EP below:
                 </p>
               </div>
+            </div>
+
+            {/* SoundCloud Embed */}
+            <div className="mt-6">
+              <iframe
+                width="100%"
+                height="450"
+                scrolling="no"
+                frameBorder="no"
+                allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2170826408%3Fsecret_token%3Ds-Vt9z2o4tJot&color=%2300ff00&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+                className="rounded border border-plague-lighter/20"
+              />
             </div>
           </motion.div>
         </div>
