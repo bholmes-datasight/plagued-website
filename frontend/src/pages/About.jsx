@@ -111,21 +111,6 @@ function About() {
             ))}
           </div>
 
-          {/* Future Members Note */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-12 text-center"
-          >
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-plague-grey/30 border border-plague-lighter/20">
-              <Users className="w-5 h-5 text-plague-green/60" />
-              <span className="text-plague-mist/60 text-sm">
-                More members joining soon...
-              </span>
-            </div>
-          </motion.div>
         </div>
       </section>
 

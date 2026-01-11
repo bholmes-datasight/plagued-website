@@ -233,7 +233,6 @@ function EPK() {
                   <p className="text-plague-green/80 text-xs">{member.role}</p>
                 </div>
               ))}
-              <p className="text-plague-mist/40 text-xs italic pt-2">More members joining soon...</p>
             </div>
           </motion.div>
 
