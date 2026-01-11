@@ -7,7 +7,9 @@ import Music from './pages/Music'
 import Merch from './pages/Merch'
 import Shows from './pages/Shows'
 import Contact from './pages/Contact'
+import Checkout from './pages/Checkout'
 import CheckoutSuccess from './pages/CheckoutSuccess'
+import EPK from './pages/EPK'
 
 function App() {
   return (
@@ -21,7 +23,9 @@ function App() {
           <Route path="merch" element={<Merch />} />
           <Route path="shows" element={<Shows />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="checkout" element={<Checkout />} />
           <Route path="checkout/success" element={<CheckoutSuccess />} />
+          <Route path="epk" element={<EPK />} />
         </Route>
       </Routes>
     </>
