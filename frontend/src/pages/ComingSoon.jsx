@@ -4,7 +4,7 @@ function ComingSoon() {
   return (
     <div className="min-h-screen relative overflow-hidden flex items-center justify-center">
       {/* Background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute md:fixed inset-0 z-0 min-h-screen">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(/album-artwork-without-logo.webp)' }}
