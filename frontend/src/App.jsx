@@ -22,6 +22,7 @@ function App() {
   if (developmentMode) {
     return (
       <>
+        <Analytics />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -32,7 +33,6 @@ function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>
-        <Analytics />
       </>
     )
   }
@@ -40,6 +40,7 @@ function App() {
   // Normal site mode
   return (
     <>
+      <Analytics />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -55,7 +56,6 @@ function App() {
           <Route path="epk" element={<EPK />} />
         </Route>
       </Routes>
-      <Analytics />
     </>
   )
 }

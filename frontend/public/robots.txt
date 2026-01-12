@@ -1,0 +1,18 @@
+# Robots.txt for Plagued website
+User-agent: *
+
+# Block crawlers from development routes when in development mode
+Disallow: /about
+Disallow: /music
+Disallow: /merch
+Disallow: /shows
+Disallow: /contact
+Disallow: /checkout
+
+# Allow access to public pages
+Allow: /
+Allow: /links
+Allow: /epk
+
+# Note: Update this file when switching out of development mode
+# to allow all routes
