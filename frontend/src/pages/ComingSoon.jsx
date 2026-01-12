@@ -5,6 +5,7 @@ const generateParticles = (count) => {
   return Array.from({ length: count }, (_, i) => ({
     id: i,
     left: `${Math.random() * 100}%`,
+    bottom: `${Math.random() * 100}%`, // Start at random vertical positions
     animationDuration: `${15 + Math.random() * 20}s`,
     animationDelay: `${Math.random() * 10}s`,
     size: Math.random() * 4 + 2, // Slightly larger: 2-6px
@@ -12,7 +13,8 @@ const generateParticles = (count) => {
 }
 
 function ComingSoon() {
-  const particles = generateParticles(50) // Increased from 30 to 50
+  const particlesMobile = generateParticles(50)
+  const particlesDesktop = generateParticles(80) // More for desktop
 
   return (
     <div className="min-h-screen relative overflow-hidden flex items-center justify-center">
@@ -25,14 +27,33 @@ function ComingSoon() {
         <div className="absolute inset-0 bg-plague-black/90" />
       </div>
 
-      {/* Floating Particles/Spores */}
-      <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
-        {particles.map((particle) => (
+      {/* Floating Particles/Spores - Mobile */}
+      <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden md:hidden">
+        {particlesMobile.map((particle) => (
           <div
             key={particle.id}
-            className="absolute bottom-0 rounded-full bg-plague-green/20 animate-float-up md:scale-150"
+            className="absolute rounded-full bg-plague-green/20 animate-float-up"
             style={{
               left: particle.left,
+              bottom: particle.bottom,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              animationDuration: particle.animationDuration,
+              animationDelay: particle.animationDelay,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Floating Particles/Spores - Desktop */}
+      <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden hidden md:block">
+        {particlesDesktop.map((particle) => (
+          <div
+            key={particle.id}
+            className="absolute rounded-full bg-plague-green/20 animate-float-up scale-150"
+            style={{
+              left: particle.left,
+              bottom: particle.bottom,
               width: `${particle.size}px`,
               height: `${particle.size}px`,
               animationDuration: particle.animationDuration,
