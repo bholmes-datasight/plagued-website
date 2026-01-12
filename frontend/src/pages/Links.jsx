@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Instagram, Facebook, Youtube, Globe } from 'lucide-react'
+import { Instagram, Facebook, Youtube, Globe, Mail } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 // Custom SVG icons for streaming platforms
@@ -68,6 +68,7 @@ function Links() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
+            className="space-y-3"
           >
             <Link
               to="/"
@@ -79,15 +80,27 @@ function Links() {
                 <span className="text-plague-mist/50 text-xs">Coming Soon</span>
               </div>
             </Link>
+
+            {/* Email Button */}
+            <a
+              href="mailto:plagueduk@gmail.com"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
+            >
+              <Mail className="w-5 h-5 text-plague-green" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Email Us</span>
+            </a>
           </motion.div>
 
-          {/* Social Links */}
+          {/* Socials Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35 }}
-            className="space-y-3"
+            className="space-y-3 pt-4"
           >
+            <p className="text-center text-plague-mist/50 text-xs uppercase tracking-widest mb-4">
+              Socials
+            </p>
             <a
               href="https://www.instagram.com/plagued.uk"
               target="_blank"
@@ -126,49 +139,35 @@ function Links() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="space-y-3 pt-4"
           >
-            <p className="text-center text-plague-mist/50 text-xs uppercase tracking-widest mb-4">
-              Listen On
-            </p>
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <p className="text-center text-plague-mist/50 text-xs uppercase tracking-widest">
+                Listen On
+              </p>
+              <p className="text-center text-plague-mist/40 text-xs italic">
+                (Single being released 30th January)
+              </p>
+            </div>
 
-            <a
-              href="https://open.spotify.com/artist/placeholder"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
-            >
-              <SpotifyIcon className="w-5 h-5 text-plague-green" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Spotify</span>
-            </a>
+            {/* Greyed out, non-clickable streaming links */}
+            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-lighter/20 opacity-50 cursor-not-allowed backdrop-blur-sm">
+              <SpotifyIcon className="w-5 h-5 text-plague-mist/40" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/40">Spotify</span>
+            </div>
 
-            <a
-              href="https://music.apple.com/artist/placeholder"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
-            >
-              <AppleMusicIcon className="w-5 h-5 text-plague-green" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Apple Music</span>
-            </a>
+            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-lighter/20 opacity-50 cursor-not-allowed backdrop-blur-sm">
+              <AppleMusicIcon className="w-5 h-5 text-plague-mist/40" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/40">Apple Music</span>
+            </div>
 
-            <a
-              href="https://plagueduk.bandcamp.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
-            >
-              <BandcampIcon className="w-5 h-5 text-plague-green" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Bandcamp</span>
-            </a>
+            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-lighter/20 opacity-50 cursor-not-allowed backdrop-blur-sm">
+              <BandcampIcon className="w-5 h-5 text-plague-mist/40" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/40">Bandcamp</span>
+            </div>
 
-            <a
-              href="https://www.deezer.com/artist/placeholder"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
-            >
-              <DeezerIcon className="w-5 h-5 text-plague-green" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Deezer</span>
-            </a>
+            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-lighter/20 opacity-50 cursor-not-allowed backdrop-blur-sm">
+              <DeezerIcon className="w-5 h-5 text-plague-mist/40" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/40">Deezer</span>
+            </div>
           </motion.div>
         </div>
       </div>
