@@ -40,7 +40,12 @@ function ComingSoon() {
         </motion.div>
 
         {/* Animated glow effect */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-plague-green/10 rounded-full blur-3xl animate-pulse pointer-events-none" />
+        <motion.div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-plague-green/10 rounded-full blur-3xl animate-pulse pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.5 }}
+        />
       </div>
     </div>
   )
