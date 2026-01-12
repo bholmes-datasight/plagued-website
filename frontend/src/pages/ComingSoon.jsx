@@ -5,9 +5,8 @@ const generateParticles = (count) => {
   return Array.from({ length: count }, (_, i) => ({
     id: i,
     left: `${Math.random() * 100}%`,
-    bottom: `${Math.random() * 100}%`, // Start at random vertical positions
     animationDuration: `${15 + Math.random() * 20}s`,
-    animationDelay: `${Math.random() * 10}s`,
+    animationDelay: `${-(Math.random() * 30)}s`, // Negative delay makes them start mid-animation
     size: Math.random() * 4 + 2, // Slightly larger: 2-6px
   }))
 }
@@ -32,10 +31,9 @@ function ComingSoon() {
         {particlesMobile.map((particle) => (
           <div
             key={particle.id}
-            className="absolute rounded-full bg-plague-green/20 animate-float-up"
+            className="absolute bottom-0 rounded-full bg-plague-green/20 animate-float-up"
             style={{
               left: particle.left,
-              bottom: particle.bottom,
               width: `${particle.size}px`,
               height: `${particle.size}px`,
               animationDuration: particle.animationDuration,
@@ -50,10 +48,9 @@ function ComingSoon() {
         {particlesDesktop.map((particle) => (
           <div
             key={particle.id}
-            className="absolute rounded-full bg-plague-green/20 animate-float-up scale-150"
+            className="absolute bottom-0 rounded-full bg-plague-green/20 animate-float-up scale-150"
             style={{
               left: particle.left,
-              bottom: particle.bottom,
               width: `${particle.size}px`,
               height: `${particle.size}px`,
               animationDuration: particle.animationDuration,
