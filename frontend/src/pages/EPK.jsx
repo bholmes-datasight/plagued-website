@@ -199,9 +199,6 @@ function EPK() {
               <h3 className="font-display text-xs uppercase tracking-wider text-plague-green mb-3">
                 Listen On
               </h3>
-              <p className="text-plague-mist/40 text-xs italic mb-3">
-                (Single releasing 30th January)
-              </p>
               <div className="grid grid-cols-2 gap-2">
                 <div className="flex items-center gap-2 p-2 bg-plague-lighter/10 border border-plague-green/30 opacity-70 cursor-not-allowed rounded text-xs">
                   <SpotifyIcon className="w-3 h-3 text-plague-mist/50" />
