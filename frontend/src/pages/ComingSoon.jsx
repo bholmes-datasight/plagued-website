@@ -1,6 +1,19 @@
 import { motion } from 'framer-motion'
 
+// Generate random particle positions
+const generateParticles = (count) => {
+  return Array.from({ length: count }, (_, i) => ({
+    id: i,
+    left: `${Math.random() * 100}%`,
+    animationDuration: `${15 + Math.random() * 20}s`,
+    animationDelay: `${Math.random() * 10}s`,
+    size: Math.random() * 3 + 1,
+  }))
+}
+
 function ComingSoon() {
+  const particles = generateParticles(30)
+
   return (
     <div className="min-h-screen relative overflow-hidden flex items-center justify-center">
       {/* Background */}
@@ -10,6 +23,40 @@ function ComingSoon() {
           style={{ backgroundImage: 'url(/album-artwork-without-logo.webp)' }}
         />
         <div className="absolute inset-0 bg-plague-black/90" />
+      </div>
+
+      {/* Animated Noise/Grain Overlay */}
+      <div className="absolute inset-0 z-[1] opacity-20 mix-blend-overlay pointer-events-none">
+        <div
+          className="absolute inset-0 animate-grain"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+            backgroundRepeat: 'repeat',
+          }}
+        />
+      </div>
+
+      {/* Rising Smoke/Mist */}
+      <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
+        <div className="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-t from-plague-green/5 via-plague-green/2 to-transparent animate-rise-slow" />
+        <div className="absolute bottom-0 left-0 right-0 h-80 bg-gradient-to-t from-plague-black/30 via-plague-black/10 to-transparent animate-rise-medium" />
+      </div>
+
+      {/* Floating Particles/Spores */}
+      <div className="absolute inset-0 z-[3] pointer-events-none overflow-hidden">
+        {particles.map((particle) => (
+          <div
+            key={particle.id}
+            className="absolute bottom-0 rounded-full bg-plague-green/20 animate-float-up"
+            style={{
+              left: particle.left,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              animationDuration: particle.animationDuration,
+              animationDelay: particle.animationDelay,
+            }}
+          />
+        ))}
       </div>
 
       {/* Content */}
