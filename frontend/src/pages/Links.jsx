@@ -144,29 +144,29 @@ function Links() {
                 Listen On
               </p>
               <p className="text-center text-plague-mist/40 text-xs italic">
-                (Single being released 30th January)
+                (Single releasing 30th January)
               </p>
             </div>
 
             {/* Greyed out, non-clickable streaming links */}
-            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-lighter/20 opacity-50 cursor-not-allowed backdrop-blur-sm">
-              <SpotifyIcon className="w-5 h-5 text-plague-mist/40" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/40">Spotify</span>
+            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 opacity-70 cursor-not-allowed backdrop-blur-sm">
+              <SpotifyIcon className="w-5 h-5 text-plague-mist/50" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/50">Spotify</span>
             </div>
 
-            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-lighter/20 opacity-50 cursor-not-allowed backdrop-blur-sm">
-              <AppleMusicIcon className="w-5 h-5 text-plague-mist/40" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/40">Apple Music</span>
+            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 opacity-70 cursor-not-allowed backdrop-blur-sm">
+              <AppleMusicIcon className="w-5 h-5 text-plague-mist/50" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/50">Apple Music</span>
             </div>
 
-            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-lighter/20 opacity-50 cursor-not-allowed backdrop-blur-sm">
-              <BandcampIcon className="w-5 h-5 text-plague-mist/40" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/40">Bandcamp</span>
+            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 opacity-70 cursor-not-allowed backdrop-blur-sm">
+              <BandcampIcon className="w-5 h-5 text-plague-mist/50" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/50">Bandcamp</span>
             </div>
 
-            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-lighter/20 opacity-50 cursor-not-allowed backdrop-blur-sm">
-              <DeezerIcon className="w-5 h-5 text-plague-mist/40" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/40">Deezer</span>
+            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 opacity-70 cursor-not-allowed backdrop-blur-sm">
+              <DeezerIcon className="w-5 h-5 text-plague-mist/50" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/50">Deezer</span>
             </div>
           </motion.div>
         </div>
