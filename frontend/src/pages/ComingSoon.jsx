@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import SmokeShader from '../components/SmokeShader'
 
 // Generate random particle positions
 const generateParticles = (count) => {
@@ -26,8 +27,13 @@ function ComingSoon() {
         <div className="absolute inset-0 bg-plague-black/90" />
       </div>
 
+      {/* WebGL Smoke Shader */}
+      <div className="absolute inset-0 z-[1] pointer-events-none">
+        <SmokeShader />
+      </div>
+
       {/* Floating Particles/Spores - Mobile */}
-      <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden md:hidden">
+      <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden md:hidden">
         {particlesMobile.map((particle) => (
           <div
             key={particle.id}
@@ -44,7 +50,7 @@ function ComingSoon() {
       </div>
 
       {/* Floating Particles/Spores - Desktop */}
-      <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden hidden md:block">
+      <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden hidden md:block">
         {particlesDesktop.map((particle) => (
           <div
             key={particle.id}
