@@ -39,13 +39,8 @@ function ComingSoon() {
           </p>
         </motion.div>
 
-        {/* Animated glow effect - oval shaped to match logo */}
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-64 md:w-[600px] md:h-[400px] bg-plague-green/10 rounded-[50%] blur-[100px] animate-pulse pointer-events-none"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 2, delay: 0.8 }}
-        />
+        {/* Animated glow effect */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-plague-green/10 rounded-full blur-3xl animate-pulse pointer-events-none" />
       </div>
     </div>
   )
