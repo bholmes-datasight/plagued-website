@@ -2,6 +2,7 @@
 Plagued Band Website - FastAPI Backend
 """
 import os
+import json
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -11,21 +12,56 @@ from typing import Optional
 import stripe
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, validator, Field
 from dotenv import load_dotenv
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
+
+from security_middleware import (
+    SecurityHeadersMiddleware,
+    RequestSizeLimitMiddleware,
+    sanitize_text,
+    validate_email_content
+)
 
 # Load environment variables from .env file
 load_dotenv()
 
-app = FastAPI(title="Plagued API", version="1.0.0")
+# Initialize rate limiter
+limiter = Limiter(key_func=get_remote_address)
 
-# CORS - update origins for production
+app = FastAPI(
+    title="Plagued API",
+    version="1.0.0",
+    docs_url=None if os.getenv("ENVIRONMENT") == "production" else "/docs",
+    redoc_url=None if os.getenv("ENVIRONMENT") == "production" else "/redoc"
+)
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
+# Security headers middleware
+app.add_middleware(SecurityHeadersMiddleware)
+
+# Request size limit middleware (1MB max)
+app.add_middleware(RequestSizeLimitMiddleware, max_size=1_048_576)
+
+# CORS - restrictive configuration
+allowed_origins = [
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "http://localhost:3000",
+    "https://plagued.uk",
+    "https://www.plagued.uk"
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:5174", "http://localhost:3000", "https://plagued.uk"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST"],  # Only allow necessary methods
+    allow_headers=["Content-Type", "Authorization"],  # Only necessary headers
+    max_age=600,  # Cache preflight requests for 10 minutes
 )
 
 # Stripe configuration - set these environment variables
@@ -43,10 +79,24 @@ CONTACT_EMAIL = "plagueduk@gmail.com"
 # ============== MODELS ==============
 
 class ContactForm(BaseModel):
-    name: str
+    name: str = Field(..., min_length=1, max_length=100)
     email: EmailStr
-    subject: str
-    message: str
+    subject: str = Field(..., min_length=1, max_length=200)
+    message: str = Field(..., min_length=1, max_length=5000)
+
+    @validator('name', 'subject', 'message')
+    def sanitize_fields(cls, v):
+        """Sanitize text fields to prevent injection attacks"""
+        if isinstance(v, str):
+            return sanitize_text(v, max_length=5000)
+        return v
+
+    @validator('email')
+    def validate_email_safety(cls, v):
+        """Validate email doesn't contain injection attempts"""
+        if not validate_email_content(v):
+            raise ValueError('Invalid email format')
+        return v
 
 
 class CartItem(BaseModel):
@@ -62,6 +112,10 @@ class CheckoutRequest(BaseModel):
     items: list[CartItem]
     success_url: str
     cancel_url: str
+
+
+class PaymentIntentRequest(BaseModel):
+    items: list[CartItem]
 
 
 # ============== DATA ==============
@@ -210,7 +264,8 @@ async def get_shows():
 
 
 @app.post("/api/contact")
-async def submit_contact(form: ContactForm):
+@limiter.limit("5/minute")  # Max 5 submissions per minute per IP
+async def submit_contact(request: Request, form: ContactForm):
     """Handle contact form submission"""
     try:
         # Build email
@@ -231,6 +286,7 @@ Message:
 
 ---
 Submitted at: {datetime.utcnow().isoformat()}
+IP Address: {get_remote_address(request)}
         """
         msg.attach(MIMEText(body, "plain"))
 
@@ -246,8 +302,11 @@ Submitted at: {datetime.utcnow().isoformat()}
 
         return {"success": True, "message": "Message sent successfully"}
 
+    except smtplib.SMTPException as e:
+        print(f"SMTP error sending contact email: {type(e).__name__}")
+        raise HTTPException(status_code=500, detail="Failed to send message")
     except Exception as e:
-        print(f"Error sending contact email: {e}")
+        print(f"Error sending contact email: {type(e).__name__}")
         raise HTTPException(status_code=500, detail="Failed to send message")
 
 
@@ -283,7 +342,52 @@ async def create_checkout_session(request: CheckoutRequest):
         return {"checkout_url": session.url}
 
     except stripe.error.StripeError as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        print(f"Stripe checkout error: {type(e).__name__}")
+        user_message = e.user_message if hasattr(e, 'user_message') else "Payment processing failed"
+        raise HTTPException(status_code=400, detail=user_message)
+    except Exception as e:
+        print(f"Unexpected checkout error: {type(e).__name__}")
+        raise HTTPException(status_code=500, detail="Checkout session creation failed")
+
+
+@app.post("/api/create-payment-intent")
+async def create_payment_intent(request: PaymentIntentRequest):
+    """Create a Stripe PaymentIntent for embedded checkout"""
+    try:
+        # Calculate total amount
+        total_amount = sum(item.price * item.quantity for item in request.items)
+
+        # Create PaymentIntent with automatic payment methods
+        payment_intent = stripe.PaymentIntent.create(
+            amount=total_amount,
+            currency="gbp",
+            automatic_payment_methods={
+                "enabled": True,
+            },
+            # Store cart items in metadata for webhook processing
+            metadata={
+                "items": json.dumps([{
+                    "id": item.id,
+                    "name": item.name,
+                    "price": item.price,
+                    "quantity": item.quantity,
+                    "size": item.size
+                } for item in request.items])
+            },
+        )
+
+        return {
+            "clientSecret": payment_intent.client_secret,
+            "paymentIntentId": payment_intent.id
+        }
+
+    except stripe.error.StripeError as e:
+        print(f"Stripe payment intent error: {type(e).__name__}")
+        user_message = e.user_message if hasattr(e, 'user_message') else "Payment initialization failed"
+        raise HTTPException(status_code=400, detail=user_message)
+    except Exception as e:
+        print(f"Unexpected payment intent error: {type(e).__name__}")
+        raise HTTPException(status_code=500, detail="Payment initialization failed")
 
 
 @app.post("/api/webhook/stripe")
@@ -306,6 +410,27 @@ async def stripe_webhook(request: Request):
         session = event["data"]["object"]
         # TODO: Fulfillment logic - send order notification email
         print(f"Order completed: {session['id']}")
+
+    elif event["type"] == "payment_intent.succeeded":
+        payment_intent = event["data"]["object"]
+        print(f"PaymentIntent succeeded: {payment_intent['id']}")
+
+        # Extract order details from metadata
+        items_json = payment_intent.get("metadata", {}).get("items", "[]")
+        items = json.loads(items_json)
+
+        # Get shipping details
+        shipping = payment_intent.get("shipping", {})
+        shipping_address = shipping.get("address", {})
+        shipping_name = shipping.get("name", "")
+
+        print(f"Order Details:")
+        print(f"  Customer: {shipping_name}")
+        print(f"  Address: {shipping_address}")
+        print(f"  Items: {items}")
+        print(f"  Amount: £{payment_intent['amount'] / 100:.2f}")
+
+        # TODO: Send confirmation email, create order record, etc.
 
     return {"status": "success"}
 
