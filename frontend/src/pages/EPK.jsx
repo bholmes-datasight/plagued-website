@@ -129,7 +129,7 @@ function EPK() {
               >
                 <Globe className="w-3 h-3 text-plague-green" />
                 <div className="flex flex-col">
-                  <span className="text-plague-mist/70">plagued.uk</span>
+                  <span className="text-plague-mist/70">plagueduk.com</span>
                   <span className="text-plague-mist/50 text-xs">Coming Soon</span>
                 </div>
               </Link>
