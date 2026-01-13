@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Mail, Gift, CheckCircle } from 'lucide-react'
+import { X, Mail, Gift, CheckCircle, User } from 'lucide-react'
 
 function MailingListPopup() {
   const [isVisible, setIsVisible] = useState(false)
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
@@ -40,19 +41,26 @@ function MailingListPopup() {
     setIsSubmitting(true)
 
     try {
-      // Here you would integrate with your email service (Mailchimp, ConvertKit, etc.)
-      // For now, we'll simulate the request
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Subscription failed')
+      }
+
       setIsSuccess(true)
       localStorage.setItem('plagued-mailing-signup', 'true')
-      
+
       // Auto close after success
       setTimeout(() => {
         setIsVisible(false)
       }, 3000)
     } catch (error) {
       console.error('Signup error:', error)
+      alert('Failed to subscribe. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -124,6 +132,24 @@ function MailingListPopup() {
 
                   {/* Form */}
                   <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                      <label htmlFor="popup-name" className="sr-only">
+                        Name
+                      </label>
+                      <div className="relative">
+                        <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-plague-green/60" />
+                        <input
+                          type="text"
+                          id="popup-name"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          placeholder="Your Name"
+                          required
+                          className="w-full pl-12 pr-4 py-3 bg-plague-grey/50 border border-plague-lighter/30 text-plague-bone placeholder-plague-mist/40 focus:border-plague-green/50 focus:outline-none transition-colors"
+                        />
+                      </div>
+                    </div>
+
                     <div>
                       <label htmlFor="popup-email" className="sr-only">
                         Email address

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Play, ArrowRight, Skull, Users, Disc3, Music2, Mail, Instagram, Facebook, Youtube } from 'lucide-react'
@@ -34,6 +34,17 @@ const DeezerIcon = ({ className }) => (
   </svg>
 )
 
+// Generate random particle positions
+const generateParticles = (count) => {
+  return Array.from({ length: count }, (_, i) => ({
+    id: i,
+    left: `${Math.random() * 100}%`,
+    animationDuration: `${15 + Math.random() * 20}s`,
+    animationDelay: `${-(Math.random() * 30)}s`, // Negative delay makes them start mid-animation
+    size: Math.random() * 4 + 2, // Slightly larger: 2-6px
+  }))
+}
+
 const bandMembers = [
   {
     name: 'Chris Binks',
@@ -67,6 +78,10 @@ function Home() {
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
+  // Generate particles once
+  const particlesMobile = useMemo(() => generateParticles(50), [])
+  const particlesDesktop = useMemo(() => generateParticles(80), [])
+
   return (
     <div className="noise-overlay">
       {/* Hero Section */}
@@ -86,6 +101,40 @@ function Home() {
           <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-plague-green/10 to-transparent animate-pulse" />
         </div>
 
+        {/* Floating Particles/Spores - Mobile */}
+        <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden md:hidden">
+          {particlesMobile.map((particle) => (
+            <div
+              key={particle.id}
+              className="absolute bottom-0 rounded-full bg-plague-green/20 animate-float-up"
+              style={{
+                left: particle.left,
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                animationDuration: particle.animationDuration,
+                animationDelay: particle.animationDelay,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Floating Particles/Spores - Desktop */}
+        <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden hidden md:block">
+          {particlesDesktop.map((particle) => (
+            <div
+              key={particle.id}
+              className="absolute bottom-0 rounded-full bg-plague-green/20 animate-float-up scale-150"
+              style={{
+                left: particle.left,
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                animationDuration: particle.animationDuration,
+                animationDelay: particle.animationDelay,
+              }}
+            />
+          ))}
+        </div>
+
         {/* Hero Content */}
         <motion.div
           style={{ opacity }}
@@ -100,26 +149,69 @@ function Home() {
             transition={{ duration: 0.8, ease: 'easeOut' }}
           />
 
-          <motion.p
-            className="font-display text-lg md:text-xl uppercase tracking-[0.3em] text-plague-mist/80 mb-8"
+          <motion.h1
+            className="font-blackletter text-4xl md:text-5xl lg:text-6xl text-plague-bone mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Death Metal • United Kingdom
-          </motion.p>
+            Rotting Dominions
+          </motion.h1>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-wrap items-center justify-center gap-6 mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            <Link to="/music" className="btn-primary flex items-center gap-2">
-              <Play className="w-5 h-5" />
-              Listen Now
-            </Link>
-            <Link to="/merch" className="btn-secondary flex items-center gap-2">
+            <a
+              href="https://open.spotify.com/artist/placeholder"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-2 transition-all duration-300"
+            >
+              <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center bg-plague-grey/30 border border-plague-green/30 rounded-full group-hover:bg-plague-green/20 group-hover:border-plague-green group-hover:shadow-[0_0_20px_rgba(0,255,0,0.3)] transition-all duration-300">
+                <SpotifyIcon className="w-6 h-6 md:w-8 md:h-8 text-plague-green" />
+              </div>
+            </a>
+            <a
+              href="https://music.apple.com/artist/placeholder"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-2 transition-all duration-300"
+            >
+              <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center bg-plague-grey/30 border border-plague-green/30 rounded-full group-hover:bg-plague-green/20 group-hover:border-plague-green group-hover:shadow-[0_0_20px_rgba(0,255,0,0.3)] transition-all duration-300">
+                <AppleMusicIcon className="w-6 h-6 md:w-8 md:h-8 text-plague-green" />
+              </div>
+            </a>
+            <a
+              href="https://plagueduk.bandcamp.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-2 transition-all duration-300"
+            >
+              <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center bg-plague-grey/30 border border-plague-green/30 rounded-full group-hover:bg-plague-green/20 group-hover:border-plague-green group-hover:shadow-[0_0_20px_rgba(0,255,0,0.3)] transition-all duration-300">
+                <BandcampIcon className="w-6 h-6 md:w-8 md:h-8 text-plague-green" />
+              </div>
+            </a>
+            <a
+              href="https://www.deezer.com/artist/placeholder"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-2 transition-all duration-300"
+            >
+              <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center bg-plague-grey/30 border border-plague-green/30 rounded-full group-hover:bg-plague-green/20 group-hover:border-plague-green group-hover:shadow-[0_0_20px_rgba(0,255,0,0.3)] transition-all duration-300">
+                <DeezerIcon className="w-6 h-6 md:w-8 md:h-8 text-plague-green" />
+              </div>
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+          >
+            <Link to="/merch" className="btn-secondary flex items-center gap-2 inline-flex">
               <Skull className="w-5 h-5" />
               Shop Merch
             </Link>
@@ -141,199 +233,6 @@ function Home() {
             </div>
           </motion.div>
         </motion.div>
-      </section>
-
-      {/* Bio Section */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="section-heading mb-4">About Plagued</h2>
-            <div className="w-24 h-1 bg-plague-green mx-auto" />
-          </motion.div>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            {/* Bio Text */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="lg:col-span-2"
-            >
-              <div className="bg-plague-grey/30 border border-plague-lighter/20 p-8 md:p-12 h-full">
-                <p className="text-plague-mist/80 text-lg leading-relaxed mb-6">
-                  Plagued is a five-piece death metal band from East Anglia, UK, formed in 2024. The band's debut EP, Rotting Dominions, presents old-school death metal with a modern sound, bringing together influences from each of the members, including old-school death metal, Swedish death metal, hardcore, metalcore, and thrash metal.
-                </p>
-                <p className="text-plague-mist/80 text-lg leading-relaxed mb-6">
-                  The material is built around riff-driven songwriting, a modern Swedish guitar sound, and powerful, aggressive vocals, combining hardcore grooves with crushing fast death metal riffs.
-                </p>
-                <p className="text-plague-mist/80 text-lg leading-relaxed">
-                  Rotting Dominions serves as Plagued's first recorded statement, establishing the band's foundations and direction.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-6"
-            >
-              {/* Email */}
-              <div className="card p-6">
-                <h3 className="font-display text-sm uppercase tracking-wider text-plague-bone mb-4 flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-plague-green" />
-                  Email
-                </h3>
-                <a
-                  href="mailto:plagueduk@gmail.com"
-                  className="text-plague-mist/70 hover:text-plague-green transition-colors block"
-                >
-                  plagueduk@gmail.com
-                </a>
-              </div>
-
-              {/* Social Media */}
-              <div className="card p-6">
-                <h3 className="font-display text-sm uppercase tracking-wider text-plague-bone mb-4">
-                  Social Media
-                </h3>
-                <div className="grid grid-cols-2 gap-3">
-                  <a
-                    href="https://instagram.com/plagueduk"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
-                  >
-                    <Instagram className="w-4 h-4 text-plague-green" />
-                    <span className="text-xs text-plague-mist/70">Instagram</span>
-                  </a>
-                  <a
-                    href="https://facebook.com/plagueduk"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
-                  >
-                    <Facebook className="w-4 h-4 text-plague-green" />
-                    <span className="text-xs text-plague-mist/70">Facebook</span>
-                  </a>
-                  <a
-                    href="https://tiktok.com/@plagueduk"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
-                  >
-                    <TikTokIcon className="w-4 h-4 text-plague-green" />
-                    <span className="text-xs text-plague-mist/70">TikTok</span>
-                  </a>
-                  <a
-                    href="https://youtube.com/@plagueduk"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
-                  >
-                    <Youtube className="w-4 h-4 text-plague-green" />
-                    <span className="text-xs text-plague-mist/70">YouTube</span>
-                  </a>
-                </div>
-              </div>
-
-              {/* Streaming Platforms */}
-              <div className="card p-6">
-                <h3 className="font-display text-sm uppercase tracking-wider text-plague-bone mb-4">
-                  Listen On
-                </h3>
-                <div className="grid grid-cols-2 gap-3">
-                  <a
-                    href="https://open.spotify.com/artist/placeholder"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
-                  >
-                    <SpotifyIcon className="w-4 h-4 text-plague-green" />
-                    <span className="text-xs text-plague-mist/70">Spotify</span>
-                  </a>
-                  <a
-                    href="https://music.apple.com/artist/placeholder"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
-                  >
-                    <AppleMusicIcon className="w-4 h-4 text-plague-green" />
-                    <span className="text-xs text-plague-mist/70">Apple Music</span>
-                  </a>
-                  <a
-                    href="https://plagueduk.bandcamp.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
-                  >
-                    <BandcampIcon className="w-4 h-4 text-plague-green" />
-                    <span className="text-xs text-plague-mist/70">Bandcamp</span>
-                  </a>
-                  <a
-                    href="https://www.deezer.com/artist/placeholder"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded"
-                  >
-                    <DeezerIcon className="w-4 h-4 text-plague-green" />
-                    <span className="text-xs text-plague-mist/70">Deezer</span>
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Band Members Section */}
-      <section className="py-24 px-4 bg-plague-dark/50">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="section-heading mb-4">The Lineup</h2>
-            <div className="w-24 h-1 bg-plague-green mx-auto" />
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {bandMembers.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group"
-              >
-                <div className="card p-8 text-center h-full hover:shadow-[0_0_30px_rgba(0,255,0,0.15)] transition-all duration-500">
-                  {/* Name */}
-                  <h3 className="font-display text-xl uppercase tracking-wider text-plague-bone mb-4 group-hover:text-plague-green transition-colors duration-300">
-                    {member.name}
-                  </h3>
-
-                  {/* Role */}
-                  <p className="font-blackletter text-xl text-plague-green/80">
-                    {member.role}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* Latest Release Section */}

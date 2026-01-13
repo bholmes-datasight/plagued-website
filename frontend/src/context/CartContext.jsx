@@ -121,27 +121,10 @@ export function CartProvider({ children }) {
     0
   )
   
-  const checkout = async () => {
-    try {
-      const response = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          items: state.items,
-          success_url: `${window.location.origin}/checkout/success`,
-          cancel_url: `${window.location.origin}/merch`,
-        }),
-      })
-      
-      const data = await response.json()
-      
-      if (data.checkout_url) {
-        window.location.href = data.checkout_url
-      }
-    } catch (error) {
-      console.error('Checkout error:', error)
-      throw error
-    }
+  const checkout = () => {
+    // Navigate to embedded checkout page
+    closeCart()
+    window.location.href = '/checkout'
   }
   
   return (

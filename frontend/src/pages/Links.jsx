@@ -83,7 +83,7 @@ function Links() {
 
             {/* Email Button */}
             <a
-              href="mailto:plagueduk@gmail.com"
+              href="mailto:contact@plagueduk.com"
               className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
             >
               <Mail className="w-5 h-5 text-plague-green" />

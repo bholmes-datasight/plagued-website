@@ -1,8 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import { X, Plus, Minus, Trash2, ShoppingBag } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 
 function CartSidebar() {
+  const navigate = useNavigate()
   const {
     items,
     isOpen,
@@ -10,11 +12,15 @@ function CartSidebar() {
     removeItem,
     updateQuantity,
     totalPrice,
-    checkout,
   } = useCart()
 
   const formatPrice = (pence) => {
     return `£${(pence / 100).toFixed(2)}`
+  }
+
+  const handleCheckout = () => {
+    closeCart()
+    navigate('/checkout')
   }
 
   return (
@@ -136,7 +142,7 @@ function CartSidebar() {
                   </span>
                 </div>
                 <button
-                  onClick={checkout}
+                  onClick={handleCheckout}
                   className="btn-primary w-full flex items-center justify-center gap-2"
                 >
                   <ShoppingBag className="w-5 h-5" />

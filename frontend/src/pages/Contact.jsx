@@ -264,10 +264,10 @@ function Contact() {
                         Email
                       </h3>
                       <a
-                        href="mailto:plagueduk@gmail.com"
+                        href="mailto:contact@plagueduk.com"
                         className="text-plague-mist/70 hover:text-plague-green transition-colors"
                       >
-                        plagueduk@gmail.com
+                        contact@plagueduk.com
                       </a>
                     </div>
                   </div>
@@ -361,42 +361,6 @@ function Contact() {
                       <span className="text-sm text-plague-mist/70">Deezer</span>
                     </a>
                   </div>
-                </div>
-
-                {/* Response Time */}
-                <div className="p-6 bg-plague-grey/20 border border-plague-lighter/10">
-                  <p className="text-plague-mist/60 text-sm">
-                    <strong className="text-plague-bone">Response Time:</strong> We typically 
-                    respond within 48 hours. For urgent booking inquiries, please include 
-                    "URGENT" in your subject line.
-                  </p>
-                </div>
-              </div>
-
-              {/* Quick Links */}
-              <div className="mt-12">
-                <h3 className="font-display text-sm uppercase tracking-widest text-plague-mist/60 mb-4">
-                  Quick Links
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  <a
-                    href="mailto:plagueduk@gmail.com?subject=Booking Inquiry"
-                    className="px-4 py-2 bg-plague-grey/50 border border-plague-lighter/30 text-plague-mist/80 text-sm hover:border-plague-green/50 hover:text-plague-green transition-all"
-                  >
-                    Booking
-                  </a>
-                  <a
-                    href="mailto:plagueduk@gmail.com?subject=Press/Media Inquiry"
-                    className="px-4 py-2 bg-plague-grey/50 border border-plague-lighter/30 text-plague-mist/80 text-sm hover:border-plague-green/50 hover:text-plague-green transition-all"
-                  >
-                    Press Kit
-                  </a>
-                  <a
-                    href="mailto:plagueduk@gmail.com?subject=Merch Question"
-                    className="px-4 py-2 bg-plague-grey/50 border border-plague-lighter/30 text-plague-mist/80 text-sm hover:border-plague-green/50 hover:text-plague-green transition-all"
-                  >
-                    Merch Support
-                  </a>
                 </div>
               </div>
             </motion.div>

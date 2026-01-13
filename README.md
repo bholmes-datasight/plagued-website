@@ -175,7 +175,7 @@ Remember to set environment variables in your hosting platform.
 
 ## Domain
 
-Suggested domain: `plagued.uk`
+Domain: `plagueduk.com`
 
 ---
 

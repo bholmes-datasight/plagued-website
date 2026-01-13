@@ -169,32 +169,13 @@ function Layout() {
       {/* Footer */}
       {showNavAndFooter && <footer className="bg-plague-dark border-t border-plague-lighter/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Logo & Tagline */}
             <div>
               <img src="/logo-green.png" alt="Plagued" className="h-10 w-auto mb-4" />
               <p className="text-plague-mist/60 text-sm">
                 Death Metal from the United Kingdom
               </p>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h4 className="font-display text-sm uppercase tracking-wider text-plague-green mb-4">
-                Navigation
-              </h4>
-              <ul className="space-y-2">
-                {navLinks.map((link) => (
-                  <li key={link.path}>
-                    <Link
-                      to={link.path}
-                      className="text-plague-mist/60 hover:text-plague-green text-sm transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
             </div>
 
             {/* Social & Contact */}
@@ -277,7 +258,7 @@ function Layout() {
                 </a>
               </div>
               <p className="text-plague-mist/60 text-sm">
-                plagueduk@gmail.com
+                contact@plagueduk.com
               </p>
             </div>
           </div>

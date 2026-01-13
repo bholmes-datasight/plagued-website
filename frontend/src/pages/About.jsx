@@ -56,16 +56,13 @@ function About() {
           >
             <div className="bg-plague-grey/30 border border-plague-lighter/20 p-8 md:p-12">
               <p className="text-plague-mist/80 text-lg leading-relaxed mb-6">
-                <span className="text-plague-green font-display">Plagued</span> is a
-                death metal band from the United Kingdom.
+                Plagued is a five-piece death metal band from East Anglia, UK, formed in 2024. The band's debut EP, Rotting Dominions, presents old-school death metal with a modern sound, bringing together influences from each of the members, including old-school death metal, Swedish death metal, hardcore, metalcore, and thrash metal.
               </p>
               <p className="text-plague-mist/80 text-lg leading-relaxed mb-6">
-                We take influences from old school death metal, Swedish death metal, 
-                and hardcore.
+                The material is built around riff-driven songwriting, a modern Swedish guitar sound, and powerful, aggressive vocals, combining hardcore grooves with crushing fast death metal riffs.
               </p>
               <p className="text-plague-mist/80 text-lg leading-relaxed">
-                Our debut EP, <span className="text-plague-green font-display">Rotting Dominions</span>,
-                is coming February 2026.
+                Rotting Dominions serves as Plagued's first recorded statement, establishing the band's foundations and direction.
               </p>
             </div>
           </motion.div>
@@ -86,29 +83,23 @@ function About() {
             <div className="w-24 h-1 bg-plague-green mx-auto" />
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {bandMembers.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group"
-              >
-                <div className="card p-8 text-center h-full hover:shadow-[0_0_30px_rgba(0,255,0,0.15)] transition-all duration-500">
-                  {/* Name */}
-                  <h3 className="font-display text-xl uppercase tracking-wider text-plague-bone mb-4 group-hover:text-plague-green transition-colors duration-300">
-                    {member.name}
-                  </h3>
-
-                  {/* Role */}
-                  <p className="font-blackletter text-xl text-plague-green/80">
-                    {member.role}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="max-w-2xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="card p-8"
+            >
+              <div className="space-y-4">
+                {bandMembers.map((member) => (
+                  <div key={member.name} className="border-b border-plague-lighter/10 pb-3 last:border-0">
+                    <p className="text-plague-bone text-base md:text-lg font-display tracking-wide">{member.name}</p>
+                    <p className="text-plague-green/80 text-sm">{member.role}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
 
         </div>

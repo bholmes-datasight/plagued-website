@@ -167,7 +167,7 @@ function Shows() {
               Get in touch with us.
             </p>
             <a
-              href="mailto:plagueduk@gmail.com?subject=Booking Inquiry"
+              href="mailto:contact@plagueduk.com?subject=Booking Inquiry"
               className="btn-secondary inline-flex items-center gap-2"
             >
               Contact for Booking

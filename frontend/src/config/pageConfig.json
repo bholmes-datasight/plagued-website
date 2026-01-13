@@ -1,6 +1,6 @@
 {
-  "developmentMode": true,
-  "showMailingListPopup": false,
+  "developmentMode": false,
+  "showMailingListPopup": true,
   "epkConfig": {
     "showTikTok": false,
     "showYouTube": false,

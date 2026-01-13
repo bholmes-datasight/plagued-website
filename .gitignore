@@ -57,3 +57,13 @@ pids
 
 # Vercel
 .vercel
+
+# Claude Code temporary files
+tmpclaude-*
+.claude/settings.local.json
+
+# Test scripts
+backend/test_*.py
+
+# Windows null file
+nul

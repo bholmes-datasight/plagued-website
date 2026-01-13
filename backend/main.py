@@ -3,13 +3,12 @@ Plagued Band Website - FastAPI Backend
 """
 import os
 import json
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 from datetime import datetime
 from typing import Optional
 
 import stripe
+import resend
+from mailjet_rest import Client as MailjetClient
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr, validator, Field
@@ -51,8 +50,8 @@ allowed_origins = [
     "http://localhost:5173",
     "http://localhost:5174",
     "http://localhost:3000",
-    "https://plagued.uk",
-    "https://www.plagued.uk"
+    "https://plagueduk.com",
+    "https://www.plagueduk.com"
 ]
 
 app.add_middleware(
@@ -68,12 +67,21 @@ app.add_middleware(
 stripe.api_key = os.getenv("STRIPE_SECRET_KEY", "sk_test_placeholder")
 STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET", "whsec_placeholder")
 
-# Email configuration
-SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")
-SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
-SMTP_USER = os.getenv("SMTP_USER", "")
-SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "")
-CONTACT_EMAIL = "plagueduk@gmail.com"
+# Email configuration - Resend API
+resend.api_key = os.getenv("RESEND_API_KEY", "")
+FROM_EMAIL = os.getenv("FROM_EMAIL", "contact@plagueduk.com")
+CONTACT_EMAIL = os.getenv("CONTACT_EMAIL", "plagueduk@gmail.com")
+
+# Mailjet configuration
+MAILJET_API_KEY = os.getenv("MAILJET_API_KEY", "")
+MAILJET_SECRET_KEY = os.getenv("MAILJET_SECRET_KEY", "")
+MAILJET_LIST_ID = os.getenv("MAILJET_LIST_ID", "")  # Contact list ID
+
+# Initialize Mailjet client
+if MAILJET_API_KEY and MAILJET_SECRET_KEY:
+    mailjet = MailjetClient(auth=(MAILJET_API_KEY, MAILJET_SECRET_KEY), version='v3')
+else:
+    mailjet = None
 
 
 # ============== MODELS ==============
@@ -116,6 +124,25 @@ class CheckoutRequest(BaseModel):
 
 class PaymentIntentRequest(BaseModel):
     items: list[CartItem]
+
+
+class MailingListSubscribe(BaseModel):
+    name: str = Field(..., min_length=1, max_length=100)
+    email: EmailStr
+
+    @validator('name')
+    def sanitize_name(cls, v):
+        """Sanitize name field to prevent injection attacks"""
+        if isinstance(v, str):
+            return sanitize_text(v, max_length=100)
+        return v
+
+    @validator('email')
+    def validate_email_safety(cls, v):
+        """Validate email doesn't contain injection attempts"""
+        if not validate_email_content(v):
+            raise ValueError('Invalid email format')
+        return v
 
 
 # ============== DATA ==============
@@ -268,46 +295,94 @@ async def get_shows():
 async def submit_contact(request: Request, form: ContactForm):
     """Handle contact form submission"""
     try:
-        # Build email
-        msg = MIMEMultipart()
-        msg["From"] = SMTP_USER or "noreply@plagued.uk"
-        msg["To"] = CONTACT_EMAIL
-        msg["Subject"] = f"[Plagued Website] {form.subject}"
+        # Build email body
+        html_body = f"""
+        <html>
+        <body style="font-family: Arial, sans-serif; color: #333;">
+            <h2 style="color: #00ff00;">New Contact Form Submission</h2>
+            <p><strong>From:</strong> plagueduk.com</p>
+            <hr style="border: 1px solid #eee;">
 
-        body = f"""
-New contact form submission from plagued.uk
+            <p><strong>Name:</strong> {form.name}</p>
+            <p><strong>Email:</strong> {form.email}</p>
+            <p><strong>Subject:</strong> {form.subject}</p>
 
-Name: {form.name}
-Email: {form.email}
-Subject: {form.subject}
+            <h3>Message:</h3>
+            <p style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
+                {form.message.replace('\n', '<br>')}
+            </p>
 
-Message:
-{form.message}
-
----
-Submitted at: {datetime.utcnow().isoformat()}
-IP Address: {get_remote_address(request)}
+            <hr style="border: 1px solid #eee;">
+            <p style="color: #666; font-size: 12px;">
+                Submitted at: {datetime.utcnow().isoformat()}<br>
+                IP Address: {get_remote_address(request)}
+            </p>
+        </body>
+        </html>
         """
-        msg.attach(MIMEText(body, "plain"))
 
-        # Send email if SMTP is configured
-        if SMTP_USER and SMTP_PASSWORD:
-            with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
-                server.starttls()
-                server.login(SMTP_USER, SMTP_PASSWORD)
-                server.send_message(msg)
+        # Send email using Resend
+        if resend.api_key:
+            params = {
+                "from": FROM_EMAIL,
+                "to": [CONTACT_EMAIL],
+                "subject": f"[Plagued Website] {form.subject}",
+                "html": html_body,
+                "reply_to": form.email,
+            }
+
+            resend.Emails.send(params)
         else:
-            # Log to console if email not configured
-            print(f"Contact form submission (email not configured):\n{body}")
+            # Log to console if Resend not configured
+            print(f"Contact form submission (Resend not configured):")
+            print(f"From: {form.name} <{form.email}>")
+            print(f"Subject: {form.subject}")
+            print(f"Message: {form.message}")
 
         return {"success": True, "message": "Message sent successfully"}
 
-    except smtplib.SMTPException as e:
-        print(f"SMTP error sending contact email: {type(e).__name__}")
-        raise HTTPException(status_code=500, detail="Failed to send message")
     except Exception as e:
-        print(f"Error sending contact email: {type(e).__name__}")
+        print(f"Error sending contact email: {type(e).__name__}: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to send message")
+
+
+@app.post("/api/subscribe")
+@limiter.limit("10/minute")  # Max 10 subscription attempts per minute per IP
+async def subscribe_to_mailing_list(request: Request, subscription: MailingListSubscribe):
+    """Subscribe email to Mailjet mailing list"""
+    try:
+        if not mailjet or not MAILJET_LIST_ID:
+            # If Mailjet not configured, just return success (for development)
+            print(f"Mailing list subscription (Mailjet not configured): {subscription.name} <{subscription.email}>")
+            return {"success": True, "message": "Successfully subscribed"}
+
+        # Add contact to list with properties using managemanycontacts
+        # This is the recommended way to add contacts with custom properties
+        data = {
+            'Action': 'addnoforce',
+            'Contacts': [
+                {
+                    'Email': subscription.email,
+                    'Name': subscription.name,
+                    'Properties': {
+                        'firstname': subscription.name
+                    }
+                }
+            ]
+        }
+
+        result = mailjet.contactslist_managemanycontacts.create(id=MAILJET_LIST_ID, data=data)
+
+        return {"success": True, "message": "Successfully subscribed"}
+
+    except Exception as e:
+        error_message = str(e)
+        # Handle case where email is already subscribed
+        if "already" in error_message.lower() or "exist" in error_message.lower():
+            return {"success": True, "message": "You're already subscribed!"}
+
+        print(f"Mailjet API error: {type(e).__name__}: {error_message}")
+        raise HTTPException(status_code=400, detail="Failed to subscribe. Please try again.")
 
 
 @app.post("/api/checkout")
