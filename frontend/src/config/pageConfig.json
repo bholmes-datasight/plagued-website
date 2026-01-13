@@ -16,31 +16,31 @@
     {
       "path": "/about",
       "label": "About",
-      "visible": true,
+      "visible": false,
       "description": "Band Biography"
     },
     {
       "path": "/music",
       "label": "Music",
-      "visible": true,
+      "visible": false,
       "description": "Discography & Streaming"
     },
     {
       "path": "/merch",
       "label": "Merch",
-      "visible": true,
+      "visible": false,
       "description": "Merchandise Store"
     },
     {
       "path": "/shows",
       "label": "Shows",
-      "visible": true,
+      "visible": false,
       "description": "Tour Dates"
     },
     {
       "path": "/contact",
       "label": "Contact",
-      "visible": true,
+      "visible": false,
       "description": "Contact & Booking"
     }
   ]
