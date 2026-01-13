@@ -264,10 +264,10 @@ function Contact() {
                         Email
                       </h3>
                       <a
-                        href="mailto:plagueduk@gmail.com"
+                        href="mailto:contact@plagueduk.com"
                         className="text-plague-mist/70 hover:text-plague-green transition-colors"
                       >
-                        plagueduk@gmail.com
+                        contact@plagueduk.com
                       </a>
                     </div>
                   </div>
@@ -380,19 +380,19 @@ function Contact() {
                 </h3>
                 <div className="flex flex-wrap gap-3">
                   <a
-                    href="mailto:plagueduk@gmail.com?subject=Booking Inquiry"
+                    href="mailto:contact@plagueduk.com?subject=Booking Inquiry"
                     className="px-4 py-2 bg-plague-grey/50 border border-plague-lighter/30 text-plague-mist/80 text-sm hover:border-plague-green/50 hover:text-plague-green transition-all"
                   >
                     Booking
                   </a>
                   <a
-                    href="mailto:plagueduk@gmail.com?subject=Press/Media Inquiry"
+                    href="mailto:contact@plagueduk.com?subject=Press/Media Inquiry"
                     className="px-4 py-2 bg-plague-grey/50 border border-plague-lighter/30 text-plague-mist/80 text-sm hover:border-plague-green/50 hover:text-plague-green transition-all"
                   >
                     Press Kit
                   </a>
                   <a
-                    href="mailto:plagueduk@gmail.com?subject=Merch Question"
+                    href="mailto:contact@plagueduk.com?subject=Merch Question"
                     className="px-4 py-2 bg-plague-grey/50 border border-plague-lighter/30 text-plague-mist/80 text-sm hover:border-plague-green/50 hover:text-plague-green transition-all"
                   >
                     Merch Support

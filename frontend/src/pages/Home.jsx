@@ -194,10 +194,10 @@ function Home() {
                   Email
                 </h3>
                 <a
-                  href="mailto:plagueduk@gmail.com"
+                  href="mailto:contact@plagueduk.com"
                   className="text-plague-mist/70 hover:text-plague-green transition-colors block"
                 >
-                  plagueduk@gmail.com
+                  contact@plagueduk.com
                 </a>
               </div>
 

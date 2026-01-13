@@ -277,7 +277,7 @@ function Layout() {
                 </a>
               </div>
               <p className="text-plague-mist/60 text-sm">
-                plagueduk@gmail.com
+                contact@plagueduk.com
               </p>
             </div>
           </div>
