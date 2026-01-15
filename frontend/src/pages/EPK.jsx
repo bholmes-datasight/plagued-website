@@ -225,15 +225,26 @@ function EPK() {
                 <Download className="w-3 h-3" />
                 Press Materials
               </h3>
-              <a
-                href="https://drive.google.com/file/d/1wSbv1ih62e-huIFuSvA_f6tMwpaU-a1q/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
-              >
-                <Download className="w-3 h-3 text-plague-green" />
-                <span className="text-plague-mist/70">Download Artwork</span>
-              </a>
+              <div className="space-y-2">
+                <a
+                  href="https://drive.google.com/drive/folders/1dNfg8aZ__B3bnDBg1RLTEh7TQ4BJ0xpp?usp=drive_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                >
+                  <Music2 className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist/70">Download EP (MP3)</span>
+                </a>
+                <a
+                  href="https://drive.google.com/file/d/1wSbv1ih62e-huIFuSvA_f6tMwpaU-a1q/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                >
+                  <Download className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist/70">Download Artwork</span>
+                </a>
+              </div>
             </div>
           </motion.div>
 
@@ -287,6 +298,17 @@ function EPK() {
                   <div className="flex justify-between border-b border-plague-lighter/10 pb-1">
                     <span className="text-plague-mist/50 text-xs">Mastered</span>
                     <span className="font-display text-plague-bone text-xs">Dan Swanö</span>
+                  </div>
+                  <div className="flex justify-between border-b border-plague-lighter/10 pb-1">
+                    <span className="text-plague-mist/50 text-xs">Cover Art</span>
+                    <a
+                      href="https://www.instagram.com/hyperbholic"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-display text-plague-bone text-xs hover:text-plague-green transition-colors"
+                    >
+                      Mohammed Khoirul Anam
+                    </a>
                   </div>
                 </div>
                 <p className="text-plague-mist/60 text-xs mb-4">
