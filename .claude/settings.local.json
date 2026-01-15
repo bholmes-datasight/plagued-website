@@ -5,7 +5,16 @@
       "Bash(git commit:*)",
       "Bash(git remote add:*)",
       "Bash(git branch:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(curl:*)",
+      "Bash(uv pip:*)",
+      "Bash(python:*)",
+      "Bash(timeout 5 tail:*)",
+      "Bash(exit 0)",
+      "WebSearch",
+      "WebFetch(domain:api.proshipping.net)",
+      "WebFetch(domain:developer.royalmail.net)",
+      "WebFetch(domain:api.parcel.royalmail.com)"
     ],
     "deny": []
   }

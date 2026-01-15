@@ -1,38 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ShoppingCart, Check, Package, Truck, CreditCard } from 'lucide-react'
+import { ShoppingCart, Check, Package, Truck, CreditCard, AlertCircle, Loader } from 'lucide-react'
 import { useCart } from '../context/CartContext'
-
-// Placeholder merch items - these would come from API in production
-const merchItems = [
-  {
-    id: 'plagued-tshirt-black',
-    name: 'Plagued Logo T-Shirt',
-    description: 'Black t-shirt with white dripping Plagued logo on front.',
-    price: 2000, // £20.00 in pence
-    image: '/merch/tshirt-black.JPG',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    inStock: true,
-  },
-  {
-    id: 'plagued-longsleeve-black',
-    name: 'Plagued Long Sleeve T-Shirt',
-    description: 'Black long sleeve t-shirt with Plagued design.',
-    price: 2500, // £25.00 in pence
-    image: '/merch/longsleeve-black.JPG',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    inStock: true,
-  },
-  {
-    id: 'plagued-cap-camo',
-    name: 'Plagued Camo Cap',
-    description: 'Camouflage cap with embroidered orange Plagued logo.',
-    price: 1800, // £18.00 in pence
-    image: '/merch/cap-camo.png',
-    sizes: ['One Size'],
-    inStock: true,
-  },
-]
 
 function MerchCard({ item }) {
   const [selectedSize, setSelectedSize] = useState('')
@@ -45,6 +14,9 @@ function MerchCard({ item }) {
 
   const handleAddToCart = () => {
     if (!selectedSize) return
+
+    const selectedSizeObj = item.sizes.find(s => s.size === selectedSize)
+    if (!selectedSizeObj?.available) return
 
     addItem({
       id: item.id,
@@ -60,6 +32,11 @@ function MerchCard({ item }) {
       setIsAdded(false)
       openCart()
     }, 1000)
+  }
+
+  const getSelectedSizeStock = () => {
+    const sizeObj = item.sizes.find(s => s.size === selectedSize)
+    return sizeObj?.stock || 0
   }
 
   return (
@@ -104,26 +81,41 @@ function MerchCard({ item }) {
           {/* Size Selection */}
           {item.inStock && (
             <>
-              <div className="mb-4">
+              <div className="mb-2">
                 <label className="text-plague-mist/60 text-xs uppercase tracking-wider block mb-2">
                   Size
                 </label>
                 <div className="flex flex-wrap gap-2">
-                  {item.sizes.map((size) => (
+                  {item.sizes.map((sizeObj) => (
                     <button
-                      key={size}
-                      onClick={() => setSelectedSize(size)}
-                      className={`w-10 h-10 border font-display text-sm transition-all duration-200 ${
-                        selectedSize === size
+                      key={sizeObj.size}
+                      onClick={() => sizeObj.available && setSelectedSize(sizeObj.size)}
+                      disabled={!sizeObj.available}
+                      className={`w-10 h-10 border font-display text-sm transition-all duration-200 relative ${
+                        selectedSize === sizeObj.size
                           ? 'border-plague-green bg-plague-green text-plague-black'
-                          : 'border-plague-lighter/50 text-plague-mist/80 hover:border-plague-green/50'
+                          : sizeObj.available
+                          ? 'border-plague-lighter/50 text-plague-mist/80 hover:border-plague-green/50'
+                          : 'border-plague-lighter/20 text-plague-mist/30 cursor-not-allowed'
                       }`}
                     >
-                      {size}
+                      {sizeObj.size}
+                      {!sizeObj.available && (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-full h-px bg-plague-red/60 rotate-45" />
+                        </div>
+                      )}
                     </button>
                   ))}
                 </div>
               </div>
+
+              {/* Stock indicator */}
+              {selectedSize && (
+                <div className="mb-4 text-xs text-plague-green/80">
+                  {getSelectedSizeStock()} in stock
+                </div>
+              )}
 
               {/* Add to Cart Button */}
               <button
@@ -172,12 +164,40 @@ function MerchCard({ item }) {
 }
 
 function Merch() {
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    fetchMerch()
+  }, [])
+
+  const fetchMerch = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+      const response = await fetch('/api/merch')
+
+      if (!response.ok) {
+        throw new Error('Failed to load products')
+      }
+
+      const data = await response.json()
+      setProducts(data)
+    } catch (err) {
+      console.error('Error fetching merch:', err)
+      setError(err.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <div className="noise-overlay">
       {/* Hero Section */}
       <section className="relative py-32 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-plague-green/5 to-transparent" />
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -197,9 +217,32 @@ function Merch() {
       {/* Products Grid */}
       <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
-          {merchItems.length > 0 ? (
+          {loading ? (
+            <div className="flex flex-col items-center justify-center py-24">
+              <Loader className="w-12 h-12 text-plague-green animate-spin mb-4" />
+              <p className="text-plague-mist/60">Loading products...</p>
+            </div>
+          ) : error ? (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center py-24"
+            >
+              <AlertCircle className="w-20 h-20 mx-auto text-plague-red/60 mb-6" />
+              <h2 className="font-display text-2xl uppercase tracking-wider text-plague-mist/60 mb-4">
+                Failed to Load Products
+              </h2>
+              <p className="text-plague-mist/40 mb-6">{error}</p>
+              <button
+                onClick={fetchMerch}
+                className="btn-primary"
+              >
+                Try Again
+              </button>
+            </motion.div>
+          ) : products.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {merchItems.map((item) => (
+              {products.map((item) => (
                 <MerchCard key={item.id} item={item} />
               ))}
             </div>

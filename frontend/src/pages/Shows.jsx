@@ -5,8 +5,8 @@ import { Calendar, MapPin, Ticket, Clock } from 'lucide-react'
 const upcomingShows = [
   {
     id: 'bloodstock-m2tm-hitchin',
-    date: '2025-04-19',
-    venue: 'Bloodstock Metal 2 The Masses (Heat)',
+    date: '2025-04-26',
+    venue: 'Bloodstock Metal 2 The Masses (Heat 2)',
     city: 'Hitchin',
     country: 'UK',
     doors: '',
@@ -116,7 +116,7 @@ function Shows() {
             <h1 className="section-heading mb-6">Shows</h1>
             <div className="w-24 h-1 bg-plague-green mx-auto mb-6" />
             <p className="text-plague-mist/60 max-w-xl mx-auto">
-              Witness the plague live. Upcoming shows and tour dates.
+              Witness Plagued live. Upcoming shows and tour dates.
             </p>
           </motion.div>
         </div>

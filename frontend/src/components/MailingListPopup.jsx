@@ -8,12 +8,28 @@ function MailingListPopup() {
   const [email, setEmail] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [discountCodesEnabled, setDiscountCodesEnabled] = useState(false)
 
   useEffect(() => {
+    // Fetch config first
+    const fetchConfig = async () => {
+      try {
+        const response = await fetch('/api/config')
+        if (response.ok) {
+          const config = await response.json()
+          setDiscountCodesEnabled(config.discount_codes_enabled)
+        }
+      } catch (err) {
+        console.error('Error fetching config:', err)
+      }
+    }
+
+    fetchConfig()
+
     // Check if user has already signed up or dismissed
     const hasSignedUp = localStorage.getItem('plagued-mailing-signup')
     const hasDismissed = localStorage.getItem('plagued-mailing-dismissed')
-    
+
     if (!hasSignedUp && !hasDismissed) {
       // Show popup after 10 seconds or when user scrolls down
       const timer = setTimeout(() => {
@@ -120,15 +136,17 @@ function MailingListPopup() {
                     </p>
                   </div>
 
-                  {/* Discount offer */}
-                  <div className="bg-plague-green/10 border border-plague-green/30 p-4 mb-6 text-center">
-                    <p className="font-display text-plague-green text-lg uppercase tracking-wider">
-                      10% Off First Order
-                    </p>
-                    <p className="text-plague-mist/60 text-sm mt-1">
-                      Plus early access to limited merch
-                    </p>
-                  </div>
+                  {/* Discount offer - only show if feature is enabled */}
+                  {discountCodesEnabled && (
+                    <div className="bg-plague-green/10 border border-plague-green/30 p-4 mb-6 text-center">
+                      <p className="font-display text-plague-green text-lg uppercase tracking-wider">
+                        10% Off First Order
+                      </p>
+                      <p className="text-plague-mist/60 text-sm mt-1">
+                        Plus early access to limited merch
+                      </p>
+                    </div>
+                  )}
 
                   {/* Form */}
                   <form onSubmit={handleSubmit} className="space-y-4">
@@ -179,7 +197,7 @@ function MailingListPopup() {
                           Joining...
                         </span>
                       ) : (
-                        'Get 10% Off + Updates'
+                        discountCodesEnabled ? 'Get 10% Off + Updates' : 'Join the Mailing List'
                       )}
                     </button>
                   </form>
@@ -199,7 +217,9 @@ function MailingListPopup() {
                     Welcome to the Plague!
                   </h3>
                   <p className="text-plague-mist/70 text-sm mb-4">
-                    Check your email for your 10% discount code and exclusive updates.
+                    {discountCodesEnabled
+                      ? "Check your email for your 10% discount code and exclusive updates."
+                      : "Check your email for exclusive updates on new releases and merch drops."}
                   </p>
                   <p className="text-plague-mist/50 text-xs">
                     This popup will close automatically...
