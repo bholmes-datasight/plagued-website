@@ -329,6 +329,23 @@ function EPK() {
                 className="rounded border border-plague-lighter/20"
               />
             </div>
+
+            {/* YouTube Music Video */}
+            <div className="mt-6">
+              <p className="text-plague-mist/60 text-xs mb-3">
+                Music Video - "Abyssal Plague" (Single releasing 30th January):
+              </p>
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded border border-plague-lighter/20"
+                  src="https://www.youtube-nocookie.com/embed/V5wuEUriRUI"
+                  title="Plagued - Abyssal Plague (Official Music Video)"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
