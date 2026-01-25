@@ -64,7 +64,7 @@ function Links() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="font-display text-sm md:text-base uppercase tracking-[0.3em] text-plague-mist/80 text-center mb-12"
         >
-          Death Metal • United Kingdom
+          Death Metal • East of England, UK
         </motion.p>
 
         {/* Links Container */}

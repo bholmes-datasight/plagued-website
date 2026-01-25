@@ -57,7 +57,7 @@ function About() {
             <div className="bg-plague-grey/30 border border-plague-lighter/20 p-8 md:p-12">
               <p className="text-plague-mist/80 text-lg leading-relaxed mb-6">
                 <span className="text-plague-green font-display">Plagued</span> is a
-                death metal band from the United Kingdom.
+                death metal band from the East of England, UK.
               </p>
               <p className="text-plague-mist/80 text-lg leading-relaxed mb-6">
                 We take influences from old school death metal, Swedish death metal, 

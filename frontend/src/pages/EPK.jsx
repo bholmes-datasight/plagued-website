@@ -84,7 +84,7 @@ function EPK() {
         />
 
         <p className="font-display text-sm md:text-base uppercase tracking-[0.3em] text-plague-mist/80 mb-12">
-          Death Metal • United Kingdom
+          Death Metal • East of England, UK
         </p>
 
         {/* Content Grid */}
