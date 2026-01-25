@@ -30,7 +30,7 @@ function About() {
       {/* Hero Section */}
       <section className="relative py-32 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-plague-green/5 to-transparent" />
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}

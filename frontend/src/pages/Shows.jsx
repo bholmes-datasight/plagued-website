@@ -105,7 +105,7 @@ function Shows() {
       {/* Hero Section */}
       <section className="relative py-32 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-plague-green/5 to-transparent" />
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -142,7 +142,7 @@ function Shows() {
                 No Shows Announced Yet
               </h2>
               <p className="text-plague-mist/40 max-w-md mx-auto">
-                We're working on bringing the plague to a stage near you. 
+                We're working on bringing the plague to a stage near you.
                 Follow us on social media for announcements.
               </p>
             </motion.div>
@@ -163,7 +163,7 @@ function Shows() {
               Book Plagued
             </h2>
             <p className="text-plague-mist/60 mb-8 max-w-lg mx-auto">
-              Interested in booking Plagued for your venue, festival, or event? 
+              Interested in booking Plagued for your venue, festival, or event?
               Get in touch with us.
             </p>
             <a
