@@ -183,7 +183,7 @@ function EPK() {
                   <span className="text-plague-mist/70">YouTube</span>
                 </a>
                 <a
-                  href="https://tiktok.com/@plagueduk"
+                  href="https://www.tiktok.com/@plagued.uk"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"

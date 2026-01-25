@@ -2,6 +2,12 @@ import { motion } from 'framer-motion'
 import { Instagram, Facebook, Youtube, Globe, Mail } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
+const TikTokIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M19.321 5.562a5.124 5.124 0 01-.443-.258 6.228 6.228 0 01-1.137-.966c-.849-.954-1.289-2.066-1.289-3.338v-.8H12.56v14.8c0 2.327-1.892 4.219-4.218 4.219S4.124 17.327 4.124 15c0-2.327 1.892-4.219 4.218-4.219.462 0 .905.075 1.321.213v-3.996c-.436-.061-.88-.092-1.321-.092C3.708 6.906 0 10.614 0 15.25s3.708 8.344 8.342 8.344 8.342-3.708 8.342-8.344v-6.9c1.132.748 2.45 1.15 3.816 1.15v-3.938z"/>
+  </svg>
+)
+
 // Custom SVG icons for streaming platforms
 const SpotifyIcon = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} fill="currentColor">
@@ -129,6 +135,16 @@ function Links() {
             >
               <Youtube className="w-5 h-5 text-plague-green" />
               <span className="font-display text-sm uppercase tracking-wider text-plague-bone">YouTube</span>
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@plagued.uk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
+            >
+              <TikTokIcon className="w-5 h-5 text-plague-green" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-bone">TikTok</span>
             </a>
           </motion.div>
 
