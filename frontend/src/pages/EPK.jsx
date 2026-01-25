@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Disc3, Music2, Mail, Instagram, Facebook, Youtube, Download, Globe } from 'lucide-react'
+import { Disc3, Music2, Mail, Instagram, Facebook, Youtube, Download, Globe, Image } from 'lucide-react'
 import { usePageConfig } from '../hooks/usePageConfig'
 import { Link } from 'react-router-dom'
 
@@ -243,6 +243,15 @@ function EPK() {
                 >
                   <Download className="w-3 h-3 text-plague-green" />
                   <span className="text-plague-mist/70">Download Artwork</span>
+                </a>
+                <a
+                  href="https://drive.google.com/file/d/1R53utaWZLB69SRkTc9O8C2wle-leddG6/view?usp=drive_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                >
+                  <Image className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist/70">Band Photos</span>
                 </a>
               </div>
             </div>
