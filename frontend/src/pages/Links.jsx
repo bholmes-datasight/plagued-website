@@ -82,7 +82,10 @@ function Links() {
               className="flex items-center justify-center gap-3 w-full p-4 bg-plague-green/20 border border-plague-green hover:bg-plague-green/30 transition-all duration-300 backdrop-blur-sm"
             >
               <Music2 className="w-5 h-5 text-plague-green" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Presave "Malediction"</span>
+              <div className="flex flex-col items-center">
+                <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Presave "Malediction"</span>
+                <span className="text-plague-mist/50 text-xs">Single releasing 30th January</span>
+              </div>
             </a>
           </motion.div>
 
@@ -172,14 +175,9 @@ function Links() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="space-y-3 pt-4"
           >
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <p className="text-center text-plague-mist/50 text-xs uppercase tracking-widest">
-                Listen On
-              </p>
-              <p className="text-center text-plague-mist/40 text-xs italic">
-                (Single releasing 30th January)
-              </p>
-            </div>
+            <p className="text-center text-plague-mist/50 text-xs uppercase tracking-widest mb-4">
+              Listen On
+            </p>
 
             {/* Greyed out, non-clickable streaming links */}
             <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 opacity-70 cursor-not-allowed backdrop-blur-sm">
