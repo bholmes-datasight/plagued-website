@@ -108,6 +108,11 @@ function EPK() {
                 Rotting Dominions serves as Plagued's first recorded statement, establishing the band's foundations and direction.
               </p>
             </div>
+            <img
+              src="/photo-band.jpg"
+              alt="Plagued band photo"
+              className="w-full mt-6 rounded border border-plague-lighter/20"
+            />
           </motion.div>
 
           {/* Contact & Links */}
