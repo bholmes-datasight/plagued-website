@@ -245,7 +245,7 @@ function EPK() {
                   <span className="text-plague-mist/70">Download Artwork</span>
                 </a>
                 <a
-                  href="https://drive.google.com/file/d/1R53utaWZLB69SRkTc9O8C2wle-leddG6/view?usp=drive_link"
+                  href="https://drive.google.com/drive/folders/1cZfhzg5G22bs-dde6A1QWM9IHGJrn_vc?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
