@@ -99,7 +99,7 @@ function EPK() {
             <h2 className="font-display text-xl uppercase tracking-wider text-plague-green mb-4">About</h2>
             <div className="text-plague-mist/80 leading-relaxed space-y-3 text-sm md:text-base">
               <p>
-                Plagued is a five-piece death metal band from East Anglia, UK, formed in 2024. The band's debut EP, Rotting Dominions, presents old-school death metal with a modern sound, bringing together influences from each of the members, including old-school death metal, Swedish death metal, hardcore, metalcore, and thrash metal.
+                Plagued is a five-piece death metal band from East of England, UK, formed in 2024. The band's debut EP, Rotting Dominions, presents old-school death metal with a modern sound, bringing together influences from each of the members, including old-school death metal, Swedish death metal, hardcore, metalcore, and thrash metal.
               </p>
               <p>
                 The material is built around riff-driven songwriting, a modern Swedish guitar sound, and powerful, aggressive vocals, combining hardcore grooves with crushing fast death metal riffs.
