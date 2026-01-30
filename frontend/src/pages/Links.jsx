@@ -64,7 +64,7 @@ function Links() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="font-display text-sm md:text-base uppercase tracking-[0.3em] text-plague-mist/80 text-center mb-12"
         >
-          Death Metal • East of England, UK
+          Death Metal • East of England
         </motion.p>
 
         {/* Links Container */}
@@ -179,11 +179,16 @@ function Links() {
               Listen On
             </p>
 
-            {/* Greyed out, non-clickable streaming links */}
-            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 opacity-70 cursor-not-allowed backdrop-blur-sm">
-              <SpotifyIcon className="w-5 h-5 text-plague-mist/50" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/50">Spotify</span>
-            </div>
+            {/* Streaming links */}
+            <a
+              href="https://open.spotify.com/artist/5oD38veNZ1ryvzKDH8zJKz?si=xFEdlX-ESoyYUmNHWSXSWw"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300 backdrop-blur-sm"
+            >
+              <SpotifyIcon className="w-5 h-5 text-plague-green" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Spotify</span>
+            </a>
 
             <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 opacity-70 cursor-not-allowed backdrop-blur-sm">
               <AppleMusicIcon className="w-5 h-5 text-plague-mist/50" />

@@ -84,7 +84,7 @@ function EPK() {
         />
 
         <p className="font-display text-sm md:text-base uppercase tracking-[0.3em] text-plague-mist/80 mb-12">
-          Death Metal • East of England, UK
+          Death Metal • East of England
         </p>
 
         {/* Content Grid */}
@@ -99,7 +99,7 @@ function EPK() {
             <h2 className="font-display text-xl uppercase tracking-wider text-plague-green mb-4">About</h2>
             <div className="text-plague-mist/80 leading-relaxed space-y-3 text-sm md:text-base">
               <p>
-                Plagued is a five-piece death metal band from East of England, UK, formed in 2024. The band's debut EP, Rotting Dominions, presents old-school death metal with a modern sound, bringing together influences from each of the members, including old-school death metal, Swedish death metal, hardcore, metalcore, and thrash metal.
+                Plagued is a five-piece death metal band from the East of England, formed in 2024. The band's debut EP, Rotting Dominions, presents old-school death metal with a modern sound, bringing together influences from each of the members, including old-school death metal, Swedish death metal, hardcore, metalcore, and thrash metal.
               </p>
               <p>
                 The material is built around riff-driven songwriting, a modern Swedish guitar sound, and powerful, aggressive vocals, combining hardcore grooves with crushing fast death metal riffs.
@@ -199,16 +199,21 @@ function EPK() {
               </div>
             </div>
 
-            {/* Streaming - Greyed out until release */}
+            {/* Streaming */}
             <div className="card p-4">
               <h3 className="font-display text-xs uppercase tracking-wider text-plague-green mb-3">
                 Listen On
               </h3>
               <div className="grid grid-cols-2 gap-2">
-                <div className="flex items-center gap-2 p-2 bg-plague-lighter/10 border border-plague-green/30 opacity-70 cursor-not-allowed rounded text-xs">
-                  <SpotifyIcon className="w-3 h-3 text-plague-mist/50" />
-                  <span className="text-plague-mist/50">Spotify</span>
-                </div>
+                <a
+                  href="https://open.spotify.com/artist/5oD38veNZ1ryvzKDH8zJKz?si=xFEdlX-ESoyYUmNHWSXSWw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/10 border border-plague-green/30 hover:border-plague-green hover:bg-plague-lighter/20 transition-all duration-300 rounded text-xs"
+                >
+                  <SpotifyIcon className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist">Spotify</span>
+                </a>
                 <div className="flex items-center gap-2 p-2 bg-plague-lighter/10 border border-plague-green/30 opacity-70 cursor-not-allowed rounded text-xs">
                   <AppleMusicIcon className="w-3 h-3 text-plague-mist/50" />
                   <span className="text-plague-mist/50">Apple</span>
