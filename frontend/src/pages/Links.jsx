@@ -69,7 +69,7 @@ function Links() {
 
         {/* Links Container */}
         <div className="space-y-4">
-          {/* Presave Link */}
+          {/* Single Release Link */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -83,8 +83,8 @@ function Links() {
             >
               <Music2 className="w-5 h-5 text-plague-green" />
               <div className="flex flex-col items-center">
-                <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Presave "Malediction"</span>
-                <span className="text-plague-mist/50 text-xs">Single releasing 30th January</span>
+                <span className="font-display text-sm uppercase tracking-wider text-plague-bone">"Malediction" - Out Now</span>
+                <span className="text-plague-mist/50 text-xs">Listen on all platforms</span>
               </div>
             </a>
           </motion.div>
