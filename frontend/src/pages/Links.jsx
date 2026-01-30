@@ -27,9 +27,9 @@ const BandcampIcon = ({ className }) => (
   </svg>
 )
 
-const DeezerIcon = ({ className }) => (
+const AmazonMusicIcon = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} fill="currentColor">
-    <path d="M18.81 4.16v3.03h5.17V4.16h-5.17zm0 4.55v3.03h5.17V8.71h-5.17zm0 4.54v3.03h5.17v-3.03h-5.17zm-6.55-9.09v3.03h5.17V4.16h-5.17zm0 4.55v3.03h5.17V8.71h-5.17zm0 4.54v3.03h5.17v-3.03h-5.17zm0 4.55v3.04h5.17V17.8h-5.17zM5.7 8.71v3.03h5.17V8.71H5.7zm0 4.54v3.03h5.17v-3.03H5.7zm0 4.55v3.04h5.17V17.8H5.7zM0 13.25v3.03h5.17v-3.03H0zm0 4.55v3.04h5.17V17.8H0z"/>
+    <path d="M17.06 11.57c0 .21-.07.36-.2.46-.12.1-.32.14-.57.14h-.67v-1.2h.67c.25 0 .45.05.57.14.13.1.2.25.2.46zm-6.82 1.88c-.24.24-.54.36-.9.36-.37 0-.67-.12-.9-.36-.24-.24-.36-.56-.36-.94 0-.38.12-.7.36-.94.23-.24.53-.36.9-.36.36 0 .66.12.9.36.24.24.35.56.35.94 0 .38-.11.7-.35.94zm9.67-4.85v6.8c0 .22-.08.4-.23.56-.15.15-.34.23-.56.23H4.88c-.22 0-.4-.08-.56-.23-.15-.16-.23-.34-.23-.56v-6.8c0-.22.08-.4.23-.56.16-.15.34-.23.56-.23h14.24c.22 0 .4.08.56.23.15.16.23.34.23.56zM7.36 14.2v-4h1.15v1.28h1.15V10.2h1.15v4H9.66v-1.53H8.51v1.53H7.36zm5.73-.77c.37-.38.55-.85.55-1.43 0-.57-.18-1.05-.55-1.43-.38-.37-.85-.56-1.43-.56-.57 0-1.05.19-1.43.56-.37.38-.56.86-.56 1.43 0 .58.19 1.05.56 1.43.38.37.86.56 1.43.56.58 0 1.05-.19 1.43-.56zm3.82-1.31c0 .45-.14.82-.43 1.1-.29.28-.68.42-1.19.42h-.67v.56h-1.15v-4h1.82c.51 0 .9.14 1.19.42.29.28.43.65.43 1.1v.4z"/>
   </svg>
 )
 
@@ -190,20 +190,35 @@ function Links() {
               <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Spotify</span>
             </a>
 
-            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 opacity-70 cursor-not-allowed backdrop-blur-sm">
-              <AppleMusicIcon className="w-5 h-5 text-plague-mist/50" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/50">Apple Music</span>
-            </div>
+            <a
+              href="https://music.apple.com/us/artist/plagued/1867938771"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300 backdrop-blur-sm"
+            >
+              <AppleMusicIcon className="w-5 h-5 text-plague-green" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Apple Music</span>
+            </a>
 
-            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 opacity-70 cursor-not-allowed backdrop-blur-sm">
-              <BandcampIcon className="w-5 h-5 text-plague-mist/50" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/50">Bandcamp</span>
-            </div>
+            <a
+              href="https://plagueduk.bandcamp.com/track/malediction"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300 backdrop-blur-sm"
+            >
+              <BandcampIcon className="w-5 h-5 text-plague-green" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Bandcamp</span>
+            </a>
 
-            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 opacity-70 cursor-not-allowed backdrop-blur-sm">
-              <DeezerIcon className="w-5 h-5 text-plague-mist/50" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/50">Deezer</span>
-            </div>
+            <a
+              href="https://music.amazon.co.uk/artists/B008UZLJZC/the-plagued"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300 backdrop-blur-sm"
+            >
+              <AmazonMusicIcon className="w-5 h-5 text-plague-green" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Amazon Music</span>
+            </a>
           </motion.div>
 
         </div>

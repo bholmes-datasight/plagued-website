@@ -86,7 +86,7 @@ function ComingSoon() {
             Coming Soon
           </h1>
           <p className="font-display text-lg md:text-xl uppercase tracking-[0.3em] text-plague-mist/80 mb-8">
-            Death Metal • East of England, UK
+            Death Metal • East of England
           </p>
           <p className="text-plague-mist/60 max-w-md mx-auto">
             The plague is spreading. Our new website is under construction.
