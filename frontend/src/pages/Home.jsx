@@ -109,7 +109,7 @@ function Home() {
 
         {/* Floating Mist Effect */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-plague-green/10 to-transparent animate-pulse" />
+          <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-plague-green/[0.03] to-transparent animate-pulse" />
         </div>
 
         {/* Floating Particles/Spores - Mobile */}
