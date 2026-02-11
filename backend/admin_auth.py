@@ -13,7 +13,7 @@ SUPABASE_JWT_SECRET = os.getenv("SUPABASE_JWT_SECRET")
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 
 if not SUPABASE_JWT_SECRET:
-    print("Warning: SUPABASE_JWT_SECRET not set. Admin authentication will fail.")
+    print("Note: SUPABASE_JWT_SECRET not set. ES256 (JWKS) verification will be used.")
 
 @lru_cache(maxsize=1)
 def get_supabase_jwks():

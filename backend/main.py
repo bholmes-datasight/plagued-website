@@ -10,7 +10,6 @@ from uuid import UUID
 
 import stripe
 import resend
-from mailjet_rest import Client as MailjetClient
 from fastapi import FastAPI, HTTPException, Request, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr, validator, Field
@@ -69,7 +68,6 @@ from admin_collections import (
     drop_collection,
     undrop_collection
 )
-from royal_mail import create_shipping_label, estimate_weight_grams
 
 # Load environment variables from .env file
 load_dotenv()
@@ -123,24 +121,13 @@ resend.api_key = os.getenv("RESEND_API_KEY", "")
 FROM_EMAIL = os.getenv("FROM_EMAIL", "contact@plagueduk.com")
 CONTACT_EMAIL = os.getenv("CONTACT_EMAIL", "plagueduk@gmail.com")
 
-# Mailjet configuration
-MAILJET_API_KEY = os.getenv("MAILJET_API_KEY", "")
-MAILJET_SECRET_KEY = os.getenv("MAILJET_SECRET_KEY", "")
-MAILJET_LIST_ID = os.getenv("MAILJET_LIST_ID", "")  # Contact list ID
-
-# Initialize Mailjet client
-if MAILJET_API_KEY and MAILJET_SECRET_KEY:
-    mailjet = MailjetClient(auth=(MAILJET_API_KEY, MAILJET_SECRET_KEY), version='v3')
-else:
-    mailjet = None
-
 # Feature flags
 ENABLE_DISCOUNT_CODES = os.getenv("ENABLE_DISCOUNT_CODES", "false").lower() == "true"
 
 # Load logo image for emails
 LOGO_DATA_URI = ""
 try:
-    logo_path = os.path.join(os.path.dirname(__file__), "..", "frontend", "public", "logo-green.png")
+    logo_path = os.path.join(os.path.dirname(__file__), "..", "frontend", "public", "img", "logo-green.png")
     with open(logo_path, "rb") as logo_file:
         logo_base64 = base64.b64encode(logo_file.read()).decode("utf-8")
         LOGO_DATA_URI = f"data:image/png;base64,{logo_base64}"
@@ -195,25 +182,6 @@ class PaymentIntentRequest(BaseModel):
 class DiscountCodeValidationRequest(BaseModel):
     code: str
     customer_email: Optional[str] = None
-
-
-class MailingListSubscribe(BaseModel):
-    name: str = Field(..., min_length=1, max_length=100)
-    email: EmailStr
-
-    @validator('name')
-    def sanitize_name(cls, v):
-        """Sanitize name field to prevent injection attacks"""
-        if isinstance(v, str):
-            return sanitize_text(v, max_length=100)
-        return v
-
-    @validator('email')
-    def validate_email_safety(cls, v):
-        """Validate email doesn't contain injection attempts"""
-        if not validate_email_content(v):
-            raise ValueError('Invalid email format')
-        return v
 
 
 # ============== DATA ==============
@@ -280,7 +248,7 @@ MERCH_ITEMS = [
         "name": "Plagued Logo T-Shirt (Green)",
         "description": "Toxic green logo on black tee",
         "price": 1800,  # £18.00 in pence
-        "image": "/logo-green.png",
+        "image": "/img/logo-green.png",
         "sizes": ["S", "M", "L", "XL", "XXL"],
         "in_stock": True,
     },
@@ -420,45 +388,6 @@ async def submit_contact(request: Request, form: ContactForm):
     except Exception as e:
         print(f"Error sending contact email: {type(e).__name__}: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to send message")
-
-
-@app.post("/api/subscribe")
-@limiter.limit("10/minute")  # Max 10 subscription attempts per minute per IP
-async def subscribe_to_mailing_list(request: Request, subscription: MailingListSubscribe):
-    """Subscribe email to Mailjet mailing list"""
-    try:
-        if not mailjet or not MAILJET_LIST_ID:
-            # If Mailjet not configured, just return success (for development)
-            print(f"Mailing list subscription (Mailjet not configured): {subscription.name} <{subscription.email}>")
-            return {"success": True, "message": "Successfully subscribed"}
-
-        # Add contact to list with properties using managemanycontacts
-        # This is the recommended way to add contacts with custom properties
-        data = {
-            'Action': 'addnoforce',
-            'Contacts': [
-                {
-                    'Email': subscription.email,
-                    'Name': subscription.name,
-                    'Properties': {
-                        'firstname': subscription.name
-                    }
-                }
-            ]
-        }
-
-        result = mailjet.contactslist_managemanycontacts.create(id=MAILJET_LIST_ID, data=data)
-
-        return {"success": True, "message": "Successfully subscribed"}
-
-    except Exception as e:
-        error_message = str(e)
-        # Handle case where email is already subscribed
-        if "already" in error_message.lower() or "exist" in error_message.lower():
-            return {"success": True, "message": "You're already subscribed!"}
-
-        print(f"Mailjet API error: {type(e).__name__}: {error_message}")
-        raise HTTPException(status_code=400, detail="Failed to subscribe. Please try again.")
 
 
 @app.post("/api/checkout")
@@ -804,34 +733,6 @@ async def stripe_webhook(request: Request):
             # 4b. Decrement stock
             decrement_stock(items, order_id)
 
-            # 4c. Generate Royal Mail shipping label
-            shipping_label_pdf = None
-            tracking_number = None
-            try:
-                weight_grams = estimate_weight_grams(items)
-                shipping_label_pdf, tracking_number, label_error = create_shipping_label(
-                    order_number=order_number,
-                    recipient_name=shipping_name,
-                    address_line1=shipping_address.get("line1", ""),
-                    address_line2=shipping_address.get("line2", ""),
-                    city=shipping_address.get("city", ""),
-                    postcode=shipping_address.get("postal_code", ""),
-                    country_code=shipping_address.get("country", "GB"),
-                    email=customer_email,
-                    items=items,
-                    total_amount=payment_intent["amount"],
-                    subtotal=payment_intent["amount"] - shipping_cost,
-                    shipping_cost=shipping_cost,
-                    weight_grams=weight_grams
-                )
-                if label_error:
-                    print(f"[ROYAL MAIL] Warning: {label_error}")
-                elif tracking_number:
-                    print(f"[ROYAL MAIL] Shipping label generated - Tracking: {tracking_number}")
-            except Exception as label_err:
-                print(f"[ROYAL MAIL] Error generating label: {label_err}")
-                # Don't fail the order if label generation fails
-
             # 5. Send order confirmation emails
             try:
                 # Build items HTML for email
@@ -947,22 +848,7 @@ async def stripe_webhook(request: Request):
                         print(f"[EMAIL ERROR] Failed to send customer email: {customer_email_error}")
                         print(f"[EMAIL ERROR] Customer email was: {customer_email}")
 
-                    # Send notification to band with shipping label attached
-                    tracking_info_html = ""
-                    if tracking_number:
-                        tracking_info_html = f"""
-                        <div style="background: #e8f5e9; padding: 15px; margin: 15px 0; border-left: 4px solid #00ff00;">
-                            <strong>Royal Mail Tracking Number:</strong> {tracking_number}<br>
-                            <a href="https://www.royalmail.com/track-your-item#/tracking-results/{tracking_number}" style="color: #00ff00;">Track Shipment</a>
-                        </div>
-                        """
-
-                    label_status = ""
-                    if shipping_label_pdf:
-                        label_status = "<p style='color: #00ff00;'>✅ Shipping label attached to this email</p>"
-                    else:
-                        label_status = "<p style='color: #ff9800;'>⚠️ Shipping label not generated - please create manually in Royal Mail Click & Drop</p>"
-
+                    # Send notification to band
                     notification_html = f"""
                     <html>
                     <body style="font-family: Arial, sans-serif;">
@@ -970,9 +856,6 @@ async def stripe_webhook(request: Request):
                         <p><strong>Order Number:</strong> {order_number}</p>
                         <p><strong>Customer:</strong> {shipping_name} ({customer_email})</p>
                         <p><strong>Total:</strong> {total_formatted}</p>
-
-                        {tracking_info_html}
-                        {label_status}
 
                         <p><strong>Items:</strong></p>
                         <ul>
@@ -996,17 +879,9 @@ async def stripe_webhook(request: Request):
                         email_params = {
                             "from": FROM_EMAIL,
                             "to": [CONTACT_EMAIL],
-                            "subject": f"New Order: {order_number}" + (f" - Tracking: {tracking_number}" if tracking_number else ""),
+                            "subject": f"New Order: {order_number}",
                             "html": notification_html
                         }
-
-                        # Attach shipping label PDF if available
-                        if shipping_label_pdf:
-                            email_params["attachments"] = [{
-                                "filename": f"shipping-label-{order_number}.pdf",
-                                "content": base64.b64encode(shipping_label_pdf).decode("utf-8")
-                            }]
-                            print(f"[EMAIL DEBUG] Shipping label attached to admin email")
 
                         admin_response = resend.Emails.send(email_params)
                         print(f"[EMAIL DEBUG] Admin email sent! Response: {admin_response}")
@@ -1192,34 +1067,6 @@ async def test_webhook(payment_intent_id: str = None):
         decrement_stock(items, order_id)
         print(f"✅ Stock decremented")
 
-        # Generate Royal Mail shipping label
-        shipping_label_pdf = None
-        tracking_number = None
-        try:
-            shipping_address = shipping.get('address', {})
-            weight_grams = estimate_weight_grams(items)
-            shipping_label_pdf, tracking_number, label_error = create_shipping_label(
-                order_number=order_number,
-                recipient_name=shipping_name,
-                address_line1=shipping_address.get("line1", ""),
-                address_line2=shipping_address.get("line2", ""),
-                city=shipping_address.get("city", ""),
-                postcode=shipping_address.get("postal_code", ""),
-                country_code=shipping_address.get("country", "GB"),
-                email=customer_email,
-                items=items,
-                total_amount=total_amount,
-                subtotal=total_amount - shipping_cost,
-                shipping_cost=shipping_cost,
-                weight_grams=weight_grams
-            )
-            if label_error:
-                print(f"[ROYAL MAIL] Warning: {label_error}")
-            elif tracking_number:
-                print(f"✅ Royal Mail shipping label generated - Tracking: {tracking_number}")
-        except Exception as label_err:
-            print(f"[ROYAL MAIL] Error generating label: {label_err}")
-
         # Send confirmation email to customer
         customer_items_html = "".join([
             f"""
@@ -1332,21 +1179,6 @@ async def test_webhook(payment_intent_id: str = None):
             for item in items
         ])
 
-        tracking_info_html = ""
-        if tracking_number:
-            tracking_info_html = f"""
-            <div style="background: #e8f5e9; padding: 15px; margin: 15px 0; border-left: 4px solid #00ff00;">
-                <strong>Royal Mail Tracking Number:</strong> {tracking_number}<br>
-                <a href="https://www.royalmail.com/track-your-item#/tracking-results/{tracking_number}" style="color: #00ff00;">Track Shipment</a>
-            </div>
-            """
-
-        label_status = ""
-        if shipping_label_pdf:
-            label_status = "<p style='color: #00ff00;'>✅ Shipping label attached to this email</p>"
-        else:
-            label_status = "<p style='color: #ff9800;'>⚠️ Shipping label not generated - please create manually in Royal Mail Click & Drop</p>"
-
         admin_html = f"""
         <!DOCTYPE html>
         <html>
@@ -1358,9 +1190,6 @@ async def test_webhook(payment_intent_id: str = None):
                 <strong>Total:</strong> £{(total_amount / 100):.2f}<br>
                 <strong>Customer:</strong> {customer_email}
             </div>
-
-            {tracking_info_html}
-            {label_status}
 
             <h3>Items Ordered:</h3>
             <pre style="background: #f5f5f5; padding: 15px; border-left: 4px solid #00ff00;">{admin_items_list}</pre>
@@ -1382,17 +1211,9 @@ async def test_webhook(payment_intent_id: str = None):
         email_params = {
             "from": FROM_EMAIL,
             "to": CONTACT_EMAIL,
-            "subject": f"🛍️ New Order: {order_number}" + (f" - Tracking: {tracking_number}" if tracking_number else ""),
+            "subject": f"🛍️ New Order: {order_number}",
             "html": admin_html
         }
-
-        # Attach shipping label PDF if available
-        if shipping_label_pdf:
-            email_params["attachments"] = [{
-                "filename": f"shipping-label-{order_number}.pdf",
-                "content": base64.b64encode(shipping_label_pdf).decode("utf-8")
-            }]
-            print(f"[EMAIL DEBUG] Shipping label attached to admin email")
 
         resend.Emails.send(email_params)
         print(f"✅ Admin notification email sent to: {CONTACT_EMAIL}")
@@ -1939,4 +1760,4 @@ async def admin_undrop_collection(
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
