@@ -100,7 +100,8 @@ allowed_origins = [
     "http://localhost:5178",
     "http://localhost:3000",
     "https://plagueduk.com",
-    "https://www.plagueduk.com"
+    "https://www.plagueduk.com",
+    "https://admin.plagueduk.com",
 ]
 
 app.add_middleware(

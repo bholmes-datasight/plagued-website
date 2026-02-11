@@ -1,0 +1,6 @@
+[project]
+name = "plagued-api"
+version = "1.0.0"
+
+[project.scripts]
+app = "main:app"
