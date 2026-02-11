@@ -74,11 +74,11 @@ function Music() {
               transition={{ duration: 0.6 }}
               className="relative group"
             >
-              <div className="absolute -inset-4 bg-plague-green/20 blur-2xl group-hover:bg-plague-green/30 transition-all duration-500" />
+              <div className="absolute -inset-4 bg-plague-green/10 blur-2xl group-hover:bg-plague-green/15 transition-all duration-500" />
               <img
                 src="/album-artwork.jpg"
                 alt="Rotting Dominions"
-                className="relative w-full shadow-2xl shadow-plague-green/20"
+                className="relative w-full shadow-2xl shadow-plague-green/10"
               />
               
             </motion.div>
