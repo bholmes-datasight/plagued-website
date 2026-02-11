@@ -21,6 +21,5 @@ dependencies = [
 [project.scripts]
 app = "main:app"
 
-[build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+[tool.uv]
+package = false
