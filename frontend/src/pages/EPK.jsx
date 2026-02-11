@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Disc3, Music2, Mail, Instagram, Facebook, Youtube, Download, Globe } from 'lucide-react'
+import { Disc3, Music2, Mail, Instagram, Facebook, Youtube, Download, Globe, Image } from 'lucide-react'
 import { usePageConfig } from '../hooks/usePageConfig'
 import { Link } from 'react-router-dom'
 
@@ -28,9 +28,9 @@ const TikTokIcon = ({ className }) => (
   </svg>
 )
 
-const DeezerIcon = ({ className }) => (
+const AmazonMusicIcon = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} fill="currentColor">
-    <path d="M18.81 4.16v3.03h5.17V4.16h-5.17zm0 4.55v3.03h5.17V8.71h-5.17zm0 4.54v3.03h5.17v-3.03h-5.17zm-6.55-9.09v3.03h5.17V4.16h-5.17zm0 4.55v3.03h5.17V8.71h-5.17zm0 4.54v3.03h5.17v-3.03h-5.17zm0 4.55v3.04h5.17V17.8h-5.17zM5.7 8.71v3.03h5.17V8.71H5.7zm0 4.54v3.03h5.17v-3.03H5.7zm0 4.55v3.04h5.17V17.8H5.7zM0 13.25v3.03h5.17v-3.03H0zm0 4.55v3.04h5.17V17.8H0z"/>
+    <path d="M17.06 11.57c0 .21-.07.36-.2.46-.12.1-.32.14-.57.14h-.67v-1.2h.67c.25 0 .45.05.57.14.13.1.2.25.2.46zm-6.82 1.88c-.24.24-.54.36-.9.36-.37 0-.67-.12-.9-.36-.24-.24-.36-.56-.36-.94 0-.38.12-.7.36-.94.23-.24.53-.36.9-.36.36 0 .66.12.9.36.24.24.35.56.35.94 0 .38-.11.7-.35.94zm9.67-4.85v6.8c0 .22-.08.4-.23.56-.15.15-.34.23-.56.23H4.88c-.22 0-.4-.08-.56-.23-.15-.16-.23-.34-.23-.56v-6.8c0-.22.08-.4.23-.56.16-.15.34-.23.56-.23h14.24c.22 0 .4.08.56.23.15.16.23.34.23.56zM7.36 14.2v-4h1.15v1.28h1.15V10.2h1.15v4H9.66v-1.53H8.51v1.53H7.36zm5.73-.77c.37-.38.55-.85.55-1.43 0-.57-.18-1.05-.55-1.43-.38-.37-.85-.56-1.43-.56-.57 0-1.05.19-1.43.56-.37.38-.56.86-.56 1.43 0 .58.19 1.05.56 1.43.38.37.86.56 1.43.56.58 0 1.05-.19 1.43-.56zm3.82-1.31c0 .45-.14.82-.43 1.1-.29.28-.68.42-1.19.42h-.67v.56h-1.15v-4h1.82c.51 0 .9.14 1.19.42.29.28.43.65.43 1.1v.4z"/>
   </svg>
 )
 
@@ -84,7 +84,7 @@ function EPK() {
         />
 
         <p className="font-display text-sm md:text-base uppercase tracking-[0.3em] text-plague-mist/80 mb-12">
-          Death Metal • United Kingdom
+          Death Metal • East of England
         </p>
 
         {/* Content Grid */}
@@ -99,7 +99,7 @@ function EPK() {
             <h2 className="font-display text-xl uppercase tracking-wider text-plague-green mb-4">About</h2>
             <div className="text-plague-mist/80 leading-relaxed space-y-3 text-sm md:text-base">
               <p>
-                Plagued is a five-piece death metal band from East Anglia, UK, formed in 2024. The band's debut EP, Rotting Dominions, presents old-school death metal with a modern sound, bringing together influences from each of the members, including old-school death metal, Swedish death metal, hardcore, metalcore, and thrash metal.
+                Plagued is a five-piece death metal band from the East of England, formed in 2024. The band's debut EP, Rotting Dominions, presents old-school death metal with a modern sound, bringing together influences from each of the members, including old-school death metal, Swedish death metal, hardcore, metalcore, and thrash metal.
               </p>
               <p>
                 The material is built around riff-driven songwriting, a modern Swedish guitar sound, and powerful, aggressive vocals, combining hardcore grooves with crushing fast death metal riffs.
@@ -108,6 +108,11 @@ function EPK() {
                 Rotting Dominions serves as Plagued's first recorded statement, establishing the band's foundations and direction.
               </p>
             </div>
+            <img
+              src="/photo-band.jpg"
+              alt="Plagued band photo"
+              className="w-full mt-6 rounded border border-plague-lighter/20"
+            />
           </motion.div>
 
           {/* Contact & Links */}
@@ -183,7 +188,7 @@ function EPK() {
                   <span className="text-plague-mist/70">YouTube</span>
                 </a>
                 <a
-                  href="https://tiktok.com/@plagueduk"
+                  href="https://www.tiktok.com/@plagued.uk"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
@@ -194,28 +199,48 @@ function EPK() {
               </div>
             </div>
 
-            {/* Streaming - Greyed out until release */}
+            {/* Streaming */}
             <div className="card p-4">
               <h3 className="font-display text-xs uppercase tracking-wider text-plague-green mb-3">
                 Listen On
               </h3>
               <div className="grid grid-cols-2 gap-2">
-                <div className="flex items-center gap-2 p-2 bg-plague-lighter/10 border border-plague-green/30 opacity-70 cursor-not-allowed rounded text-xs">
-                  <SpotifyIcon className="w-3 h-3 text-plague-mist/50" />
-                  <span className="text-plague-mist/50">Spotify</span>
-                </div>
-                <div className="flex items-center gap-2 p-2 bg-plague-lighter/10 border border-plague-green/30 opacity-70 cursor-not-allowed rounded text-xs">
-                  <AppleMusicIcon className="w-3 h-3 text-plague-mist/50" />
-                  <span className="text-plague-mist/50">Apple</span>
-                </div>
-                <div className="flex items-center gap-2 p-2 bg-plague-lighter/10 border border-plague-green/30 opacity-70 cursor-not-allowed rounded text-xs">
-                  <BandcampIcon className="w-3 h-3 text-plague-mist/50" />
-                  <span className="text-plague-mist/50">Bandcamp</span>
-                </div>
-                <div className="flex items-center gap-2 p-2 bg-plague-lighter/10 border border-plague-green/30 opacity-70 cursor-not-allowed rounded text-xs">
-                  <DeezerIcon className="w-3 h-3 text-plague-mist/50" />
-                  <span className="text-plague-mist/50">Deezer</span>
-                </div>
+                <a
+                  href="https://open.spotify.com/artist/5oD38veNZ1ryvzKDH8zJKz?si=xFEdlX-ESoyYUmNHWSXSWw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/10 border border-plague-green/30 hover:border-plague-green hover:bg-plague-lighter/20 transition-all duration-300 rounded text-xs"
+                >
+                  <SpotifyIcon className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist">Spotify</span>
+                </a>
+                <a
+                  href="https://music.apple.com/us/artist/plagued/1867938771"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/10 border border-plague-green/30 hover:border-plague-green hover:bg-plague-lighter/20 transition-all duration-300 rounded text-xs"
+                >
+                  <AppleMusicIcon className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist">Apple</span>
+                </a>
+                <a
+                  href="https://plagueduk.bandcamp.com/track/malediction"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/10 border border-plague-green/30 hover:border-plague-green hover:bg-plague-lighter/20 transition-all duration-300 rounded text-xs"
+                >
+                  <BandcampIcon className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist">Bandcamp</span>
+                </a>
+                <a
+                  href="https://music.amazon.co.uk/artists/B008UZLJZC/the-plagued"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/10 border border-plague-green/30 hover:border-plague-green hover:bg-plague-lighter/20 transition-all duration-300 rounded text-xs"
+                >
+                  <AmazonMusicIcon className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist">Amazon</span>
+                </a>
               </div>
             </div>
 
@@ -225,15 +250,35 @@ function EPK() {
                 <Download className="w-3 h-3" />
                 Press Materials
               </h3>
-              <a
-                href="https://drive.google.com/file/d/1wSbv1ih62e-huIFuSvA_f6tMwpaU-a1q/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
-              >
-                <Download className="w-3 h-3 text-plague-green" />
-                <span className="text-plague-mist/70">Download Artwork</span>
-              </a>
+              <div className="space-y-2">
+                <a
+                  href="https://drive.google.com/drive/folders/1dNfg8aZ__B3bnDBg1RLTEh7TQ4BJ0xpp?usp=drive_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                >
+                  <Music2 className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist/70">Download EP (MP3)</span>
+                </a>
+                <a
+                  href="https://drive.google.com/file/d/1wSbv1ih62e-huIFuSvA_f6tMwpaU-a1q/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                >
+                  <Download className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist/70">Download Artwork</span>
+                </a>
+                <a
+                  href="https://drive.google.com/drive/folders/1cZfhzg5G22bs-dde6A1QWM9IHGJrn_vc?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                >
+                  <Image className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist/70">Band Photos</span>
+                </a>
+              </div>
             </div>
           </motion.div>
 
@@ -288,6 +333,17 @@ function EPK() {
                     <span className="text-plague-mist/50 text-xs">Mastered</span>
                     <span className="font-display text-plague-bone text-xs">Dan Swanö</span>
                   </div>
+                  <div className="flex justify-between border-b border-plague-lighter/10 pb-1">
+                    <span className="text-plague-mist/50 text-xs">Cover Art</span>
+                    <a
+                      href="https://www.instagram.com/hyperbholic"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-display text-plague-bone text-xs hover:text-plague-green transition-colors"
+                    >
+                      Mohammed Khoirul Anam
+                    </a>
+                  </div>
                 </div>
                 <p className="text-plague-mist/60 text-xs mb-4">
                   Listen to the full EP below:
@@ -306,6 +362,23 @@ function EPK() {
                 src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2170826408%3Fsecret_token%3Ds-Vt9z2o4tJot&color=%2300ff00&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=false"
                 className="rounded border border-plague-lighter/20"
               />
+            </div>
+
+            {/* YouTube Video */}
+            <div className="mt-6">
+              <p className="text-plague-mist/60 text-xs mb-3">
+                "Malediction" (Single releasing 30th January):
+              </p>
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded border border-plague-lighter/20"
+                  src="https://www.youtube-nocookie.com/embed/V5wuEUriRUI"
+                  title="Plagued - Malediction"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
             </div>
           </motion.div>
         </div>

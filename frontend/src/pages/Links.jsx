@@ -2,6 +2,12 @@ import { motion } from 'framer-motion'
 import { Instagram, Facebook, Youtube, Globe, Mail } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
+const TikTokIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M19.321 5.562a5.124 5.124 0 01-.443-.258 6.228 6.228 0 01-1.137-.966c-.849-.954-1.289-2.066-1.289-3.338v-.8H12.56v14.8c0 2.327-1.892 4.219-4.218 4.219S4.124 17.327 4.124 15c0-2.327 1.892-4.219 4.218-4.219.462 0 .905.075 1.321.213v-3.996c-.436-.061-.88-.092-1.321-.092C3.708 6.906 0 10.614 0 15.25s3.708 8.344 8.342 8.344 8.342-3.708 8.342-8.344v-6.9c1.132.748 2.45 1.15 3.816 1.15v-3.938z"/>
+  </svg>
+)
+
 // Custom SVG icons for streaming platforms
 const SpotifyIcon = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} fill="currentColor">
@@ -21,9 +27,15 @@ const BandcampIcon = ({ className }) => (
   </svg>
 )
 
-const DeezerIcon = ({ className }) => (
+const AmazonMusicIcon = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} fill="currentColor">
-    <path d="M18.81 4.16v3.03h5.17V4.16h-5.17zm0 4.55v3.03h5.17V8.71h-5.17zm0 4.54v3.03h5.17v-3.03h-5.17zm-6.55-9.09v3.03h5.17V4.16h-5.17zm0 4.55v3.03h5.17V8.71h-5.17zm0 4.54v3.03h5.17v-3.03h-5.17zm0 4.55v3.04h5.17V17.8h-5.17zM5.7 8.71v3.03h5.17V8.71H5.7zm0 4.54v3.03h5.17v-3.03H5.7zm0 4.55v3.04h5.17V17.8H5.7zM0 13.25v3.03h5.17v-3.03H0zm0 4.55v3.04h5.17V17.8H0z"/>
+    <path d="M17.06 11.57c0 .21-.07.36-.2.46-.12.1-.32.14-.57.14h-.67v-1.2h.67c.25 0 .45.05.57.14.13.1.2.25.2.46zm-6.82 1.88c-.24.24-.54.36-.9.36-.37 0-.67-.12-.9-.36-.24-.24-.36-.56-.36-.94 0-.38.12-.7.36-.94.23-.24.53-.36.9-.36.36 0 .66.12.9.36.24.24.35.56.35.94 0 .38-.11.7-.35.94zm9.67-4.85v6.8c0 .22-.08.4-.23.56-.15.15-.34.23-.56.23H4.88c-.22 0-.4-.08-.56-.23-.15-.16-.23-.34-.23-.56v-6.8c0-.22.08-.4.23-.56.16-.15.34-.23.56-.23h14.24c.22 0 .4.08.56.23.15.16.23.34.23.56zM7.36 14.2v-4h1.15v1.28h1.15V10.2h1.15v4H9.66v-1.53H8.51v1.53H7.36zm5.73-.77c.37-.38.55-.85.55-1.43 0-.57-.18-1.05-.55-1.43-.38-.37-.85-.56-1.43-.56-.57 0-1.05.19-1.43.56-.37.38-.56.86-.56 1.43 0 .58.19 1.05.56 1.43.38.37.86.56 1.43.56.58 0 1.05-.19 1.43-.56zm3.82-1.31c0 .45-.14.82-.43 1.1-.29.28-.68.42-1.19.42h-.67v.56h-1.15v-4h1.82c.51 0 .9.14 1.19.42.29.28.43.65.43 1.1v.4z"/>
+  </svg>
+)
+
+const YouTubeMusicIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm0 19.104c-3.924 0-7.104-3.18-7.104-7.104S8.076 4.896 12 4.896s7.104 3.18 7.104 7.104-3.18 7.104-7.104 7.104zm0-13.332c-3.432 0-6.228 2.796-6.228 6.228S8.568 18.228 12 18.228 18.228 15.432 18.228 12 15.432 5.772 12 5.772zM9.684 15.54V8.46L15.816 12l-6.132 3.54z"/>
   </svg>
 )
 
@@ -58,36 +70,70 @@ function Links() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="font-display text-sm md:text-base uppercase tracking-[0.3em] text-plague-mist/80 text-center mb-12"
         >
-          Death Metal • United Kingdom
+          Death Metal • East of England
         </motion.p>
 
         {/* Links Container */}
         <div className="space-y-4">
-          {/* Website Link */}
+          {/* Streaming Platforms - New Single */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
             className="space-y-3"
           >
-            <Link
-              to="/"
-              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
-            >
-              <Globe className="w-5 h-5 text-plague-green" />
-              <div className="flex flex-col items-center">
-                <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Website</span>
-                <span className="text-plague-mist/50 text-xs">Coming Soon</span>
-              </div>
-            </Link>
+            <p className="text-center text-plague-green text-sm uppercase tracking-widest mb-4 font-display">
+              New Single "Malediction" Out Now
+            </p>
 
-            {/* Email Button */}
             <a
-              href="mailto:contact@plagueduk.com"
-              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
+              href="https://open.spotify.com/artist/5oD38veNZ1ryvzKDH8zJKz?si=xFEdlX-ESoyYUmNHWSXSWw"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300 backdrop-blur-sm"
             >
-              <Mail className="w-5 h-5 text-plague-green" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Email Us</span>
+              <SpotifyIcon className="w-5 h-5 text-plague-green" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Spotify</span>
+            </a>
+
+            <a
+              href="https://music.apple.com/us/artist/plagued/1867938771"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300 backdrop-blur-sm"
+            >
+              <AppleMusicIcon className="w-5 h-5 text-plague-green" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Apple Music</span>
+            </a>
+
+            <a
+              href="https://music.youtube.com/channel/UC3FO1IzOLymLxDvjSc7wBYQ?si=LUHLsft0Xr9Q985I"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300 backdrop-blur-sm"
+            >
+              <YouTubeMusicIcon className="w-5 h-5 text-plague-green" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-mist">YouTube Music</span>
+            </a>
+
+            <a
+              href="https://plagueduk.bandcamp.com/track/malediction"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300 backdrop-blur-sm"
+            >
+              <BandcampIcon className="w-5 h-5 text-plague-green" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Bandcamp</span>
+            </a>
+
+            <a
+              href="https://music.amazon.co.uk/artists/B008UZLJZC/the-plagued"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300 backdrop-blur-sm"
+            >
+              <AmazonMusicIcon className="w-5 h-5 text-plague-green" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Amazon Music</span>
             </a>
           </motion.div>
 
@@ -130,45 +176,45 @@ function Links() {
               <Youtube className="w-5 h-5 text-plague-green" />
               <span className="font-display text-sm uppercase tracking-wider text-plague-bone">YouTube</span>
             </a>
+
+            <a
+              href="https://www.tiktok.com/@plagued.uk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
+            >
+              <TikTokIcon className="w-5 h-5 text-plague-green" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-bone">TikTok</span>
+            </a>
           </motion.div>
 
-          {/* Streaming Platforms */}
+          {/* Website & Contact */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="space-y-3 pt-4"
           >
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <p className="text-center text-plague-mist/50 text-xs uppercase tracking-widest">
-                Listen On
-              </p>
-              <p className="text-center text-plague-mist/40 text-xs italic">
-                (Single releasing 30th January)
-              </p>
-            </div>
+            <Link
+              to="/"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
+            >
+              <Globe className="w-5 h-5 text-plague-green" />
+              <div className="flex flex-col items-center">
+                <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Website</span>
+                <span className="text-plague-mist/50 text-xs">Coming Soon</span>
+              </div>
+            </Link>
 
-            {/* Greyed out, non-clickable streaming links */}
-            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 opacity-70 cursor-not-allowed backdrop-blur-sm">
-              <SpotifyIcon className="w-5 h-5 text-plague-mist/50" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/50">Spotify</span>
-            </div>
-
-            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 opacity-70 cursor-not-allowed backdrop-blur-sm">
-              <AppleMusicIcon className="w-5 h-5 text-plague-mist/50" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/50">Apple Music</span>
-            </div>
-
-            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 opacity-70 cursor-not-allowed backdrop-blur-sm">
-              <BandcampIcon className="w-5 h-5 text-plague-mist/50" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/50">Bandcamp</span>
-            </div>
-
-            <div className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/20 border border-plague-green/30 opacity-70 cursor-not-allowed backdrop-blur-sm">
-              <DeezerIcon className="w-5 h-5 text-plague-mist/50" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-mist/50">Deezer</span>
-            </div>
+            <a
+              href="mailto:contact@plagueduk.com"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
+            >
+              <Mail className="w-5 h-5 text-plague-green" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Email Us</span>
+            </a>
           </motion.div>
+
         </div>
       </div>
 
