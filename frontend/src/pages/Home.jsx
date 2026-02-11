@@ -91,17 +91,17 @@ function Home() {
           {/* Mobile */}
           <div
             className="absolute inset-0 md:hidden bg-plague-black"
-            style={{ backgroundImage: 'url(/main-band-mobile.jpg)', backgroundPosition: '35% -120%', backgroundSize: '190%', backgroundRepeat: 'no-repeat' }}
+            style={{ backgroundImage: 'url(/img/main-band-mobile.jpg)', backgroundPosition: '35% -120%', backgroundSize: '190%', backgroundRepeat: 'no-repeat' }}
           />
           {/* Desktop */}
           <div
             className="absolute inset-0 hidden md:block 2xl:hidden"
-            style={{ backgroundImage: 'url(/main-band.png)', backgroundPosition: '10% 60%', backgroundSize: '120%' }}
+            style={{ backgroundImage: 'url(/img/main-band.png)', backgroundPosition: '10% 60%', backgroundSize: '120%' }}
           />
           {/* Ultrawide */}
           <div
             className="absolute inset-0 hidden 2xl:block"
-            style={{ backgroundImage: 'url(/main-band.png)', backgroundPosition: '10% 35%', backgroundSize: '120%' }}
+            style={{ backgroundImage: 'url(/img/main-band.png)', backgroundPosition: '10% 35%', backgroundSize: '120%' }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-plague-black/60 via-plague-black/40 to-plague-black" />
           <div className="absolute inset-0 bg-gradient-to-r from-plague-black/80 via-transparent to-plague-black/80" />
@@ -152,7 +152,7 @@ function Home() {
           className="relative z-10 h-full flex flex-col items-center justify-center px-4"
         >
           <motion.img
-            src="/logo-green.png"
+            src="/img/logo-green.png"
             alt="Plagued"
             className="w-64 md:w-96 lg:w-[500px] mb-8 drop-shadow-[0_0_40px_rgba(0,255,0,0.4)]"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -271,7 +271,7 @@ function Home() {
             >
               <div className="absolute -inset-4 bg-plague-green/10 blur-xl group-hover:bg-plague-green/15 transition-all duration-500" />
               <img
-                src="/album-artwork.jpg"
+                src="/img/album-artwork.jpg"
                 alt="Rotting Dominions"
                 className="relative w-full shadow-2xl shadow-plague-green/10"
               />

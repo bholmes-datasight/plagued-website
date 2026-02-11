@@ -46,7 +46,7 @@ function Links() {
       <div className="absolute md:fixed inset-0 z-0 min-h-screen">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/album-artwork-without-logo.webp)' }}
+          style={{ backgroundImage: 'url(/img/album-artwork-without-logo.webp)' }}
         />
         <div className="absolute inset-0 bg-plague-black/90" />
       </div>
@@ -55,7 +55,7 @@ function Links() {
       <div className="relative z-10 w-full max-w-xl px-4">
         {/* Logo */}
         <motion.img
-          src="/logo-green.png"
+          src="/img/logo-green.png"
           alt="Plagued"
           className="w-48 md:w-64 mx-auto mb-8 drop-shadow-[0_0_40px_rgba(0,255,0,0.3)]"
           initial={{ opacity: 0, scale: 0.9 }}

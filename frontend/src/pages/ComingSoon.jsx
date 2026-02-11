@@ -22,7 +22,7 @@ function ComingSoon() {
       <div className="absolute md:fixed inset-0 z-0 min-h-screen">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/album-artwork-without-logo.webp)' }}
+          style={{ backgroundImage: 'url(/img/album-artwork-without-logo.webp)' }}
         />
         <div className="absolute inset-0 bg-plague-black/90" />
       </div>
@@ -69,7 +69,7 @@ function ComingSoon() {
       {/* Content */}
       <div className="relative z-10 text-center px-4">
         <motion.img
-          src="/logo-green.png"
+          src="/img/logo-green.png"
           alt="Plagued"
           className="w-64 md:w-96 lg:w-[500px] mx-auto mb-12 drop-shadow-[0_0_50px_rgba(0,255,0,0.4)]"
           initial={{ opacity: 0, scale: 0.8 }}

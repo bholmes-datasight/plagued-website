@@ -81,7 +81,7 @@ function Layout() {
             {/* Logo */}
             <Link to="/" className="flex-shrink-0">
               <motion.img
-                src="/logo-green.png"
+                src="/img/logo-green.png"
                 alt="Plagued"
                 className="h-12 w-auto"
                 whileHover={{ scale: 1.05 }}
@@ -172,7 +172,7 @@ function Layout() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Logo & Tagline */}
             <div>
-              <img src="/logo-green.png" alt="Plagued" className="h-10 w-auto mb-4" />
+              <img src="/img/logo-green.png" alt="Plagued" className="h-10 w-auto mb-4" />
               <p className="text-plague-mist/60 text-sm">
                 Death Metal from the United Kingdom
               </p>

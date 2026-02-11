@@ -66,7 +66,7 @@ function EPK() {
       <div className="absolute md:fixed inset-0 z-0 min-h-screen">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/album-artwork-without-logo.webp)' }}
+          style={{ backgroundImage: 'url(/img/album-artwork-without-logo.webp)' }}
         />
         <div className="absolute inset-0 bg-plague-black/85" />
       </div>
@@ -75,7 +75,7 @@ function EPK() {
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
         {/* Logo */}
         <motion.img
-          src="/logo-green.png"
+          src="/img/logo-green.png"
           alt="Plagued"
           className="w-48 md:w-64 mb-8 drop-shadow-[0_0_40px_rgba(0,255,0,0.3)]"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -109,7 +109,7 @@ function EPK() {
               </p>
             </div>
             <img
-              src="/photo-band.jpg"
+              src="/img/photo-band.jpg"
               alt="Plagued band photo"
               className="w-full mt-6 rounded border border-plague-lighter/20"
             />
@@ -311,7 +311,7 @@ function EPK() {
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <img
-                  src="/album-artwork.jpg"
+                  src="/img/album-artwork.jpg"
                   alt="Rotting Dominions"
                   className="w-full shadow-2xl shadow-plague-green/20 mb-4"
                 />

@@ -76,7 +76,7 @@ function Music() {
             >
               <div className="absolute -inset-4 bg-plague-green/10 blur-2xl group-hover:bg-plague-green/15 transition-all duration-500" />
               <img
-                src="/album-artwork.jpg"
+                src="/img/album-artwork.jpg"
                 alt="Rotting Dominions"
                 className="relative w-full shadow-2xl shadow-plague-green/10"
               />
