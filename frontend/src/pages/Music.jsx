@@ -64,11 +64,11 @@ function Music() {
               transition={{ duration: 0.6 }}
               className="relative group"
             >
-              <div className="absolute -inset-4 bg-plague-green/10 blur-2xl group-hover:bg-plague-green/15 transition-all duration-500" />
+              <div className="absolute -inset-4 bg-black/20 blur-2xl group-hover:bg-black/30 transition-all duration-500" />
               <img
                 src="/img/malediction_album_cover.png"
                 alt="Malediction"
-                className="relative w-full shadow-2xl shadow-plague-green/10"
+                className="relative w-full shadow-2xl shadow-black/30"
               />
             </motion.div>
 
@@ -173,11 +173,11 @@ function Music() {
               transition={{ duration: 0.6 }}
               className="relative group"
             >
-              <div className="absolute -inset-4 bg-plague-green/10 blur-2xl group-hover:bg-plague-green/15 transition-all duration-500" />
+              <div className="absolute -inset-4 bg-black/20 blur-2xl group-hover:bg-black/30 transition-all duration-500" />
               <img
                 src="/img/album-artwork.jpg"
                 alt="Rotting Dominions"
-                className="relative w-full shadow-2xl shadow-plague-green/10"
+                className="relative w-full shadow-2xl shadow-black/30"
               />
             </motion.div>
 
@@ -191,7 +191,7 @@ function Music() {
               <div className="flex items-center gap-3 mb-4">
                 <Disc3 className="w-6 h-6 text-plague-green" />
                 <span className="font-display text-plague-green uppercase tracking-wider">
-                  Debut EP • Coming February 2026
+                  Debut EP • Out 27th February 2026
                 </span>
               </div>
 
@@ -220,10 +220,10 @@ function Music() {
               {/* Coming Soon Message */}
               <div className="text-center p-8 bg-plague-green/5 border border-plague-green/20">
                 <h3 className="font-blackletter text-xl text-plague-green mb-4">
-                  Coming February 2026
+                  Out 27th February 2026
                 </h3>
                 <p className="text-plague-mist/70 mb-4">
-                  Rotting Dominions will be available on all major streaming platforms.
+                  Rotting Dominions will be available on all major streaming platforms on 27th February 2026.
                 </p>
                 <p className="text-plague-mist/60 text-sm">
                   Follow us on social media for updates and the exact release date.

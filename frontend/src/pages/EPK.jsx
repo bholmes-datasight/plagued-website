@@ -313,14 +313,14 @@ function EPK() {
                 <img
                   src="/img/album-artwork.jpg"
                   alt="Rotting Dominions"
-                  className="w-full shadow-2xl shadow-plague-green/20 mb-4"
+                  className="w-full shadow-2xl shadow-black/30 mb-4"
                 />
               </div>
               <div className="flex flex-col justify-center">
                 <div className="flex items-center gap-2 mb-2">
                   <Disc3 className="w-4 h-4 text-plague-green" />
                   <span className="font-display text-plague-green uppercase tracking-wider text-xs">
-                    Debut EP • February 2026
+                    Debut EP • 27th February 2026
                   </span>
                 </div>
                 <h3 className="font-blackletter text-3xl text-plague-bone mb-4">Rotting Dominions</h3>

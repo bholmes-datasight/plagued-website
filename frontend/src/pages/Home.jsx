@@ -269,11 +269,11 @@ function Home() {
               transition={{ duration: 0.6 }}
               className="relative group"
             >
-              <div className="absolute -inset-4 bg-plague-green/10 blur-xl group-hover:bg-plague-green/15 transition-all duration-500" />
+              <div className="absolute -inset-4 bg-black/20 blur-xl group-hover:bg-black/30 transition-all duration-500" />
               <img
                 src="/img/malediction_album_cover.png"
                 alt="Malediction"
-                className="relative w-full shadow-2xl shadow-plague-green/10"
+                className="relative w-full shadow-2xl shadow-black/30"
               />
             </motion.div>
 
