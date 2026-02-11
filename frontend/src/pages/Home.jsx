@@ -28,9 +28,9 @@ const TikTokIcon = ({ className }) => (
   </svg>
 )
 
-const DeezerIcon = ({ className }) => (
+const AmazonMusicIcon = ({ className }) => (
   <svg viewBox="0 0 24 24" className={className} fill="currentColor">
-    <path d="M18.81 4.16v3.03h5.17V4.16h-5.17zm0 4.55v3.03h5.17V8.71h-5.17zm0 4.54v3.03h5.17v-3.03h-5.17zm-6.55-9.09v3.03h5.17V4.16h-5.17zm0 4.55v3.03h5.17V8.71h-5.17zm0 4.54v3.03h5.17v-3.03h-5.17zm0 4.55v3.04h5.17V17.8h-5.17zM5.7 8.71v3.03h5.17V8.71H5.7zm0 4.54v3.03h5.17v-3.03H5.7zm0 4.55v3.04h5.17V17.8H5.7zM0 13.25v3.03h5.17v-3.03H0zm0 4.55v3.04h5.17V17.8H0z"/>
+    <path d="M17.06 11.57c0 .21-.07.36-.2.46-.12.1-.32.14-.57.14h-.67v-1.2h.67c.25 0 .45.05.57.14.13.1.2.25.2.46zm-6.82 1.88c-.24.24-.54.36-.9.36-.37 0-.67-.12-.9-.36-.24-.24-.36-.56-.36-.94 0-.38.12-.7.36-.94.23-.24.53-.36.9-.36.36 0 .66.12.9.36.24.24.35.56.35.94 0 .38-.11.7-.35.94zm9.67-4.85v6.8c0 .22-.08.4-.23.56-.15.15-.34.23-.56.23H4.88c-.22 0-.4-.08-.56-.23-.15-.16-.23-.34-.23-.56v-6.8c0-.22.08-.4.23-.56.16-.15.34-.23.56-.23h14.24c.22 0 .4.08.56.23.15.16.23.34.23.56zM7.36 14.2v-4h1.15v1.28h1.15V10.2h1.15v4H9.66v-1.53H8.51v1.53H7.36zm5.73-.77c.37-.38.55-.85.55-1.43 0-.57-.18-1.05-.55-1.43-.38-.37-.85-.56-1.43-.56-.57 0-1.05.19-1.43.56-.37.38-.56.86-.56 1.43 0 .58.19 1.05.56 1.43.38.37.86.56 1.43.56.58 0 1.05-.19 1.43-.56zm3.82-1.31c0 .45-.14.82-.43 1.1-.29.28-.68.42-1.19.42h-.67v.56h-1.15v-4h1.82c.51 0 .9.14 1.19.42.29.28.43.65.43 1.1v.4z"/>
   </svg>
 )
 
@@ -176,7 +176,7 @@ function Home() {
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             <a
-              href="https://open.spotify.com/artist/placeholder"
+              href="https://open.spotify.com/artist/5oD38veNZ1ryvzKDH8zJKz?si=xFEdlX-ESoyYUmNHWSXSWw"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex flex-col items-center gap-2 transition-all duration-300"
@@ -186,7 +186,7 @@ function Home() {
               </div>
             </a>
             <a
-              href="https://music.apple.com/artist/placeholder"
+              href="https://music.apple.com/us/artist/plagued/1867938771"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex flex-col items-center gap-2 transition-all duration-300"
@@ -196,7 +196,7 @@ function Home() {
               </div>
             </a>
             <a
-              href="https://plagueduk.bandcamp.com"
+              href="https://plagueduk.bandcamp.com/track/malediction"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex flex-col items-center gap-2 transition-all duration-300"
@@ -206,13 +206,13 @@ function Home() {
               </div>
             </a>
             <a
-              href="https://www.deezer.com/artist/placeholder"
+              href="https://music.amazon.co.uk/artists/B008UZLJZC/the-plagued"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex flex-col items-center gap-2 transition-all duration-300"
             >
               <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center bg-plague-grey/30 border border-plague-green/30 rounded-full group-hover:bg-plague-green/20 group-hover:border-plague-green group-hover:shadow-[0_0_20px_rgba(0,255,0,0.3)] transition-all duration-300">
-                <DeezerIcon className="w-6 h-6 md:w-8 md:h-8 text-plague-green" />
+                <AmazonMusicIcon className="w-6 h-6 md:w-8 md:h-8 text-plague-green" />
               </div>
             </a>
           </motion.div>
@@ -261,7 +261,7 @@ function Home() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Album Artwork */}
+            {/* Single Artwork */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -271,13 +271,13 @@ function Home() {
             >
               <div className="absolute -inset-4 bg-plague-green/10 blur-xl group-hover:bg-plague-green/15 transition-all duration-500" />
               <img
-                src="/img/album-artwork.jpg"
-                alt="Rotting Dominions"
+                src="/img/malediction_album_cover.png"
+                alt="Malediction"
                 className="relative w-full shadow-2xl shadow-plague-green/10"
               />
             </motion.div>
 
-            {/* Album Info */}
+            {/* Single Info */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -287,12 +287,12 @@ function Home() {
               <div className="flex items-center gap-3 mb-4">
                 <Disc3 className="w-6 h-6 text-plague-green" />
                 <span className="font-display text-plague-green uppercase tracking-wider">
-                  Debut EP • Coming February 2026
+                  Single • Out Now
                 </span>
               </div>
 
               <h3 className="font-blackletter text-4xl md:text-5xl text-plague-bone mb-6">
-                Rotting Dominions
+                Malediction
               </h3>
 
               {/* Production Credits */}
@@ -313,17 +313,44 @@ function Home() {
                 </div>
               </div>
 
-              {/* Coming Soon Message */}
-              <div className="mb-8 p-8 bg-plague-green/5 border border-plague-green/20">
-                <h4 className="font-blackletter text-xl text-plague-green mb-4">
-                  Coming February 2026
-                </h4>
-                <p className="text-plague-mist/70 mb-4">
-                  Rotting Dominions will be available on all major streaming platforms.
-                </p>
-                <p className="text-plague-mist/60 text-sm">
-                  Follow us on social media for updates and the exact release date.
-                </p>
+              {/* Streaming Links */}
+              <div className="grid grid-cols-2 gap-3">
+                <a
+                  href="https://open.spotify.com/artist/5oD38veNZ1ryvzKDH8zJKz?si=xFEdlX-ESoyYUmNHWSXSWw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
+                >
+                  <SpotifyIcon className="w-5 h-5 text-plague-green" />
+                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Spotify</span>
+                </a>
+                <a
+                  href="https://music.apple.com/us/artist/plagued/1867938771"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
+                >
+                  <AppleMusicIcon className="w-5 h-5 text-plague-green" />
+                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Apple</span>
+                </a>
+                <a
+                  href="https://plagueduk.bandcamp.com/track/malediction"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
+                >
+                  <BandcampIcon className="w-5 h-5 text-plague-green" />
+                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Bandcamp</span>
+                </a>
+                <a
+                  href="https://music.amazon.co.uk/artists/B008UZLJZC/the-plagued"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
+                >
+                  <AmazonMusicIcon className="w-5 h-5 text-plague-green" />
+                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Amazon</span>
+                </a>
               </div>
             </motion.div>
           </div>
