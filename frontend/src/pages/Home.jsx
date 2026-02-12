@@ -89,12 +89,12 @@ function Home() {
         {/* Background Image with Parallax */}
         <motion.div style={{ y }} className="absolute inset-0">
           <picture>
-            <source media="(max-width: 767px)" srcSet="/img/main-band-mobile.png" />
+            <source media="(max-width: 767px)" srcSet="/img/main-band-mobile.webp" />
             <source media="(min-width: 768px)" srcSet="/img/main-band.png" />
             <img
               src="/img/main-band.png"
               alt="Plagued band photo"
-              className="absolute inset-0 w-full h-full object-cover object-[center_top] md:object-[70%_60%] 2xl:object-[70%_35%]"
+              className="absolute inset-0 w-full h-full object-cover object-[55%_top] md:object-[70%_60%] 2xl:object-[70%_35%]"
             />
           </picture>
           <div className="absolute inset-0 bg-gradient-to-b from-plague-black/60 via-plague-black/40 to-plague-black" />
