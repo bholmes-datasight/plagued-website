@@ -9,7 +9,7 @@ const upcomingShows = [
     venue: 'Bloodstock Metal 2 The Masses (Heat 2)',
     city: 'Hitchin',
     country: 'UK',
-    doors: '18:00',
+    doors: '18:30',
     firstBand: '19:00',
     ticketLink: 'https://club-85.co.uk/index.php/events/',
     ticketPrice: '£8 Advance / £10 OTD',
