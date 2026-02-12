@@ -17,6 +17,7 @@ const upcomingShows = [
     soldOut: false,
     eventDetails: 'Club 85, SG5 1PZ',
     description: 'First stage of the competition before semi-finals and grand final.',
+    image: '/img/m2tm.jpg',
   },
 ]
 
@@ -32,8 +33,20 @@ function ShowCard({ show }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="card p-6 flex flex-col md:flex-row gap-6 items-start md:items-center"
+      className="card p-0 overflow-hidden flex flex-col"
     >
+      {/* Show Image */}
+      {show.image && (
+        <div className="w-full">
+          <img
+            src={show.image}
+            alt={show.venue}
+            className="w-full h-64 md:h-80 object-cover object-center"
+          />
+        </div>
+      )}
+
+      <div className="p-6 flex flex-col md:flex-row gap-6 items-start md:items-center">
       {/* Date Box */}
       <div className="flex-shrink-0 w-24 h-24 bg-plague-green/10 border border-plague-green/30 flex flex-col items-center justify-center">
         <span className="font-display text-3xl text-plague-green">{day}</span>
@@ -102,6 +115,7 @@ function ShowCard({ show }) {
             Free Entry
           </span>
         )}
+      </div>
       </div>
     </motion.div>
   )
