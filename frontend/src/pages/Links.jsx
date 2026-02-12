@@ -200,10 +200,7 @@ function Links() {
               className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
             >
               <Globe className="w-5 h-5 text-plague-green" />
-              <div className="flex flex-col items-center">
-                <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Website</span>
-                <span className="text-plague-mist/50 text-xs">Coming Soon</span>
-              </div>
+              <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Website</span>
             </Link>
 
             <a

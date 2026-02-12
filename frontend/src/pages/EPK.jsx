@@ -133,10 +133,7 @@ function EPK() {
                 className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
               >
                 <Globe className="w-3 h-3 text-plague-green" />
-                <div className="flex flex-col">
-                  <span className="text-plague-mist/70">plagueduk.com</span>
-                  <span className="text-plague-mist/50 text-xs">Coming Soon</span>
-                </div>
+                <span className="text-plague-mist/70">plagueduk.com</span>
               </Link>
             </div>
 
