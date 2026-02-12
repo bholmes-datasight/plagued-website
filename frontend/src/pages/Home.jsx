@@ -91,7 +91,7 @@ function Home() {
           {/* Mobile */}
           <div
             className="absolute inset-0 md:hidden bg-plague-black"
-            style={{ backgroundImage: 'url(/img/main-band-mobile.jpg)', backgroundPosition: '35% -120%', backgroundSize: '190%', backgroundRepeat: 'no-repeat' }}
+            style={{ backgroundImage: 'url(/img/main-band-mobile.jpg)', backgroundPosition: '35% -90%', backgroundSize: '190%', backgroundRepeat: 'no-repeat' }}
           />
           {/* Desktop */}
           <div
