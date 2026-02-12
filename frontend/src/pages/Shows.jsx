@@ -9,8 +9,10 @@ const upcomingShows = [
     venue: 'Bloodstock Metal 2 The Masses (Heat 2)',
     city: 'Hitchin',
     country: 'UK',
-    doors: '',
-    ticketLink: '',
+    doors: '18:00',
+    firstBand: '19:00',
+    ticketLink: 'https://club-85.co.uk/index.php/events/',
+    ticketPrice: '£8 Advance / £10 OTD',
     withBands: [],
     soldOut: false,
     eventDetails: 'Club 85, SG5 1PZ',
@@ -52,7 +54,13 @@ function ShowCard({ show }) {
           {show.doors && (
             <span className="flex items-center gap-1">
               <Clock className="w-4 h-4 text-plague-green/60" />
-              Doors: {show.doors}
+              Doors: {show.doors}{show.firstBand ? ` / First Band: ${show.firstBand}` : ''}
+            </span>
+          )}
+          {show.ticketPrice && (
+            <span className="flex items-center gap-1">
+              <Ticket className="w-4 h-4 text-plague-green/60" />
+              {show.ticketPrice}
             </span>
           )}
         </div>
