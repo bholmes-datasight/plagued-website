@@ -37,11 +37,11 @@ function ShowCard({ show }) {
     >
       {/* Show Image */}
       {show.image && (
-        <div className="w-full">
+        <div className="w-full flex justify-center p-6 pb-0">
           <img
             src={show.image}
             alt={show.venue}
-            className="w-full h-64 md:h-80 object-cover object-center"
+            className="max-w-xs md:max-w-sm w-full h-auto object-contain"
           />
         </div>
       )}
