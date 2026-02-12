@@ -41,7 +41,7 @@ function ShowCard({ show }) {
           <img
             src={show.image}
             alt={show.venue}
-            className="w-full h-48 md:h-64 object-cover object-center"
+            className="w-full object-cover object-center"
           />
         </div>
       )}
