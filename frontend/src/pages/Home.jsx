@@ -88,21 +88,15 @@ function Home() {
       <section ref={heroRef} className="relative h-screen overflow-hidden">
         {/* Background Image with Parallax */}
         <motion.div style={{ y }} className="absolute inset-0">
-          {/* Mobile */}
-          <div
-            className="absolute inset-0 md:hidden bg-plague-black"
-            style={{ backgroundImage: 'url(/img/main-band-mobile.jpg)', backgroundPosition: '35% -90%', backgroundSize: '190%', backgroundRepeat: 'no-repeat' }}
-          />
-          {/* Desktop */}
-          <div
-            className="absolute inset-0 hidden md:block 2xl:hidden"
-            style={{ backgroundImage: 'url(/img/main-band.png)', backgroundPosition: '10% 60%', backgroundSize: '120%' }}
-          />
-          {/* Ultrawide */}
-          <div
-            className="absolute inset-0 hidden 2xl:block"
-            style={{ backgroundImage: 'url(/img/main-band.png)', backgroundPosition: '10% 35%', backgroundSize: '120%' }}
-          />
+          <picture>
+            <source media="(max-width: 767px)" srcSet="/img/main-band-mobile.jpg" />
+            <source media="(min-width: 768px)" srcSet="/img/main-band.png" />
+            <img
+              src="/img/main-band.png"
+              alt="Plagued band photo"
+              className="absolute inset-0 w-full h-full object-cover object-[35%_15%] md:object-[10%_60%] 2xl:object-[10%_35%]"
+            />
+          </picture>
           <div className="absolute inset-0 bg-gradient-to-b from-plague-black/60 via-plague-black/40 to-plague-black" />
           <div className="absolute inset-0 bg-gradient-to-r from-plague-black/80 via-transparent to-plague-black/80" />
         </motion.div>
