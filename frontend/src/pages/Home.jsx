@@ -90,9 +90,9 @@ function Home() {
         <motion.div style={{ y }} className="absolute inset-0">
           <picture>
             <source media="(max-width: 767px)" srcSet="/img/main-band-mobile.webp" />
-            <source media="(min-width: 768px)" srcSet="/img/main-band.png" />
+            <source media="(min-width: 768px)" srcSet="/img/main-band.webp" />
             <img
-              src="/img/main-band.png"
+              src="/img/main-band.webp"
               alt="Plagued band photo"
               className="absolute inset-0 w-full h-full object-cover object-[40%_top] md:object-[70%_60%] 2xl:object-[70%_35%]"
             />
