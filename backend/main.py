@@ -104,9 +104,13 @@ allowed_origins = [
     "https://admin.plagueduk.com",
 ]
 
+# Match Vercel preview/production deployment URLs
+allowed_origin_regex = r"https://plagued-(admin-|website-).*\.vercel\.app"
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,
+    allow_origin_regex=allowed_origin_regex,
     allow_credentials=True,
     allow_methods=["GET", "POST", "PATCH", "DELETE"],  # Added DELETE for product deletion
     allow_headers=["Content-Type", "Authorization"],  # Only necessary headers
