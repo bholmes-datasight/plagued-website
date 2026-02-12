@@ -145,14 +145,18 @@ function Home() {
           style={{ opacity }}
           className="relative z-10 h-full flex flex-col items-center justify-center px-4"
         >
-          <motion.img
-            src="/img/logo-green.png"
-            alt="Plagued"
-            className="w-64 md:w-96 lg:w-[500px] mb-8 drop-shadow-[0_0_40px_rgba(0,255,0,0.4)]"
+          <motion.div
+            className="w-64 md:w-96 lg:w-[500px] mb-8 [isolation:isolate] [transform:translateZ(0)] [-webkit-backface-visibility:hidden]"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-          />
+          >
+            <img
+              src="/img/logo-green.png"
+              alt="Plagued"
+              className="w-full drop-shadow-[0_0_40px_rgba(0,255,0,0.4)] [will-change:filter] [transform:translateZ(0)]"
+            />
+          </motion.div>
 
           <motion.h1
             className="font-blackletter text-4xl md:text-5xl lg:text-6xl text-plague-bone mb-8"
