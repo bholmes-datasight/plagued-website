@@ -94,7 +94,7 @@ function Home() {
             <img
               src="/img/main-band.png"
               alt="Plagued band photo"
-              className="absolute inset-0 w-full h-full object-cover object-[35%_10%] md:object-[25%_60%] 2xl:object-[25%_35%]"
+              className="absolute inset-0 w-full h-full object-cover object-[35%_5%] md:object-[40%_60%] 2xl:object-[40%_35%]"
             />
           </picture>
           <div className="absolute inset-0 bg-gradient-to-b from-plague-black/60 via-plague-black/40 to-plague-black" />
