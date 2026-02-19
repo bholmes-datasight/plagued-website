@@ -3,22 +3,23 @@ import { Calendar, MapPin, Ticket, Clock } from 'lucide-react'
 
 // Upcoming shows
 const upcomingShows = [
-  {
-    id: 'bloodstock-m2tm-hitchin',
-    date: '2025-04-26',
-    venue: 'Bloodstock Metal 2 The Masses (Heat 2)',
-    city: 'Hitchin',
-    country: 'UK',
-    doors: '18:30',
-    firstBand: '19:00',
-    ticketLink: 'https://club-85.co.uk/index.php/events/',
-    ticketPrice: '£8 Advance / £10 OTD',
-    withBands: [],
-    soldOut: false,
-    eventDetails: 'Club 85, SG5 1PZ',
-    description: 'First stage of the competition before semi-finals and grand final.',
-    image: '/img/m2tm.jpg',
-  },
+  // M2TM show — hidden until Friday announcement
+  // {
+  //   id: 'bloodstock-m2tm-hitchin',
+  //   date: '2025-04-26',
+  //   venue: 'Bloodstock Metal 2 The Masses (Heat 2)',
+  //   city: 'Hitchin',
+  //   country: 'UK',
+  //   doors: '18:30',
+  //   firstBand: '19:00',
+  //   ticketLink: 'https://club-85.co.uk/index.php/events/',
+  //   ticketPrice: '£8 Advance / £10 OTD',
+  //   withBands: [],
+  //   soldOut: false,
+  //   eventDetails: 'Club 85, SG5 1PZ',
+  //   description: 'First stage of the competition before semi-finals and grand final.',
+  //   image: '/img/m2tm.jpg',
+  // },
 ]
 
 function ShowCard({ show }) {
