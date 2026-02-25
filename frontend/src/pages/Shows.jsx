@@ -11,7 +11,7 @@ const upcomingShows = [
     country: 'UK',
     doors: '18:30',
     firstBand: '19:00',
-    ticketLink: 'https://club-85.co.uk/index.php/events/',
+    ticketLink: 'https://club-85.co.uk/event/metal-2-the-masses-2026-heat-2/',
     ticketPrice: '£8 Advance / £10 OTD',
     withBands: [],
     soldOut: false,
