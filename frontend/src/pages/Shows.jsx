@@ -4,8 +4,31 @@ import { Calendar, MapPin, Ticket, Clock } from 'lucide-react'
 // Upcoming shows
 const upcomingShows = [
   {
+    id: 'portland-arms-cambridge-2026',
+    date: '2026-04-05',
+    venue: 'Portland Arms',
+    city: 'Cambridge',
+    country: 'UK',
+    doors: '19:00',
+    ticketPrice: '£11 Adv / £14 OTD',
+    withBands: ['Dygora', 'Silicium', 'Tomb Slab'],
+    soldOut: false,
+  },
+  {
+    id: 'b2-norwich-2026',
+    date: '2026-04-10',
+    venue: 'B2',
+    city: 'Norwich',
+    country: 'UK',
+    doors: '19:30',
+    ticketPrice: '£7.50 Adv / £10 OTD',
+    withBands: ['State of Deceit', 'The Colony'],
+    soldOut: false,
+    description: 'Plagued supporting State of Deceit + The Colony.',
+  },
+  {
     id: 'bloodstock-m2tm-hitchin',
-    date: '2025-04-26',
+    date: '2026-04-26',
     venue: 'Bloodstock Metal 2 The Masses (Heat 2)',
     city: 'Hitchin',
     country: 'UK',
@@ -13,11 +36,10 @@ const upcomingShows = [
     firstBand: '19:00',
     ticketLink: 'https://club-85.co.uk/event/metal-2-the-masses-2026-heat-2/',
     ticketPrice: '£8 Advance / £10 OTD',
-    withBands: [],
+    withBands: ['Shadowfen', 'Dead Villains', 'Deity & Devilry'],
     soldOut: false,
     eventDetails: 'Club 85, SG5 1PZ',
-    description: 'First stage of the competition before semi-finals and grand final.',
-    image: '/img/m2tm.jpg',
+    description: 'Competition heat headlined by Devilhusk. First stage before semi-finals and grand final.',
   },
 ]
 
