@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Instagram, Facebook, Youtube, Globe, Mail } from 'lucide-react'
+import { Instagram, Facebook, Youtube, Globe, Mail, Calendar } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const TikTokIcon = ({ className }) => (
@@ -83,7 +83,7 @@ function Links() {
             className="space-y-3"
           >
             <p className="text-center text-plague-green text-sm uppercase tracking-widest mb-4 font-display">
-              New Single "Malediction" Out Now
+              Debut EP "Rotting Dominions" Out Now
             </p>
 
             <a
@@ -201,6 +201,14 @@ function Links() {
             >
               <Globe className="w-5 h-5 text-plague-green" />
               <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Website</span>
+            </Link>
+
+            <Link
+              to="/shows"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
+            >
+              <Calendar className="w-5 h-5 text-plague-green" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Shows</span>
             </Link>
 
             <a

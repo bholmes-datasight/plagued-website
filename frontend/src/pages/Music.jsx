@@ -191,7 +191,7 @@ function Music() {
               <div className="flex items-center gap-3 mb-4">
                 <Disc3 className="w-6 h-6 text-plague-green" />
                 <span className="font-display text-plague-green uppercase tracking-wider">
-                  Debut EP • Out 27th February 2026
+                  Debut EP • Out Now
                 </span>
               </div>
 
@@ -217,17 +217,53 @@ function Music() {
                 </div>
               </div>
 
-              {/* Coming Soon Message */}
-              <div className="text-center p-8 bg-plague-green/5 border border-plague-green/20">
-                <h3 className="font-blackletter text-xl text-plague-green mb-4">
-                  Out 27th February 2026
-                </h3>
-                <p className="text-plague-mist/70 mb-4">
-                  Rotting Dominions will be available on all major streaming platforms on 27th February 2026.
-                </p>
-                <p className="text-plague-mist/60 text-sm">
-                  Follow us on social media for updates and the exact release date.
-                </p>
+              {/* Streaming Links */}
+              <div className="grid grid-cols-2 gap-3">
+                <a
+                  href="https://open.spotify.com/artist/5oD38veNZ1ryvzKDH8zJKz?si=xFEdlX-ESoyYUmNHWSXSWw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
+                >
+                  <SpotifyIcon className="w-5 h-5 text-plague-green" />
+                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Spotify</span>
+                </a>
+                <a
+                  href="https://music.apple.com/us/artist/plagued/1867938771"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
+                >
+                  <AppleMusicIcon className="w-5 h-5 text-plague-green" />
+                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Apple</span>
+                </a>
+                <a
+                  href="https://music.youtube.com/channel/UC3FO1IzOLymLxDvjSc7wBYQ?si=LUHLsft0Xr9Q985I"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
+                >
+                  <YouTubeMusicIcon className="w-5 h-5 text-plague-green" />
+                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">YouTube</span>
+                </a>
+                <a
+                  href="https://plagueduk.bandcamp.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
+                >
+                  <BandcampIcon className="w-5 h-5 text-plague-green" />
+                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Bandcamp</span>
+                </a>
+                <a
+                  href="https://music.amazon.co.uk/artists/B008UZLJZC/the-plagued"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="col-span-2 flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
+                >
+                  <AmazonMusicIcon className="w-5 h-5 text-plague-green" />
+                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Amazon Music</span>
+                </a>
               </div>
 
             </motion.div>
