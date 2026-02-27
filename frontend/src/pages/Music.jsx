@@ -220,7 +220,7 @@ function Music() {
               {/* Streaming Links */}
               <div className="grid grid-cols-2 gap-3">
                 <a
-                  href="https://open.spotify.com/artist/5oD38veNZ1ryvzKDH8zJKz?si=xFEdlX-ESoyYUmNHWSXSWw"
+                  href="https://open.spotify.com/album/2jna9fGfc9BtYq4qs4bRXn?si=xgPee4F8QIOO_8PP-AJTMA"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
@@ -229,7 +229,7 @@ function Music() {
                   <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Spotify</span>
                 </a>
                 <a
-                  href="https://music.apple.com/us/artist/plagued/1867938771"
+                  href="https://music.apple.com/us/album/rotting-dominions-ep/1877272103"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
@@ -238,7 +238,7 @@ function Music() {
                   <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Apple</span>
                 </a>
                 <a
-                  href="https://music.youtube.com/channel/UC3FO1IzOLymLxDvjSc7wBYQ?si=LUHLsft0Xr9Q985I"
+                  href="https://music.youtube.com/playlist?list=OLAK5uy_l3yfgTFPtFvB40Zg5HTJFNaofwUDIBuoQ&si=_NnaQv9kgBGXPs6T"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
@@ -256,7 +256,7 @@ function Music() {
                   <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Bandcamp</span>
                 </a>
                 <a
-                  href="https://music.amazon.co.uk/artists/B008UZLJZC/the-plagued"
+                  href="https://music.amazon.co.uk/albums/B0GMYJG87C?marketplaceId=A1F83G8C2ARO7P&musicTerritory=GB&ref=dm_sh_IUcufuxgaNHKac0pZQcqdSGdp"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="col-span-2 flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
