@@ -17,10 +17,11 @@ const upcomingShows = [
   {
     id: 'b2-norwich-2026',
     date: '2026-04-10',
-    venue: 'B2',
+    venue: 'B2, Brickmakers',
     city: 'Norwich',
     country: 'UK',
     doors: '19:30',
+    ticketLink: 'https://wegottickets.com/f/14376',
     ticketPrice: '£7.50 Adv / £10 OTD',
     withBands: ['State of Deceit', 'The Colony'],
     soldOut: false,
@@ -134,7 +135,7 @@ function ShowCard({ show }) {
           </a>
         ) : (
           <span className="px-6 py-3 bg-plague-lighter/30 text-plague-mist/50 font-display text-sm uppercase tracking-wider">
-            Free Entry
+            Tickets TBA
           </span>
         )}
       </div>
