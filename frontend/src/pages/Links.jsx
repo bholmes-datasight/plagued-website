@@ -54,14 +54,16 @@ function Links() {
       {/* Content */}
       <div className="relative z-10 w-full max-w-xl px-4">
         {/* Logo */}
-        <motion.img
-          src="/img/logo-green.png"
-          alt="Plagued"
-          className="w-48 md:w-64 mx-auto mb-8 drop-shadow-[0_0_40px_rgba(0,255,0,0.3)]"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        />
+        <Link to="/">
+          <motion.img
+            src="/img/logo-green.png"
+            alt="Plagued"
+            className="w-48 md:w-64 mx-auto mb-8 drop-shadow-[0_0_40px_rgba(0,255,0,0.3)]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+          />
+        </Link>
 
         {/* Tagline */}
         <motion.p

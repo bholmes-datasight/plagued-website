@@ -52,115 +52,6 @@ function Music() {
         </div>
       </section>
 
-      {/* Malediction Single */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Single Artwork */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative group"
-            >
-              <div className="absolute -inset-4 bg-black/20 blur-2xl group-hover:bg-black/30 transition-all duration-500" />
-              <img
-                src="/img/malediction_album_cover.png"
-                alt="Malediction"
-                className="relative w-full shadow-2xl shadow-black/30"
-              />
-            </motion.div>
-
-            {/* Single Info */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <Disc3 className="w-6 h-6 text-plague-green" />
-                <span className="font-display text-plague-green uppercase tracking-wider">
-                  Single • Out Now
-                </span>
-              </div>
-
-              <h2 className="font-blackletter text-4xl md:text-5xl lg:text-6xl text-plague-bone mb-8">
-                Malediction
-              </h2>
-
-              {/* Production Credits */}
-              <div className="mb-10">
-                <h3 className="font-display text-sm uppercase tracking-widest text-plague-mist/60 mb-4 flex items-center gap-2">
-                  <Music2 className="w-4 h-4" />
-                  Production Credits
-                </h3>
-                <div className="space-y-3 p-6 bg-plague-grey/20 border border-plague-lighter/10">
-                  <div className="flex justify-between items-center">
-                    <span className="text-plague-mist/60 text-sm">Produced, Recorded & Mixed by</span>
-                    <span className="text-plague-bone font-display">Benjamin Holmes</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-plague-mist/60 text-sm">Mastered by</span>
-                    <span className="text-plague-bone font-display">Dan Swanö</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Streaming Links */}
-              <div className="grid grid-cols-2 gap-3">
-                <a
-                  href="https://open.spotify.com/artist/5oD38veNZ1ryvzKDH8zJKz?si=xFEdlX-ESoyYUmNHWSXSWw"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
-                >
-                  <SpotifyIcon className="w-5 h-5 text-plague-green" />
-                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Spotify</span>
-                </a>
-                <a
-                  href="https://music.apple.com/us/artist/plagued/1867938771"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
-                >
-                  <AppleMusicIcon className="w-5 h-5 text-plague-green" />
-                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Apple</span>
-                </a>
-                <a
-                  href="https://music.youtube.com/channel/UC3FO1IzOLymLxDvjSc7wBYQ?si=LUHLsft0Xr9Q985I"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
-                >
-                  <YouTubeMusicIcon className="w-5 h-5 text-plague-green" />
-                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">YouTube</span>
-                </a>
-                <a
-                  href="https://plagueduk.bandcamp.com/track/malediction"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
-                >
-                  <BandcampIcon className="w-5 h-5 text-plague-green" />
-                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Bandcamp</span>
-                </a>
-                <a
-                  href="https://music.amazon.co.uk/artists/B008UZLJZC/the-plagued"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="col-span-2 flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
-                >
-                  <AmazonMusicIcon className="w-5 h-5 text-plague-green" />
-                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Amazon Music</span>
-                </a>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Rotting Dominions EP */}
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
@@ -266,6 +157,115 @@ function Music() {
                 </a>
               </div>
 
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Malediction Single */}
+      <section className="py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Single Artwork */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative group"
+            >
+              <div className="absolute -inset-4 bg-black/20 blur-2xl group-hover:bg-black/30 transition-all duration-500" />
+              <img
+                src="/img/malediction_album_cover.png"
+                alt="Malediction"
+                className="relative w-full shadow-2xl shadow-black/30"
+              />
+            </motion.div>
+
+            {/* Single Info */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <Disc3 className="w-6 h-6 text-plague-green" />
+                <span className="font-display text-plague-green uppercase tracking-wider">
+                  Single • Out Now
+                </span>
+              </div>
+
+              <h2 className="font-blackletter text-4xl md:text-5xl lg:text-6xl text-plague-bone mb-8">
+                Malediction
+              </h2>
+
+              {/* Production Credits */}
+              <div className="mb-10">
+                <h3 className="font-display text-sm uppercase tracking-widest text-plague-mist/60 mb-4 flex items-center gap-2">
+                  <Music2 className="w-4 h-4" />
+                  Production Credits
+                </h3>
+                <div className="space-y-3 p-6 bg-plague-grey/20 border border-plague-lighter/10">
+                  <div className="flex justify-between items-center">
+                    <span className="text-plague-mist/60 text-sm">Produced, Recorded & Mixed by</span>
+                    <span className="text-plague-bone font-display">Benjamin Holmes</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-plague-mist/60 text-sm">Mastered by</span>
+                    <span className="text-plague-bone font-display">Dan Swanö</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Streaming Links */}
+              <div className="grid grid-cols-2 gap-3">
+                <a
+                  href="https://open.spotify.com/artist/5oD38veNZ1ryvzKDH8zJKz?si=xFEdlX-ESoyYUmNHWSXSWw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
+                >
+                  <SpotifyIcon className="w-5 h-5 text-plague-green" />
+                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Spotify</span>
+                </a>
+                <a
+                  href="https://music.apple.com/us/artist/plagued/1867938771"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
+                >
+                  <AppleMusicIcon className="w-5 h-5 text-plague-green" />
+                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Apple</span>
+                </a>
+                <a
+                  href="https://music.youtube.com/channel/UC3FO1IzOLymLxDvjSc7wBYQ?si=LUHLsft0Xr9Q985I"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
+                >
+                  <YouTubeMusicIcon className="w-5 h-5 text-plague-green" />
+                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">YouTube</span>
+                </a>
+                <a
+                  href="https://plagueduk.bandcamp.com/track/malediction"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
+                >
+                  <BandcampIcon className="w-5 h-5 text-plague-green" />
+                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Bandcamp</span>
+                </a>
+                <a
+                  href="https://music.amazon.co.uk/artists/B008UZLJZC/the-plagued"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="col-span-2 flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"
+                >
+                  <AmazonMusicIcon className="w-5 h-5 text-plague-green" />
+                  <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Amazon Music</span>
+                </a>
+              </div>
             </motion.div>
           </div>
         </div>
