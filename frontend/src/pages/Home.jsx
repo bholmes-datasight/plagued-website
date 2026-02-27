@@ -1,7 +1,7 @@
 import { useEffect, useRef, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Play, ArrowRight, Skull, Users, Disc3, Music2, Mail, Instagram, Facebook, Youtube } from 'lucide-react'
+import { Play, ArrowRight, Skull, Users, Disc3, Music2, Mail, Instagram, Facebook, Youtube, Calendar } from 'lucide-react'
 
 // Custom SVG icons for streaming platforms
 const SpotifyIcon = ({ className }) => (
@@ -242,6 +242,59 @@ function Home() {
             </div>
           </motion.div>
         </motion.div>
+      </section>
+
+      {/* Upcoming Shows Section */}
+      <section className="py-24 px-4 bg-plague-dark/50">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="section-heading mb-4">Upcoming Shows</h2>
+            <div className="w-24 h-1 bg-plague-green mx-auto" />
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { src: '/img/shows/belligerent_promotions_gig_april.jpg', alt: 'Portland Arms, Cambridge — 5 Apr 2026' },
+              { src: '/img/shows/searchlight_promotions_gig_april.jpg', alt: 'B2 Brickmakers, Norwich — 10 Apr 2026' },
+              { src: '/img/shows/m2tm_gig_april.jpg', alt: 'M2TM Hitchin — 26 Apr 2026' },
+            ].map((flyer, i) => (
+              <motion.div
+                key={flyer.src}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.15 }}
+                className="relative group overflow-hidden border border-plague-green/20 hover:border-plague-green/50 transition-all duration-300"
+              >
+                <img
+                  src={flyer.src}
+                  alt={flyer.alt}
+                  className="w-full object-cover opacity-75 group-hover:opacity-90 transition-opacity duration-300"
+                />
+                <div className="absolute inset-0 bg-plague-black/20 group-hover:bg-plague-black/10 transition-all duration-300" />
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="text-center mt-10"
+          >
+            <Link to="/shows" className="btn-secondary inline-flex items-center gap-2">
+              <Calendar className="w-5 h-5" />
+              View All Shows
+            </Link>
+          </motion.div>
+        </div>
       </section>
 
       {/* Latest Release Section */}
