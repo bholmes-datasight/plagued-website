@@ -222,7 +222,7 @@ function Home() {
           >
             <Link to="/music" className="btn-secondary flex items-center gap-2 inline-flex">
               <Disc3 className="w-5 h-5" />
-              Listen to Malediction
+              Listen Now
             </Link>
           </motion.div>
 
@@ -259,7 +259,7 @@ function Home() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Single Artwork */}
+            {/* EP Artwork */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -269,13 +269,13 @@ function Home() {
             >
               <div className="absolute -inset-4 bg-black/20 blur-xl group-hover:bg-black/30 transition-all duration-500" />
               <img
-                src="/img/malediction_album_cover.png"
-                alt="Malediction"
+                src="/img/album-artwork.jpg"
+                alt="Rotting Dominions"
                 className="relative w-full shadow-2xl shadow-black/30"
               />
             </motion.div>
 
-            {/* Single Info */}
+            {/* EP Info */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -285,12 +285,12 @@ function Home() {
               <div className="flex items-center gap-3 mb-4">
                 <Disc3 className="w-6 h-6 text-plague-green" />
                 <span className="font-display text-plague-green uppercase tracking-wider">
-                  Single • Out Now
+                  Debut EP • Out Now
                 </span>
               </div>
 
               <h3 className="font-blackletter text-4xl md:text-5xl text-plague-bone mb-6">
-                Malediction
+                Rotting Dominions
               </h3>
 
               {/* Production Credits */}
@@ -332,7 +332,7 @@ function Home() {
                   <span className="font-display text-sm uppercase tracking-wider text-plague-mist">Apple</span>
                 </a>
                 <a
-                  href="https://plagueduk.bandcamp.com/track/malediction"
+                  href="https://plagueduk.bandcamp.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 p-3 bg-plague-grey/20 border border-plague-green/30 hover:border-plague-green hover:bg-plague-grey/40 transition-all duration-300"

@@ -75,12 +75,36 @@ function Links() {
 
         {/* Links Container */}
         <div className="space-y-4">
-          {/* Streaming Platforms - New Single */}
+          {/* Website & Shows */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-3"
+          >
+            <Link
+              to="/"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
+            >
+              <Globe className="w-5 h-5 text-plague-green" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Website</span>
+            </Link>
+
+            <Link
+              to="/shows"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
+            >
+              <Calendar className="w-5 h-5 text-plague-green" />
+              <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Shows</span>
+            </Link>
+          </motion.div>
+
+          {/* Streaming Platforms - EP */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="space-y-3"
+            className="space-y-3 pt-4"
           >
             <p className="text-center text-plague-green text-sm uppercase tracking-widest mb-4 font-display">
               Debut EP "Rotting Dominions" Out Now
@@ -188,29 +212,13 @@ function Links() {
             </a>
           </motion.div>
 
-          {/* Website & Contact */}
+          {/* Contact */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="space-y-3 pt-4"
           >
-            <Link
-              to="/"
-              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
-            >
-              <Globe className="w-5 h-5 text-plague-green" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Website</span>
-            </Link>
-
-            <Link
-              to="/shows"
-              className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
-            >
-              <Calendar className="w-5 h-5 text-plague-green" />
-              <span className="font-display text-sm uppercase tracking-wider text-plague-bone">Shows</span>
-            </Link>
-
             <a
               href="mailto:contact@plagueduk.com"
               className="flex items-center justify-center gap-3 w-full p-4 bg-plague-grey/40 border border-plague-green/30 hover:bg-plague-green/10 hover:border-plague-green transition-all duration-300 backdrop-blur-sm"
