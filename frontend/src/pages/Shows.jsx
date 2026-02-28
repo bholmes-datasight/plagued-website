@@ -10,6 +10,7 @@ const upcomingShows = [
     city: 'Cambridge',
     country: 'UK',
     doors: '19:00',
+    ticketLink: 'https://wegottickets.com/event/689893',
     ticketPrice: '£11 Adv / £14 OTD',
     withBands: ['Dygora', 'Silicium', 'Tomb Slab'],
     soldOut: false,
