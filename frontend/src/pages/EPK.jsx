@@ -275,6 +275,15 @@ function EPK() {
                   <Image className="w-3 h-3 text-plague-green" />
                   <span className="text-plague-mist/70">Band Photos</span>
                 </a>
+                <a
+                  href="https://www.dropbox.com/scl/fo/gnf7uqnkvjjfz4w2wm6ah/AESntVuU2fMEJaHgseFs2Hs?rlkey=4wsfzu8vjgto82bpiqmmfyif2&st=v1plcyau&dl=0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2 bg-plague-lighter/20 hover:bg-plague-green/20 transition-all duration-300 rounded text-xs"
+                >
+                  <Download className="w-3 h-3 text-plague-green" />
+                  <span className="text-plague-mist/70">Download Logos</span>
+                </a>
               </div>
             </div>
           </motion.div>
