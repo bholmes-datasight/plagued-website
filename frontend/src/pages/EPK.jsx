@@ -1,7 +1,52 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Disc3, Music2, Mail, Instagram, Facebook, Youtube, Download, Globe, Image } from 'lucide-react'
 import { usePageConfig } from '../hooks/usePageConfig'
 import { Link } from 'react-router-dom'
+
+function EPKGate({ onUnlock }) {
+  const [input, setInput] = useState('')
+  const [error, setError] = useState(false)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (input === 'plagued2024') {
+      sessionStorage.setItem('epk_unlocked', '1')
+      onUnlock()
+    } else {
+      setError(true)
+      setInput('')
+    }
+  }
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-plague-black px-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="card p-8 w-full max-w-sm text-center"
+      >
+        <img src="/img/logo-green.png" alt="Plagued" className="w-32 mx-auto mb-6" />
+        <h2 className="font-display text-sm uppercase tracking-widest text-plague-mist/60 mb-6">EPK Access</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="password"
+            value={input}
+            onChange={(e) => { setInput(e.target.value); setError(false) }}
+            placeholder="Enter password"
+            autoFocus
+            className="w-full bg-plague-lighter/20 border border-plague-lighter/30 text-plague-mist px-4 py-3 text-sm focus:outline-none focus:border-plague-green/60 transition-colors"
+          />
+          {error && (
+            <p className="text-plague-red/80 text-xs">Incorrect password.</p>
+          )}
+          <button type="submit" className="btn-primary w-full">Enter</button>
+        </form>
+      </motion.div>
+    </div>
+  )
+}
 
 // Custom SVG icons for streaming platforms
 const SpotifyIcon = ({ className }) => (
@@ -59,6 +104,9 @@ const bandMembers = [
 
 function EPK() {
   const { epkConfig } = usePageConfig()
+  const [unlocked, setUnlocked] = useState(sessionStorage.getItem('epk_unlocked') === '1')
+
+  if (!unlocked) return <EPKGate onUnlock={() => setUnlocked(true)} />
 
   return (
     <div className="min-h-screen relative overflow-hidden">
