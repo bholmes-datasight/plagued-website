@@ -72,7 +72,7 @@ function ShowCard({ show, isPast }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className={`card p-0 overflow-hidden flex flex-col${isPast ? ' opacity-20 grayscale' : ''}`}
+      className="card p-0 overflow-hidden flex flex-col"
     >
       {/* Show Image */}
       {show.image && (
@@ -188,12 +188,13 @@ function Shows() {
         <div className="max-w-4xl mx-auto">
           {upcomingShows.length > 0 ? (
             <div className="space-y-6">
-              {upcomingShows.map((show) => {
+              {upcomingShows.filter((show) => {
                 const today = new Date()
                 today.setHours(0, 0, 0, 0)
-                const isPast = new Date(show.date) < today
-                return <ShowCard key={show.id} show={show} isPast={isPast} />
-              })}
+                return new Date(show.date) >= today
+              }).map((show) => (
+                <ShowCard key={show.id} show={show} />
+              ))}
             </div>
           ) : (
             <motion.div
