@@ -214,6 +214,28 @@ function Merch() {
         </div>
       </section>
 
+      {/* Bandcamp Merch Link */}
+      <section className="py-8 px-4">
+        <div className="max-w-7xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="text-plague-mist/60 mb-4">Shop our merch on Bandcamp:</p>
+            <a
+              href="https://plagueduk.bandcamp.com/merch"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary inline-flex items-center gap-2"
+            >
+              <ShoppingCart className="w-5 h-5" />
+              Visit our Bandcamp Store
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Products Grid */}
       <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">

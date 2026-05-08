@@ -258,28 +258,21 @@ function Home() {
             <div className="w-24 h-1 bg-plague-green mx-auto" />
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { src: '/img/shows/belligerent_promotions_gig_april.jpg', alt: 'Portland Arms, Cambridge — 5 Apr 2026' },
-              { src: '/img/shows/searchlight_promotions_gig_april.jpg', alt: 'B2 Brickmakers, Norwich — 10 Apr 2026' },
-              { src: '/img/shows/m2tm_gig_april.jpg', alt: 'M2TM Hitchin — 26 Apr 2026' },
-            ].map((flyer, i) => (
-              <motion.div
-                key={flyer.src}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
-                className="relative group overflow-hidden border border-plague-green/20 hover:border-plague-green/50 transition-all duration-300"
-              >
-                <img
-                  src={flyer.src}
-                  alt={flyer.alt}
-                  className="w-full object-cover opacity-75 group-hover:opacity-90 transition-opacity duration-300"
-                />
-                <div className="absolute inset-0 bg-plague-black/20 group-hover:bg-plague-black/10 transition-all duration-300" />
-              </motion.div>
-            ))}
+          <div className="flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="relative group overflow-hidden border border-plague-green/20 hover:border-plague-green/50 transition-all duration-300 max-w-sm w-full"
+            >
+              <img
+                src="/img/shows/oxidised-razor-gig.jpg"
+                alt="Oxidised Razor gig"
+                className="w-full object-cover opacity-75 group-hover:opacity-90 transition-opacity duration-300"
+              />
+              <div className="absolute inset-0 bg-plague-black/20 group-hover:bg-plague-black/10 transition-all duration-300" />
+            </motion.div>
           </div>
 
           <motion.div

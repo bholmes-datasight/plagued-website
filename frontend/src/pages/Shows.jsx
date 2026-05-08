@@ -43,9 +43,24 @@ const upcomingShows = [
     eventDetails: 'Club 85, SG5 1PZ',
     description: 'Competition heat headlined by Devilhusk. First stage before semi-finals and grand final.',
   },
+  {
+    id: 'oxidised-razor-portland-arms-2026',
+    date: '2026-07-30',
+    venue: 'The Portland Arms',
+    city: 'Cambridge',
+    country: 'UK',
+    doors: '19:00',
+    firstBand: '19:30',
+    ticketLink: 'https://wegottickets.com/f/18575',
+    ticketPrice: '£12.10',
+    withBands: ['Oxidised Razor', 'Thuq'],
+    soldOut: false,
+    image: '/img/shows/oxidised-razor-gig.jpg',
+    description: 'Plagued supporting Oxidised Razor + Thuq. Presented by Belligerent Promotions.',
+  },
 ]
 
-function ShowCard({ show }) {
+function ShowCard({ show, isPast }) {
   const date = new Date(show.date)
   const day = date.getDate()
   const month = date.toLocaleString('default', { month: 'short' }).toUpperCase()
@@ -57,7 +72,7 @@ function ShowCard({ show }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="card p-0 overflow-hidden flex flex-col"
+      className={`card p-0 overflow-hidden flex flex-col${isPast ? ' opacity-40 grayscale' : ''}`}
     >
       {/* Show Image */}
       {show.image && (
@@ -173,9 +188,12 @@ function Shows() {
         <div className="max-w-4xl mx-auto">
           {upcomingShows.length > 0 ? (
             <div className="space-y-6">
-              {upcomingShows.map((show) => (
-                <ShowCard key={show.id} show={show} />
-              ))}
+              {upcomingShows.map((show) => {
+                const today = new Date()
+                today.setHours(0, 0, 0, 0)
+                const isPast = new Date(show.date) < today
+                return <ShowCard key={show.id} show={show} isPast={isPast} />
+              })}
             </div>
           ) : (
             <motion.div
