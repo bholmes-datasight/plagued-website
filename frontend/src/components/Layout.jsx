@@ -174,7 +174,7 @@ function Layout() {
             <div>
               <img src="/img/logo-green.png" alt="Plagued" className="h-10 w-auto mb-4" />
               <p className="text-plague-mist/60 text-sm">
-                Death Metal from the United Kingdom
+                Death Metal from the East of England
               </p>
             </div>
 
