@@ -72,7 +72,7 @@ function ShowCard({ show, isPast }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className={`card p-0 overflow-hidden flex flex-col${isPast ? ' opacity-40 grayscale' : ''}`}
+      className={`card p-0 overflow-hidden flex flex-col${isPast ? ' opacity-20 grayscale' : ''}`}
     >
       {/* Show Image */}
       {show.image && (
