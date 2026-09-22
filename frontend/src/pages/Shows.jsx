@@ -1,64 +1,6 @@
 import { motion } from 'framer-motion'
 import { Calendar, MapPin, Ticket, Clock } from 'lucide-react'
-
-// Upcoming shows
-const upcomingShows = [
-  {
-    id: 'portland-arms-cambridge-2026',
-    date: '2026-04-05',
-    venue: 'Portland Arms',
-    city: 'Cambridge',
-    country: 'UK',
-    doors: '19:00',
-    ticketLink: 'https://wegottickets.com/event/689893',
-    ticketPrice: '£11 Adv / £14 OTD',
-    withBands: ['Dygora', 'Silicium', 'Tomb Slab'],
-    soldOut: false,
-  },
-  {
-    id: 'b2-norwich-2026',
-    date: '2026-04-10',
-    venue: 'B2, Brickmakers',
-    city: 'Norwich',
-    country: 'UK',
-    doors: '19:30',
-    ticketLink: 'https://wegottickets.com/f/14376',
-    ticketPrice: '£7.50 Adv / £10 OTD',
-    withBands: ['State of Deceit', 'The Colony'],
-    soldOut: false,
-    description: 'Plagued supporting State of Deceit + The Colony.',
-  },
-  {
-    id: 'bloodstock-m2tm-hitchin',
-    date: '2026-04-26',
-    venue: 'Bloodstock Metal 2 The Masses (Heat 2)',
-    city: 'Hitchin',
-    country: 'UK',
-    doors: '18:30',
-    firstBand: '19:00',
-    ticketLink: 'https://club-85.co.uk/event/metal-2-the-masses-2026-heat-2/',
-    ticketPrice: '£8 Advance / £10 OTD',
-    withBands: ['Shadowfen', 'Dead Villains', 'Deity & Devilry'],
-    soldOut: false,
-    eventDetails: 'Club 85, SG5 1PZ',
-    description: 'Competition heat headlined by Devilhusk. First stage before semi-finals and grand final.',
-  },
-  {
-    id: 'oxidised-razor-portland-arms-2026',
-    date: '2026-07-30',
-    venue: 'The Portland Arms',
-    city: 'Cambridge',
-    country: 'UK',
-    doors: '19:00',
-    firstBand: '19:30',
-    ticketLink: 'https://wegottickets.com/f/18575',
-    ticketPrice: '£12.10',
-    withBands: ['Oxidised Razor', 'Thuq'],
-    soldOut: false,
-    image: '/img/shows/oxidised-razor-gig.jpg',
-    description: 'Plagued supporting Oxidised Razor + Thuq. Presented by Belligerent Promotions.',
-  },
-]
+import { getUpcomingShows, getPastShows } from '../data/shows'
 
 function ShowCard({ show, isPast }) {
   const date = new Date(show.date)
@@ -72,44 +14,58 @@ function ShowCard({ show, isPast }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="card p-0 overflow-hidden flex flex-col"
+      className={`card p-0 overflow-hidden flex flex-col relative ${
+        isPast ? 'opacity-60 hover:opacity-100 transition-opacity duration-300' : ''
+      }`}
     >
-      {/* Show Image */}
+      {/* Past Show Badge */}
+      {isPast && (
+        <span className="absolute top-4 right-4 z-10 px-3 py-1 bg-plague-black/80 border border-plague-mist/30 text-plague-mist/70 font-display text-xs uppercase tracking-widest">
+          Past Show
+        </span>
+      )}
+
+      {/* Show Poster - portrait artwork, so cap the height and letterbox it */}
       {show.image && (
-        <div className="w-full">
+        <div className="w-full flex justify-center bg-plague-black">
           <img
             src={show.image}
-            alt={show.venue}
-            className="w-full object-cover object-center"
+            alt={`${show.venue} poster`}
+            loading="lazy"
+            className={`max-h-[28rem] w-auto max-w-full object-contain ${isPast ? 'grayscale' : ''}`}
           />
         </div>
       )}
 
       <div className="p-6 flex flex-col md:flex-row gap-6 items-start md:items-center">
       {/* Date Box */}
-      <div className="flex-shrink-0 w-24 h-24 bg-plague-green/10 border border-plague-green/30 flex flex-col items-center justify-center">
-        <span className="font-display text-3xl text-plague-green">{day}</span>
+      <div className={`flex-shrink-0 w-24 h-24 border flex flex-col items-center justify-center ${
+        isPast ? 'bg-plague-lighter/20 border-plague-mist/20' : 'bg-plague-green/10 border-plague-green/30'
+      }`}>
+        <span className={`font-display text-3xl ${isPast ? 'text-plague-mist/50' : 'text-plague-green'}`}>{day}</span>
         <span className="font-display text-sm text-plague-mist/60">{month}</span>
         <span className="font-display text-xs text-plague-mist/40">{year}</span>
       </div>
 
       {/* Show Info */}
       <div className="flex-grow">
-        <h3 className="font-display text-xl uppercase tracking-wider text-plague-bone mb-2">
+        <h3 className={`font-display text-xl uppercase tracking-wider mb-2 ${
+          isPast ? 'text-plague-mist/70' : 'text-plague-bone'
+        }`}>
           {show.venue}
         </h3>
         <div className="flex flex-wrap gap-4 text-sm text-plague-mist/60">
           <span className="flex items-center gap-1">
-            <MapPin className="w-4 h-4 text-plague-green/60" />
+            <MapPin className={`w-4 h-4 ${isPast ? 'text-plague-mist/40' : 'text-plague-green/60'}`} />
             {show.city}, {show.country}
           </span>
-          {show.doors && (
+          {!isPast && show.doors && (
             <span className="flex items-center gap-1">
               <Clock className="w-4 h-4 text-plague-green/60" />
               Doors: {show.doors}{show.firstBand ? ` / First Band: ${show.firstBand}` : ''}
             </span>
           )}
-          {show.ticketPrice && (
+          {!isPast && show.ticketPrice && (
             <span className="flex items-center gap-1">
               <Ticket className="w-4 h-4 text-plague-green/60" />
               {show.ticketPrice}
@@ -135,7 +91,11 @@ function ShowCard({ show, isPast }) {
 
       {/* Ticket Button */}
       <div className="flex-shrink-0">
-        {show.soldOut ? (
+        {isPast ? (
+          <span className="inline-block px-6 py-3 bg-plague-lighter/30 border border-plague-mist/20 text-plague-mist/50 font-display text-sm uppercase tracking-wider">
+            Played
+          </span>
+        ) : show.soldOut ? (
           <span className="px-6 py-3 bg-plague-red/20 border border-plague-red/50 text-plague-red font-display text-sm uppercase tracking-wider">
             Sold Out
           </span>
@@ -161,6 +121,9 @@ function ShowCard({ show, isPast }) {
 }
 
 function Shows() {
+  const upcomingShows = getUpcomingShows()
+  const pastShows = getPastShows()
+
   return (
     <div className="noise-overlay">
       {/* Hero Section */}
@@ -183,29 +146,36 @@ function Shows() {
         </div>
       </section>
 
-      {/* Shows List */}
+      {/* Upcoming Shows */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="font-display text-2xl uppercase tracking-widest text-plague-bone mb-8 flex items-center gap-4"
+          >
+            Upcoming
+            <span className="flex-grow h-px bg-plague-green/30" />
+          </motion.h2>
+
           {upcomingShows.length > 0 ? (
             <div className="space-y-6">
-              {upcomingShows.filter((show) => {
-                const today = new Date()
-                today.setHours(0, 0, 0, 0)
-                return new Date(show.date) >= today
-              }).map((show) => (
-                <ShowCard key={show.id} show={show} />
+              {upcomingShows.map((show) => (
+                <ShowCard key={show.id} show={show} isPast={false} />
               ))}
             </div>
           ) : (
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-center py-24"
+              className="text-center py-16"
             >
               <Calendar className="w-20 h-20 mx-auto text-plague-lighter/40 mb-6" />
-              <h2 className="font-display text-2xl uppercase tracking-wider text-plague-mist/60 mb-4">
+              <h3 className="font-display text-2xl uppercase tracking-wider text-plague-mist/60 mb-4">
                 No Shows Announced Yet
-              </h2>
+              </h3>
               <p className="text-plague-mist/40 max-w-md mx-auto">
                 We're working on bringing the plague to a stage near you.
                 Follow us on social media for announcements.
@@ -214,6 +184,30 @@ function Shows() {
           )}
         </div>
       </section>
+
+      {/* Past Shows */}
+      {pastShows.length > 0 && (
+        <section className="pb-16 px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="font-display text-2xl uppercase tracking-widest text-plague-mist/50 mb-8 flex items-center gap-4"
+            >
+              Past Shows
+              <span className="flex-grow h-px bg-plague-mist/20" />
+            </motion.h2>
+
+            <div className="space-y-6">
+              {pastShows.map((show) => (
+                <ShowCard key={show.id} show={show} isPast={true} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Booking Section */}
       <section className="py-24 px-4 bg-plague-dark/50">

@@ -2,6 +2,7 @@ import { useEffect, useRef, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Play, ArrowRight, Skull, Users, Disc3, Music2, Mail, Instagram, Facebook, Youtube, Calendar } from 'lucide-react'
+import { getUpcomingShows } from '../data/shows'
 
 // Custom SVG icons for streaming platforms
 const SpotifyIcon = ({ className }) => (
@@ -81,6 +82,9 @@ function Home() {
   // Generate particles once
   const particlesMobile = useMemo(() => generateParticles(50), [])
   const particlesDesktop = useMemo(() => generateParticles(80), [])
+
+  // Next dates, straight from the shared shows list so this never goes stale
+  const upcomingShows = useMemo(() => getUpcomingShows(), [])
 
   return (
     <div className="noise-overlay">
@@ -258,22 +262,67 @@ function Home() {
             <div className="w-24 h-1 bg-plague-green mx-auto" />
           </motion.div>
 
-          <div className="flex justify-center">
+          {upcomingShows.length > 0 ? (
+            <div className="flex flex-wrap justify-center gap-8">
+              {upcomingShows.slice(0, 2).map((show, index) => (
+                <motion.div
+                  key={show.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.15 }}
+                  className="max-w-sm w-full"
+                >
+                  <a
+                    href={show.ticketLink || '/shows'}
+                    target={show.ticketLink ? '_blank' : undefined}
+                    rel={show.ticketLink ? 'noopener noreferrer' : undefined}
+                    className="relative group block overflow-hidden border border-plague-green/20 hover:border-plague-green/50 transition-all duration-300"
+                  >
+                    {show.image && (
+                      <img
+                        src={show.image}
+                        alt={`${show.venue}, ${show.city}`}
+                        loading="lazy"
+                        className="w-full object-cover opacity-75 group-hover:opacity-90 transition-opacity duration-300"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-plague-black/20 group-hover:bg-plague-black/10 transition-all duration-300" />
+                  </a>
+
+                  <div className="mt-4 text-center">
+                    <p className="font-display text-sm uppercase tracking-widest text-plague-green">
+                      {new Date(show.date).toLocaleDateString('en-GB', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric',
+                      })}
+                    </p>
+                    <p className="font-display text-lg uppercase tracking-wider text-plague-bone mt-1">
+                      {show.venue}
+                    </p>
+                    <p className="text-plague-mist/50 text-sm">
+                      {show.city}, {show.country}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          ) : (
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="relative group overflow-hidden border border-plague-green/20 hover:border-plague-green/50 transition-all duration-300 max-w-sm w-full"
+              className="text-center"
             >
-              <img
-                src="/img/shows/oxidised-razor-gig.jpg"
-                alt="Oxidised Razor gig"
-                className="w-full object-cover opacity-75 group-hover:opacity-90 transition-opacity duration-300"
-              />
-              <div className="absolute inset-0 bg-plague-black/20 group-hover:bg-plague-black/10 transition-all duration-300" />
+              <Calendar className="w-16 h-16 mx-auto text-plague-lighter/40 mb-6" />
+              <p className="text-plague-mist/50 max-w-md mx-auto">
+                No shows announced right now. Check back soon, or follow us for
+                announcements.
+              </p>
             </motion.div>
-          </div>
+          )}
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
