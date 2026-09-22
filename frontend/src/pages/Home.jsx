@@ -46,29 +46,6 @@ const generateParticles = (count) => {
   }))
 }
 
-const bandMembers = [
-  {
-    name: 'Chris Binks',
-    role: 'Vocals',
-  },
-  {
-    name: 'Benjamin Holmes',
-    role: 'Lead Guitar',
-  },
-  {
-    name: 'Chris Poll',
-    role: 'Rhythm Guitar',
-  },
-  {
-    name: 'Jay Rutterford',
-    role: 'Bass Guitar',
-  },
-  {
-    name: 'Joey Mac',
-    role: 'Drums',
-  },
-]
-
 function Home() {
   const heroRef = useRef(null)
   const { scrollYProgress } = useScroll({

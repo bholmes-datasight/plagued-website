@@ -67,7 +67,7 @@ export const shows = [
     city: 'Norwich',
     country: 'UK',
     doors: '19:00',
-    ticketLink: 'https://wegottickets.com/f/21151',
+    ticketLink: 'https://wegottickets.com/f/21184',
     ticketPrice: '£11 Adv / £14 OTD',
     withBands: ['Stahlsarg', 'Terra', 'Bloodrieg'],
     soldOut: false,

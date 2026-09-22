@@ -1,28 +1,6 @@
 import { motion } from 'framer-motion'
 import { Users } from 'lucide-react'
-
-const bandMembers = [
-  {
-    name: 'Chris Binks',
-    role: 'Vocals',
-  },
-  {
-    name: 'Benjamin Holmes',
-    role: 'Lead Guitar',
-  },
-  {
-    name: 'Chris Poll',
-    role: 'Rhythm Guitar',
-  },
-  {
-    name: 'Jay Rutterford',
-    role: 'Bass Guitar',
-  },
-  {
-    name: 'Joey Mac',
-    role: 'Drums',
-  },
-]
+import { bandMembers } from '../data/band'
 
 function About() {
   return (
