@@ -241,7 +241,7 @@ function Home() {
 
           {upcomingShows.length > 0 ? (
             <div className="flex flex-wrap justify-center gap-8">
-              {upcomingShows.slice(0, 2).map((show, index) => (
+              {upcomingShows.slice(0, 3).map((show, index) => (
                 <motion.div
                   key={show.id}
                   initial={{ opacity: 0, y: 30 }}
