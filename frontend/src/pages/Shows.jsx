@@ -109,6 +109,10 @@ function ShowCard({ show, isPast }) {
             <Ticket className="w-5 h-5" />
             Tickets
           </a>
+        ) : show.freeEntry ? (
+          <span className="px-6 py-3 border border-plague-green/50 text-plague-green font-display text-sm uppercase tracking-wider">
+            Free Entry
+          </span>
         ) : (
           <span className="px-6 py-3 bg-plague-lighter/30 text-plague-mist/50 font-display text-sm uppercase tracking-wider">
             Tickets TBA
