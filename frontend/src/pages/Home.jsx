@@ -254,7 +254,7 @@ function Home() {
                     href={show.ticketLink || '/shows'}
                     target={show.ticketLink ? '_blank' : undefined}
                     rel={show.ticketLink ? 'noopener noreferrer' : undefined}
-                    className="relative group block overflow-hidden aspect-[1/1.414] bg-plague-black border border-plague-green/20 hover:border-plague-green/50 transition-all duration-300"
+                    className="relative block overflow-hidden aspect-[1/1.414] bg-plague-black border border-plague-green/20 hover:border-plague-green transition-colors duration-300"
                   >
                     {/* Fixed A-size frame so every card matches; contain keeps poster text uncropped */}
                     {show.image && (
@@ -262,10 +262,9 @@ function Home() {
                         src={show.image}
                         alt={`${show.venue}, ${show.city}`}
                         loading="lazy"
-                        className="w-full h-full object-contain opacity-75 group-hover:opacity-90 transition-opacity duration-300"
+                        className="w-full h-full object-contain"
                       />
                     )}
-                    <div className="absolute inset-0 bg-plague-black/20 group-hover:bg-plague-black/10 transition-all duration-300" />
                   </a>
 
                   <div className="mt-4 text-center">
