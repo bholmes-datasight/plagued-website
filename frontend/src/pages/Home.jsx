@@ -1,4 +1,4 @@
-import { useEffect, useRef, useMemo } from 'react'
+import { useEffect, useRef, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Play, ArrowRight, Skull, Users, Disc3, Music2, Mail, Instagram, Facebook, Youtube, Calendar } from 'lucide-react'
@@ -46,6 +46,54 @@ const generateParticles = (count) => {
   }))
 }
 
+const LOOP_FADE_SECONDS = 1.5
+
+// Two stacked copies of the same muted video; as one nears its end the other
+// restarts underneath and they crossfade, so the loop has no hard cut
+function HeroVideo({ src }) {
+  const videos = useRef([])
+  const [active, setActive] = useState(0)
+
+  useEffect(() => {
+    const current = videos.current[active]
+    const next = videos.current[1 - active]
+    if (!current || !next) return
+
+    let handedOff = false
+    const onTimeUpdate = () => {
+      if (handedOff || !current.duration) return
+      if (current.duration - current.currentTime <= LOOP_FADE_SECONDS) {
+        handedOff = true
+        next.currentTime = 0
+        next.play().catch(() => {})
+        setActive(1 - active)
+      }
+    }
+
+    current.addEventListener('timeupdate', onTimeUpdate)
+    return () => current.removeEventListener('timeupdate', onTimeUpdate)
+  }, [active])
+
+  return (
+    <>
+      {[0, 1].map((i) => (
+        <video
+          key={i}
+          ref={(el) => (videos.current[i] = el)}
+          src={src}
+          autoPlay={i === 0}
+          muted
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover transition-opacity ease-linear"
+          style={{ opacity: active === i ? 1 : 0, transitionDuration: `${LOOP_FADE_SECONDS}s` }}
+        />
+      ))}
+    </>
+  )
+}
+
 function Home() {
   const heroRef = useRef(null)
   const { scrollYProgress } = useScroll({
@@ -69,15 +117,7 @@ function Home() {
       <section ref={heroRef} className="relative h-screen overflow-hidden">
         {/* Background Image with Parallax */}
         <motion.div style={{ y }} className="absolute inset-0">
-          <picture>
-            <source media="(max-width: 767px)" srcSet="/img/main-band-mobile.webp" />
-            <source media="(min-width: 768px)" srcSet="/img/main-band.webp" />
-            <img
-              src="/img/main-band.webp"
-              alt="Plagued band photo"
-              className="absolute inset-0 w-full h-full object-cover object-[40%_top] md:object-[70%_60%] 2xl:object-[70%_35%]"
-            />
-          </picture>
+          <HeroVideo src="/vids/website-banner.mp4" />
           <div className="absolute inset-0 bg-gradient-to-b from-plague-black/60 via-plague-black/40 to-plague-black" />
           <div className="absolute inset-0 bg-gradient-to-r from-plague-black/80 via-transparent to-plague-black/80" />
         </motion.div>
