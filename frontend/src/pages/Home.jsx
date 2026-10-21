@@ -65,6 +65,29 @@ function HeroVideo() {
     window.matchMedia('(max-width: 767px)').matches ? HERO_VIDEO.mobile : HERO_VIDEO.desktop
   )
 
+  // React sets `muted` as a property but not the attribute, and iOS only
+  // autoplays videos it sees as muted, so set both and start playback by hand.
+  // Low Power Mode blocks autoplay outright; in that case start on first touch.
+  useEffect(() => {
+    videos.current.forEach((video) => {
+      video.muted = true
+      video.defaultMuted = true
+      video.setAttribute('muted', '')
+    })
+
+    const first = videos.current[0]
+    const events = ['touchstart', 'scroll', 'click']
+    const startOnInteraction = () => {
+      first.play().catch(() => {})
+      events.forEach((e) => window.removeEventListener(e, startOnInteraction))
+    }
+
+    first.play().catch(() => {
+      events.forEach((e) => window.addEventListener(e, startOnInteraction, { passive: true, once: true }))
+    })
+    return () => events.forEach((e) => window.removeEventListener(e, startOnInteraction))
+  }, [])
+
   useEffect(() => {
     const current = videos.current[active]
     const next = videos.current[1 - active]

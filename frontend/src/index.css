@@ -26,6 +26,15 @@
     @apply bg-plague-green text-plague-black;
   }
 
+  /* Hide iOS's play overlay on background videos when autoplay is blocked */
+  video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    -webkit-appearance: none;
+  }
+  video::-webkit-media-controls {
+    display: none !important;
+  }
+
   /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
