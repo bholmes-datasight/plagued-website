@@ -47,12 +47,23 @@ const generateParticles = (count) => {
 }
 
 const LOOP_FADE_SECONDS = 1.5
+const LOOP_PRELOAD_SECONDS = 20
+
+// Phones only ever see a tall centre strip, so they get a much smaller
+// portrait crop. Posters are each video's first frame for an invisible handover.
+const HERO_VIDEO = {
+  desktop: { src: '/vids/website-banner.mp4', poster: '/vids/website-banner-poster.webp' },
+  mobile: { src: '/vids/website-banner-mobile.mp4', poster: '/vids/website-banner-mobile-poster.webp' },
+}
 
 // Two stacked copies of the same muted video; as one nears its end the other
 // restarts underneath and they crossfade, so the loop has no hard cut
-function HeroVideo({ src }) {
+function HeroVideo() {
   const videos = useRef([])
   const [active, setActive] = useState(0)
+  const [{ src, poster }] = useState(() =>
+    window.matchMedia('(max-width: 767px)').matches ? HERO_VIDEO.mobile : HERO_VIDEO.desktop
+  )
 
   useEffect(() => {
     const current = videos.current[active]
@@ -62,7 +73,14 @@ function HeroVideo({ src }) {
     let handedOff = false
     const onTimeUpdate = () => {
       if (handedOff || !current.duration) return
-      if (current.duration - current.currentTime <= LOOP_FADE_SECONDS) {
+      const remaining = current.duration - current.currentTime
+      // Hold off fetching the second copy until near the end so it doesn't
+      // compete with the first for bandwidth on page load
+      if (remaining <= LOOP_PRELOAD_SECONDS && next.preload !== 'auto') {
+        next.preload = 'auto'
+        next.load()
+      }
+      if (remaining <= LOOP_FADE_SECONDS) {
         handedOff = true
         next.currentTime = 0
         next.play().catch(() => {})
@@ -81,10 +99,11 @@ function HeroVideo({ src }) {
           key={i}
           ref={(el) => (videos.current[i] = el)}
           src={src}
+          poster={i === 0 ? poster : undefined}
           autoPlay={i === 0}
           muted
           playsInline
-          preload="auto"
+          preload={i === 0 ? 'auto' : 'none'}
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover transition-opacity ease-linear"
           style={{ opacity: active === i ? 1 : 0, transitionDuration: `${LOOP_FADE_SECONDS}s` }}
@@ -117,7 +136,7 @@ function Home() {
       <section ref={heroRef} className="relative h-screen overflow-hidden">
         {/* Background Image with Parallax */}
         <motion.div style={{ y }} className="absolute inset-0">
-          <HeroVideo src="/vids/website-banner.mp4" />
+          <HeroVideo />
           <div className="absolute inset-0 bg-gradient-to-b from-plague-black/60 via-plague-black/40 to-plague-black" />
           <div className="absolute inset-0 bg-gradient-to-r from-plague-black/80 via-transparent to-plague-black/80" />
         </motion.div>
